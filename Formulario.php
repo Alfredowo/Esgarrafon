@@ -27,23 +27,73 @@
         </select><br><br>
         
         <label>Grado de estudio:</label><br>
-        <input type="radio" id="doctorado" name="grado_estudio" value="doctorado"> Doctorado (30 puntos)<br>
-        <input type="radio" id="maestria" name="grado_estudio" value="maestria"> Maestría (20 puntos)<br>
-        <input type="radio" id="licenciatura" name="grado_estudio" value="licenciatura"> Licenciatura (10 puntos)<br><br>
+        <!-- Doctorado=30pts, Maestría=20pts, Licenciatura=10pts -->
+        <input type="radio" id="doctorado" name="grado_estudio" value="doctorado"> Doctorado<br>
+        <input type="radio" id="maestria" name="grado_estudio" value="maestria"> Maestría<br>
+        <input type="radio" id="licenciatura" name="grado_estudio" value="licenciatura"> Licenciatura<br><br>
         
         <label for="antiguedad">Antigüedad en la empresa (en años):</label>
+        <!-- 10pts por año -->
         <input type="number" id="antiguedad" name="antiguedad" required><br><br>
         
-        <label>Cursos de capacitación:</label><br>
-        <input type="checkbox" id="cursos_30" name="cursos" value="cursos_30"> Más de 30 horas (2 puntos)<br>
-        <input type="checkbox" id="cursos_30" name="cursos" value="cursos_30"> Menos de 30 horas (1 punto)<br><br>
+        <label>Horas de cursos de capacitación impartidas:</label>
+        <!-- Si es >= 30hrs 2pts y <30hrs 1pt -->
+        <input type="number" id="cursosCap" name="cursosCap" required><br><br>
         
-        <label for="certificaciones">Número de certificaciones:</label>
-        <input type="number" id="certificaciones" name="certificaciones" required><br><br>
+        <label for="certificaciones">Cuenta con certificaciones:</label>
+        <!-- 20pts si sí -->
+        <select>
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+        </select><br><br>
         
-        <label for="diplomados">Número de diplomados:</label>
-        <input type="number" id="diplomados" name="diplomados" required><br><br>
+        <label for="diplomados">Cuenta con diplomados:</label>
+        <!-- si sí 10pts -->
+        <select>
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+        </select><br><br>
+
+        <label for="cursosST">Cuenta con cursos de ST:</label>
+        <!-- si sí 20pts -->
+        <select>
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+        </select><br><br>
         
+        <label for="cursos">Horas impartidas de cursos:</label>
+        <!-- si es >30hrs 15pts si es <30 7pts -->
+        <input type="number" id="cursos" name="cursos" required><br><br>
+        
+        <label for="cursos">Ha sido instructor de diplomados:</label>
+        <!-- Si sí 20pts-->
+        <select>
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+        </select><br><br>
+        
+        <label for="cursos">Ha sido instructor de certificaciones:</label>
+        <!-- Si sí 30pts-->
+        <select>
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+        </select><br><br>
+        
+        <label for="cursos">No. de veces que ha sido asesor de residencias:</label>
+        <!-- 1pt por cada una -->
+        <input type="number" id="cursos" name="cursos" required><br><br>
+        
+        <label for="cursos">No. de veces que ha sido asesor de titulación:</label>
+        <!-- 1pt por cada una -->
+        <input type="number" id="cursos" name="cursos" required><br><br>
+        
+        <label for="cursos">Ha hecho alguna dirección de tesis:</label>
+        <!-- Si sí 10pts-->
+        <select>
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+        </select><br><br>
+
         <input type="submit" value="Calcular Puntaje">
     </form>
 </body>
