@@ -1,14 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Formulario de Evaluacion</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluar empleado</title>
+    <?php
+    require("prueba.php");
+    $consulta = "select id, Nombre from Empleados";
+    $resultado=$conn->query($consulta);
+    ?>
 </head>
 <body>
     <h1>Formulario de Evaluacion</h1>
     
     <form action="procesar_formulario.php" method="POST">
         <label for="nombre">Nombre del empleado:</label>
-        <input type="text" id="nombre" name="nombre" required><br><br>
+        <select name="empleados" id="empleados">
+            <?php
+            if (!$resultado) {
+                die("Error en la consulta: " . $conn->error);
+            }
+            while ($fila = $resultado->fetch_assoc()) {
+                echo '<option value="'.$fila['id'].'">'.$fila['Nombre'].'</option>';
+            }
+            ?>
+        </select><br><br>
         
         <label>Grado de estudio:</label><br>
         <input type="radio" id="doctorado" name="grado_estudio" value="doctorado"> Doctorado (30 puntos)<br>
@@ -32,4 +48,3 @@
     </form>
 </body>
 </html>
-
