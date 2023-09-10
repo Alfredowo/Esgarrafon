@@ -2,8 +2,10 @@
 session_start();
 // Conectar a la base de datos y validar las credenciales aquí
 // Conexión a la base de datos (debes configurar la conexión)
-$conn = mysqli_connect("localhost", "root", "123", "Escalafon");
-
+//$conn = mysqli_connect("localhost", "root", "123", "Escalafon");
+require("prueba.php");
+$usuario = $_POST['usuario'];
+$password = $_POST['contraseña'];
 
 // Validar usuario y contraseña en la base de datos
 $query = "SELECT * FROM Login WHERE Usuario = '$usuario' AND Contraseña = '$password'";

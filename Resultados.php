@@ -2,7 +2,7 @@
 session_start();
 
 // Conectar a la base de datos (debes configurar la conexión)
-$conn = mysqli_connect("localhost", "root", "123", "Escalafon");
+$conn = mysqli_connect("localhost", "userPro", "123", "Escalafon");
 
 // Consultar la base de datos para obtener la lista de empleados y puntajes
 $query = "SELECT * FROM Empleados";
