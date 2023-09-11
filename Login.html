@@ -4,14 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Escalagfón</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            /*background-color: rgb(126, 169, 171);*/
+            background-image: url(1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 800px;
+            margin: 50px;
+        }
+        h1{
+            color: antiquewhite;
+            border-bottom: 6px solid rgb(90, 146, 163);
+        }
+        form{
+            color: antiquewhite;
+            margin: 30px;
+            border: 2px solid powderblue;
+        }
+        input[type=submit]{
+            background-color: rgb(45, 118, 131);
+            border: none;
+            color: azure;
+            padding: 10px 10px;
+            cursor: pointer;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    </style>
 </head>
 <body>
-    <h1>Iniciar sesión</h1>
-    <form action="procesar_login.php" method="POST">
-        Usuario: <input type="text" name="usuario" id="usuario" required><br><br>
-        Contraseña: <input type="password" name="contraseña" id="contraseña" required><br><br>
-        <input type="submit" value="Iniciar sesión">
-    </form>
+    <header></header>
+        <main><center><h1>Iniciar sesión</h1></center>
+            <center><form action="procesar_login.php" method="POST">
+                <br>
+                Usuario: <input type="text" name="usuario" id="usuario" required><br><br>
+                Contraseña: <input type="password" name="contraseña" id="contraseña" required><br><br>
+               <input type="submit" value="Iniciar sesión">
+               <br>
+               <br>
+            </form></center>
+        </main>
 </body>
 </html>
 
