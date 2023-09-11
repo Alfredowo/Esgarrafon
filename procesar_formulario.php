@@ -1,8 +1,7 @@
 <?php
-session_start();
 
 // Conectar a la base de datos (debes configurar la conexión)
-$conn = mysqli_connect("localhost", "root", "123", "Escalafon");
+require("conexion.php");
 
 // Obtener datos del formulario
 $nombre = $_POST['nombre'];

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evaluar empleado</title>
     <?php
-    require("prueba.php");
+    require("conexion.php");
     $consulta = "select id, Nombre from Empleados";
     $resultado=$conn->query($consulta);
     ?>

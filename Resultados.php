@@ -1,11 +1,10 @@
 <?php
-session_start();
 
 // Conectar a la base de datos (debes configurar la conexión)
-$conn = mysqli_connect("localhost", "userPro", "123", "Escalafon");
+require("conexion.php");
 
 // Consultar la base de datos para obtener la lista de empleados y puntajes
-$query = "SELECT * FROM Empleados";
+$query = "SELECT * FROM VistaPuntajes";
 $result = mysqli_query($conn, $query);
 
 if (!$result) {
@@ -49,7 +48,7 @@ if (!$result) {
         <?php
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
-            echo "<td>" . $row['Nombre'] . "</td>";
+            echo "<td>" . $row['NombreEmpleado'] . "</td>";
             echo "<td>" . $row['Puntaje'] . "</td>";
             echo "</tr>";
         }
