@@ -64,9 +64,10 @@
         <label>Grado de estudio:</label><br>
         <br>
         <!-- Doctorado=30pts, Maestría=20pts, Licenciatura=10pts -->
-        <input type="radio" id="doctorado" name="grado_estudio" value="doctorado"> Doctorado<br>
-        <input type="radio" id="maestria" name="grado_estudio" value="maestria"> Maestría<br>
-        <input type="radio" id="licenciatura" name="grado_estudio" value="licenciatura"> Licenciatura<br><br>
+        <input type="radio" id="doctorado" name="grado_estudio" value="1"> Doctorado<br>
+        <input type="radio" id="maestria" name="grado_estudio" value="2"> Maestría<br>
+        <input type="radio" id="licenciatura" name="grado_estudio" value="3"> Licenciatura<br><br>
+        
         <label for="antiguedad">Antigüedad en la empresa (en años):</label>
         <!-- 10pts por año -->
         <input type="number" id="antiguedad" name="antiguedad" required><br><br>
@@ -75,57 +76,65 @@
         <br>
         <!-- Si es >= 30hrs 2pts y <30hrs 1pt -->
         <input type="number" id="cursosCap" name="cursosCap" required><br><br>
+
         <label for="certificaciones">Cuenta con certificaciones:</label>
         <!-- 20pts si sí -->
-        <select>
-            <option value="Si">Si</option>
-            <option value="No">No</option>
+        <select name="certificaciones" id="certificaciones">
+            <option value="true">Si</option>
+            <option value="false">No</option>
         </select><br><br>
+
         <label for="diplomados">Cuenta con diplomados:</label>
         <!-- si sí 10pts -->
-        <select>
-            <option value="Si">Si</option>
-            <option value="No">No</option>
+        <select name="diplomados" id="diplomados">
+            <option value="true">Si</option>
+            <option value="false">No</option>
         </select><br><br>
+
         <label for="cursosST">Cuenta con cursos de ST:</label>
         <!-- si sí 20pts -->
-        <select>
-            <option value="Si">Si</option>
-            <option value="No">No</option>
+        <select name="CursosST" id="CursosST">
+            <option value="true">Si</option>
+            <option value="false">No</option>
         </select><br><br>
+        
         <label for="cursos">Horas impartidas de cursos:</label>
         <!-- si es >30hrs 15pts si es <30 7pts -->
         <input type="number" id="cursos" name="cursos" required><br><br>
-        <label for="cursos">Ha sido instructor de diplomados:</label>
+
+        <label for="instructorDip">Ha sido instructor de diplomados:</label>
         <!-- Si sí 20pts-->
-        <select>
-            <option value="Si">Si</option>
-            <option value="No">No</option>
+        <select name="instructorDip" id="instructorDip">
+            <option value="true">Si</option>
+            <option value="false">No</option>
         </select><br><br>
-        <label for="cursos">Ha sido instructor de certificaciones:</label>
+
+        <label for="instructorCer">Ha sido instructor de certificaciones:</label>
         <!-- Si sí 30pts-->
-        <select>
-            <option value="Si">Si</option>
-            <option value="No">No</option>
+        <select name="instructorCer" id="instructorCer">
+            <option value="true">Si</option>
+            <option value="false">No</option>
         </select><br><br>
-        <label for="cursos">No. de veces que ha sido asesor de residencias:</label>
+
+        <label for="asesorRes">No. de veces que ha sido asesor de residencias:</label>
+        <br>
+        <br>
+        <!-- 1pt por cada una -->
+        <input type="number" id="asesorRes" name="asesorRes" required><br><br>
+        
+        <label for="asesorTit">No. de veces que ha sido asesor de titulación:</label>
         <br>
         <br>
         <!-- 1pt por cada una -->
         <input type="number" id="cursos" name="cursos" required><br><br>
         
-        <label for="cursos">No. de veces que ha sido asesor de titulación:</label>
-        <br>
-        <br>
-        <!-- 1pt por cada una -->
-        <input type="number" id="cursos" name="cursos" required><br><br>
-        
-        <label for="cursos">Ha hecho alguna dirección de tesis:</label>
+        <label for="direccionTesis">Ha hecho alguna dirección de tesis:</label>
         <!-- Si sí 10pts-->
-        <select>
-            <option value="Si">Si</option>
-            <option value="No">No</option>
-        </select>
+        <select name="direccionTesis" id="direccionTesis">
+            <option value="true">Si</option>
+            <option value="false">No</option>
+        </select><br><br>
+
         <br>
         <br>
         <br>
