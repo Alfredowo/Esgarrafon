@@ -10,33 +10,39 @@
     $resultado=$conn->query($consulta);
     ?>
     <style>
-        body{
-            font-family: 'Poppins', sans-serif;
-            background-color: #13141D;
-            background-repeat: no-repeat;
-            background-size: cover;
-
-            height: 900px;
-            margin: 30px;
-        }
-        h1{
-            color: antiquewhite;
-            border-bottom: 6px solid rgb(66,68,94);
-        }
-        main{
-            color: #c4c3ca;
-            background-color: #1f2029;
-        }
-        input[type=submit]{
-            background-color: #0E0F1B;
-            border: none;
-            color: azure;
-            padding: 10px 10px;
-            cursor: pointer;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-        
-    </style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #13141D;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 900px;
+        margin: 30px;
+    }
+    h1 {
+        color: antiquewhite;
+        border-bottom: 6px solid rgb(66, 68, 94);
+        margin-bottom: 20px; /* Agrega margen inferior al título */
+    }
+    main {
+        color: #c4c3ca;
+        background-color: #1f2029;
+        padding: 20px; /* Agrega relleno alrededor del contenido principal */
+        margin: 0 auto; /* Centra el contenido principal horizontalmente */
+        max-width: 800px; /* Establece un ancho máximo para el contenido principal */
+    }
+    /* Agrega margen inferior a los elementos de formulario */
+    label, input, select {
+        margin-bottom: 10px;
+    }
+    input[type=submit] {
+        background-color: #0E0F1B;
+        border: none;
+        color: azure;
+        padding: 10px 20px; /* Aumenta el relleno horizontal */
+        cursor: pointer;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+</style>
 </head>
 <body>
     <center><h1>Formulario de Evaluacion</h1></center>
