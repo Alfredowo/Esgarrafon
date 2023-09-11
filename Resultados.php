@@ -14,8 +14,9 @@ if (!$result) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
     <title>Resultados</title>
     <style>
         body{
