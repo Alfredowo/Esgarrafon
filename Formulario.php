@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evaluar empleado</title>
     <?php
-    require("prueba.php");
+    require("conexion.php");
     $consulta = "select id, Nombre from Empleados";
     $resultado=$conn->query($consulta);
     ?>
@@ -42,6 +43,10 @@
         cursor: pointer;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
+    /* Agrega margen en la parte inferior de la caja de texto */
+    #nuevoEmpleado {
+    margin-left: 100px; /* Ajusta el valor según tu preferencia */
+    }
 </style>
 </head>
 <body>
@@ -50,8 +55,8 @@
     <main>
     <form action="procesar_formulario.php" method="POST">
         <br>
-        <label for="nombre">Nombre del empleado:</label>
-        <select name="empleados" id="empleados">
+        <label for="empleado">Nombre del empleado:</label>
+        <select name="empleado" id="empleado">
             <?php
             if (!$resultado) {
                 die("Error en la consulta: " . $conn->error);
@@ -60,7 +65,12 @@
                 echo '<option value="'.$fila['id'].'">'.$fila['Nombre'].'</option>';
             }
             ?>
-        </select><br><br>
+        </select>
+        <!-- Campo de texto para ingresar un nuevo nombre -->
+        <input type="text" id="nuevoEmpleado" placeholder=" Agregar empleado">
+        <!-- Botón para agregar nuevo -->
+        <button type="button" onclick="agregarNuevo()">Agregar Nuevo</button>
+        <br><br> 
         <label>Grado de estudio:</label><br>
         <br>
         <!-- Doctorado=30pts, Maestría=20pts, Licenciatura=10pts -->
@@ -93,7 +103,7 @@
 
         <label for="cursosST">Cuenta con cursos de ST:</label>
         <!-- si sí 20pts -->
-        <select name="CursosST" id="CursosST">
+        <select name="cursosST" id="cursosST">
             <option value="true">Si</option>
             <option value="false">No</option>
         </select><br><br>
@@ -126,7 +136,7 @@
         <br>
         <br>
         <!-- 1pt por cada una -->
-        <input type="number" id="cursos" name="cursos" required><br><br>
+        <input type="number" id="asesorTit" name="asesorTit" required><br><br>
         
         <label for="direccionTesis">Ha hecho alguna dirección de tesis:</label>
         <!-- Si sí 10pts-->
@@ -142,7 +152,24 @@
             <br>
             <br>
     </form>
-    
-        </main>
+    </main>
+    <script>
+    function agregarNuevo() {
+        var nuevoEmpleadoInput = document.getElementById('nuevoEmpleado');
+        var empleadoSelect = document.getElementById('empleado');
+        var nuevoNombre = nuevoEmpleadoInput.value;
+
+        if (nuevoNombre.trim() !== '') {
+            // Crea una nueva opción en la lista desplegable
+            var nuevaOpcion = document.createElement('option');
+            nuevaOpcion.value = nuevoNombre;
+            nuevaOpcion.textContent = nuevoNombre;
+            empleadoSelect.appendChild(nuevaOpcion);
+
+            // Limpia el campo de texto
+            nuevoEmpleadoInput.value = '';
+        }
+    }
+    </script>
 </body>
 </html>
