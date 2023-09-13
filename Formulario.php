@@ -47,12 +47,18 @@
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
     #nuevoEmpleado {
-    margin-left: 100px; 
+    margin-left: 240px; 
     }
     a{
             float: right;
             margin-right: 10px; 
             font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    button {
+    float: right;
+    background-color: #13141D;
+    border: none;
+    padding: 3px 10px; /* Ajusta el padding según tu preferencia */
     }
 </style>
 </head>
@@ -82,7 +88,7 @@
         <label>Grado de estudio:</label><br>
         <br>
         <!-- Doctorado=30pts, Maestría=20pts, Licenciatura=10pts -->
-        <input type="radio" id="doctorado" name="grado_estudio" value="1"> Doctorado<br>
+        <input type="radio" id="doctorado" name="grado_estudio" value="1" checked> Doctorado<br>
         <input type="radio" id="maestria" name="grado_estudio" value="2"> Maestría<br>
         <input type="radio" id="licenciatura" name="grado_estudio" value="3"> Licenciatura<br><br>
         
