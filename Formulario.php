@@ -19,19 +19,22 @@
         height: 900px;
         margin: 30px;
     }
+    header{
+        margin: 10px;
+        background-color: #47495F;
+    }
     h1 {
         color: antiquewhite;
         border-bottom: 6px solid rgb(66, 68, 94);
-        margin-bottom: 20px; /* Agrega margen inferior al título */
+        margin-bottom: 20px; 
     }
     main {
         color: #c4c3ca;
         background-color: #1f2029;
-        padding: 20px; /* Agrega relleno alrededor del contenido principal */
-        margin: 0 auto; /* Centra el contenido principal horizontalmente */
-        max-width: 800px; /* Establece un ancho máximo para el contenido principal */
+        padding: 20px; 
+        margin: 0 auto; 
+        max-width: 800px;
     }
-    /* Agrega margen inferior a los elementos de formulario */
     label, input, select {
         margin-bottom: 10px;
     }
@@ -39,18 +42,23 @@
         background-color: #0E0F1B;
         border: none;
         color: azure;
-        padding: 10px 20px; /* Aumenta el relleno horizontal */
+        padding: 10px 20px;
         cursor: pointer;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
-    /* Agrega margen en la parte inferior de la caja de texto */
     #nuevoEmpleado {
-    margin-left: 100px; /* Ajusta el valor según tu preferencia */
+    margin-left: 100px; 
+    }
+    a{
+            float: right;
+            margin-right: 10px; 
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
 </style>
 </head>
 <body>
-    <center><h1>Formulario de Evaluacion</h1></center>
+    <header><center><h1>Formulario de Evaluacion</h1></center>
+    <a href="Login.html"><input type="submit" value="Cerrar Sesión" ></a></header>
     <br>
     <main>
     <form action="procesar_formulario.php" method="POST">
@@ -153,6 +161,8 @@
             <br>
     </form>
     </main>
+    <br>
+    <br>
     <script>
     function agregarNuevo() {
         var nuevoEmpleadoInput = document.getElementById('nuevoEmpleado');
