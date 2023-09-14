@@ -31,9 +31,46 @@
             cursor: pointer;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
+
+        /* Estilos para la barra de menú */
+.menu {
+    background-color: #333; /* Color de fondo de la barra de menú */
+    display: flex;
+    justify-content: flex-end; /* Alinea los botones a la derecha */
+    align-items: center; /* Centra verticalmente los botones */
+    height: 50px; /* Altura de la barra de menú */
+}
+
+/* Resto del código CSS se mantiene igual */
+
+
+.menu-button {
+    background-color: #555; /* Color de fondo de los botones */
+    color: white; /* Color del texto de los botones */
+    border: none;
+    padding: 10px 20px; /* Espaciado interno de los botones */
+    margin: 0 10px; /* Margen horizontal entre los botones */
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    background-color: #777; /* Color de fondo al pasar el mouse por encima */
+}
+
+/* Estilos para el contenido de la página */
+.contenido {
+    /* Agrega estilos adicionales para el contenido de tu página aquí */
+}
+
+
+
     </style>
 </head>
 <body>
+    <div class="menu">
+        <button class="menu-button">Administrativos</button>
+        <button class="menu-button">Empleados</button>
+    </div>
     <header></header>
         <main><center><h1>Iniciar sesión</h1></center>
             <center><form action="procesar_login.php" method="POST">
