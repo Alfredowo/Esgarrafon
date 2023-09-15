@@ -33,34 +33,59 @@
         }
 
         /* Estilos para la barra de menú */
-.menu {
-    background-color: #333; /* Color de fondo de la barra de menú */
-    display: flex;
-    justify-content: flex-end; /* Alinea los botones a la derecha */
-    align-items: center; /* Centra verticalmente los botones */
-    height: 50px; /* Altura de la barra de menú */
-}
+        .menu {
+            background-color: #333; /* Color de fondo de la barra de menú */
+            display: flex;
+            justify-content: flex-end; /* Alinea los botones a la derecha */
+            align-items: center; /* Centra verticalmente los botones */
+            height: 50px; /* Altura de la barra de menú */
+        }
 
-/* Resto del código CSS se mantiene igual */
+        /* Resto del código CSS se mantiene igual */
 
+        .menu-button {
+            background-color: #555; /* Color de fondo de los botones */
+            color: white; /* Color del texto de los botones */
+            border: none;
+            padding: 10px 20px; /* Espaciado interno de los botones */
+            margin: 0 10px; /* Margen horizontal entre los botones */
+            cursor: pointer;
+        }
 
-.menu-button {
-    background-color: #555; /* Color de fondo de los botones */
-    color: white; /* Color del texto de los botones */
-    border: none;
-    padding: 10px 20px; /* Espaciado interno de los botones */
-    margin: 0 10px; /* Margen horizontal entre los botones */
-    cursor: pointer;
-}
+        .menu-button:hover {
+            background-color: #777; /* Color de fondo al pasar el mouse por encima */
+        }
 
-.menu-button:hover {
-    background-color: #777; /* Color de fondo al pasar el mouse por encima */
-}
+        /* Estilos para el contenido de la página */
+        .contenido {
+            /* Agrega estilos adicionales para el contenido de tu página aquí */
+        }
 
-/* Estilos para el contenido de la página */
-.contenido {
-    /* Agrega estilos adicionales para el contenido de tu página aquí */
-}
+        /* Estilos para el modal (ventana emergente de registro)*/
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 60%;
+        }
+
+        .close {
+            float: right;
+            cursor: pointer;
+        }
 
     </style>
 </head>
@@ -70,33 +95,93 @@
         <button class="menu-button" id="employeeButton">Empleados</button>
     </div>    
     <header></header>
-        <main><center><h1>Iniciar sesión</h1></center>
-            <center><form action="procesar_login.php" method="POST">
+    <main>
+        <center><h1>Iniciar sesión</h1></center>
+        <center>
+            <form action="procesar_login.php" method="POST">
                 <br>
                 Usuario: <input type="text" name="usuario" id="usuario" required><br><br>
                 Contraseña: <input type="password" name="contrasena" id="contrasena" required><br><br>
-               <input type="submit" value="Iniciar sesión">
-               <br>
-               <br>
-            </form></center>
-        </main>
-        <script>
-            // Obtén una referencia a los botones
-            const adminButton = document.getElementById("adminButton");
-            const employeeButton = document.getElementById("employeeButton");
-        
-            // Agrega un controlador de clic para el botón "Administrativos"
-            employeeButton.addEventListener("click", function() {
-                // Redirige a otra página
-                window.location.href = "LoginUsuario.html";
-            });
-        
-            // Agrega un controlador de clic para el botón "Empleados"
-            adminButton.addEventListener("click", function() {
-                // Muestra un mensaje en la página
-                alert("Ya estás en esta página");
-            });
-        </script>
+                <input type="submit" value="Iniciar sesión">
+                <br>
+                <br>
+            </form>
+            <button id="openRegisterModal">Registrarse</button>
+        </center>
+    </main>
+
+    <!-- Modal de Registro -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeRegisterModal">&times;</span>
+            <h2>Registro</h2>
+            <form id="registerForm">
+                Usuario: <input type="text" name="registroUsuario" id="registroUsuario" required><br><br>
+                Contraseña: <input type="password" name="registroContrasena" id="registroContrasena" required><br><br>
+                Confirmar Contraseña: <input type="password" name="confirmarContrasena" id="confirmarContrasena" required><br><br>
+                <input type="submit" value="Registrar">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Obtén una referencia a los botones
+        const adminButton = document.getElementById("adminButton");
+        const employeeButton = document.getElementById("employeeButton");
+    
+        // Agrega un controlador de clic para el botón "Administrativos"
+        employeeButton.addEventListener("click", function() {
+            // Redirige a otra página
+            window.location.href = "LoginUsuario.html";
+        });
+    
+        // Agrega un controlador de clic para el botón "Empleados"
+        adminButton.addEventListener("click", function() {
+            // Muestra un mensaje en la página
+            alert("Ya estás en esta página");
+        });
+    </script>    
+    <script>
+        const openRegisterModalButton = document.getElementById("openRegisterModal");
+        const registerModal = document.getElementById("registerModal");
+        const closeRegisterModalButton = document.getElementById("closeRegisterModal");
+        const registerForm = document.getElementById("registerForm");
+    
+        openRegisterModalButton.addEventListener("click", function() {
+            registerModal.style.display = "block";
+        });
+    
+        closeRegisterModalButton.addEventListener("click", function() {
+            registerModal.style.display = "none";
+        });
+    
+        registerForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            const registroUsuario = document.getElementById("registroUsuario").value;
+            const registroContrasena = document.getElementById("registroContrasena").value;
+            const confirmarContrasena = document.getElementById("confirmarContrasena").value;
+    
+            if (registroContrasena !== confirmarContrasena) {
+                alert("Las contraseñas no coinciden");
+            } else {
+                // Aquí debes agregar el código para verificar si el usuario ya existe en la base de datos
+                // Si el usuario no existe, realiza el registro en la base de datos y cierra el modal
+                // Si el usuario ya existe, muestra un mensaje de error
+                // Puedes utilizar AJAX o fetch para realizar la verificación y el registro en la base de datos
+                // Luego, cierra el modal de registro
+                // Ejemplo: fetch("verificar_registro.php", { method: "POST", body: { usuario: registroUsuario }})
+                //           .then(response => response.json())
+                //           .then(data => {
+                //               if (data.existe) {
+                //                   alert("El usuario ya existe");
+                //               } else {
+                //                   // Realiza el registro en la base de datos
+                //                   // Cierra el modal
+                //               }
+                //           });
+            }
+        });
+    </script>    
 </body>
 </html>
 
