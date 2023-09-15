@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Escalagfón</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-image: url(us.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 800px;
+        }
+        .titulo{
+            color: antiquewhite;
+            border-bottom: 6px solid rgb(140, 90, 163);
+            text-align: center;
+        }
+        form{
+            color: antiquewhite;
+            margin: 30px;
+            border: 2px solid rgb(120, 64, 138);
+            text-align: center;
+            background-color: #815f85;
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 48%;
+            transform: translate(-50%, -50%);
+        }
+        .inicio{
+            background-color: rgb(97, 45, 131);
+            border: none;
+            color: azure;
+            padding: 10px 10px;
+            cursor: pointer;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .inicio:hover{
+            background-color: #5e2b64;
+        }
+                /* Estilos para la barra de menú */ 
+        .menu { 
+            background-color:rgb(151, 97, 187); /* Color de fondo de la barra de menú */ 
+            display: flex; 
+            justify-content: flex-end; /* Alinea los botones a la derecha */ 
+            align-items: center; /* Centra verticalmente los botones */ 
+            height: 50px; /* Altura de la barra de menú */ 
+        } 
+        /* Resto del código CSS se mantiene igual */ 
+        .menu-button { 
+            background-color: rgb(97, 45, 131); /* Color de fondo de los botones */ 
+            color: azure; /* Color del texto de los botones */ 
+            border: none; 
+            padding: 10px 20px; /* Espaciado interno de los botones */ 
+            margin: 0 10px; /* Margen horizontal entre los botones */ 
+            cursor: pointer; 
+        } 
+        .menu-button:hover { 
+            background-color: #5e2b64; /* Color de fondo al pasar el mouse por encima */ 
+        } 
+        /* Estilos para el contenido de la página */ 
+        .contenido { 
+            /* Agrega estilos adicionales para el contenido de tu página aquí */ 
+        }
+        /* Estilo base para input de tipo "text" */
+.cuadrosuwu {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Estilo cuando el input está enfocado */
+.cuadrosuwu:focus {
+    border-color: dodgerblue;
+    box-shadow: 0 0 5px dodgerblue;
+}
+
+/* Estilo para un input desactivado */
+.cuadrosuwu:disabled {
+    background-color: #f2f2f2;
+    cursor: not-allowed;
+}
+
+    </style>
+</head>
+<body>
+    <div class="menu"> 
+        <button class="menu-button" id="adminButton">Administrativos</button> 
+        <button class="menu-button" id="employeeButton">Empleados</button> 
+    </div>
+    <script> 
+        // Obtén una referencia a los botones 
+        const adminButton = document.getElementById("adminButton"); 
+        const employeeButton = document.getElementById("employeeButton"); 
+     
+        // Agrega un controlador de clic para el botón "Administrativos" 
+        adminButton.addEventListener("click", function() { 
+            // Redirige a otra página 
+            window.location.href = "Login.html"; 
+        }); 
+     
+        // Agrega un controlador de clic para el botón "Empleados" 
+        employeeButton.addEventListener("click", function() { 
+            // Muestra un mensaje en la página 
+            alert("Ya estás en esta página"); 
+        }); 
+    </script>
+    <header></header>
+    <main>
+        <h1 class="titulo">Iniciar sesión</h1>
+        <form action="procesar_login_us.php" method="POST">
+            <br>
+            Usuario: 
+            <br><br>
+            <input  class="cuadrosuwu type="text" name="usuario" id="usuario" required><br><br>
+            Contraseña: 
+            <br><br>
+            <input class="cuadrosuwu" type="password" name="contrasena" id="contrasena" required><br><br>
+           <input type="submit" value="Iniciar sesión" class="inicio">
+           <br>
+           <br>
+        </form>
+    </main>
+</body>
+</html>
