@@ -62,15 +62,13 @@
     /* Agrega estilos adicionales para el contenido de tu página aquí */
 }
 
-
-
     </style>
 </head>
 <body>
     <div class="menu">
-        <button class="menu-button">Administrativos</button>
-        <button class="menu-button">Empleados</button>
-    </div>
+        <button class="menu-button" id="adminButton">Administrativos</button>
+        <button class="menu-button" id="employeeButton">Empleados</button>
+    </div>    
     <header></header>
         <main><center><h1>Iniciar sesión</h1></center>
             <center><form action="procesar_login.php" method="POST">
@@ -82,6 +80,23 @@
                <br>
             </form></center>
         </main>
+        <script>
+            // Obtén una referencia a los botones
+            const adminButton = document.getElementById("adminButton");
+            const employeeButton = document.getElementById("employeeButton");
+        
+            // Agrega un controlador de clic para el botón "Administrativos"
+            employeeButton.addEventListener("click", function() {
+                // Redirige a otra página
+                window.location.href = "LoginUsuario.html";
+            });
+        
+            // Agrega un controlador de clic para el botón "Empleados"
+            adminButton.addEventListener("click", function() {
+                // Muestra un mensaje en la página
+                alert("Ya estás en esta página");
+            });
+        </script>
 </body>
 </html>
 
