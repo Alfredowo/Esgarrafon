@@ -9,6 +9,11 @@
     require("conexion.php");
     $consulta = "select id, Nombre from Empleados";
     $resultado=$conn->query($consulta);
+    $id=$_POST['empleado'];
+
+    //Extraer rutas
+    $ConsultarutaGrado=$conn->query("select rutaGrado from Empleados where id=$id");
+    $filaGrado = $ConsultarutaGrado->fetch_assoc()
     ?>
         </script>
     <style>
@@ -66,9 +71,9 @@
 <h1>Administrador</h1>
     <form action="procesar_formulario" method="post">
         <?php
-        if (!empty($rutaGrado)) {
+        if (!empty($filaGrado['rutaGrado'])) {
             echo '<label>Grado de estudio: </label>';
-            echo '<a href="'.$rutaGrado.'" target="_blank" class="btn">Verificar</a><br>';
+            echo '<a href="/home/leo/Downloads/Grado de estudios.pdf" target="_blank" class="btn">Verificar</a><br>';
             echo '<label>Aprobar como: </label><br>';
             echo '<input type="radio" id="doctorado" name="grado_estudio" value="1" checked> Doctorado<br>';
             echo '<input type="radio" id="maestria" name="grado_estudio" value="2"> Maestría<br>';
