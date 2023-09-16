@@ -85,6 +85,7 @@
             echo '<input type="radio" id="licenciatura" name="grado_estudio" value="3"> Licenciatura<br><br>';
             echo '<input type="submit" name="btnGradoAprobado" value="Aprobar"></input>';
             echo '<button name="btnRechGrado" onclick="evaluar(\'no aprobado umu\')">Rechazar</button><br><br>';
+            echo '<textarea name="observacionesGrado" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
         if (!empty($rutaAntiguedad)) {
@@ -95,6 +96,7 @@
             echo '<input type="number" id="antiguedad" name="antiguedad" required>';
             echo '<input type="submit" name="btnAntiguedadAprobado" value="Aprobar"></input>';
             echo '<button name="btnRechGrado" onclick="evaluar(\'no aprobado umu\')">Rechazar</button><br><br>';
+            echo '<textarea name="observacionesAntiguedad" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';    
         }
         
         if (!empty($rutaCursosCap)) {
@@ -106,6 +108,7 @@
             echo '<input type="number" id="cursosCap" name="cursosCap" required>';
             echo '<input type="submit" name="btnAntiguedadAprobado" value="Aprobar"></input>';
             echo '<button name="btnRechGrado" onclick="evaluar(\'no aprobado umu\')">Rechazar</button><br><br>';
+            echo '<textarea name="observacionesCursosCap" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
         if (!empty($rutaCertificaciones)) {
@@ -120,6 +123,7 @@
             echo '</select>';
             echo '<input type="submit" name="btnAntiguedadAprobado" value="Aprobar"></input>';
             echo '<button name="btnRechGrado" onclick="evaluar(\'no aprobado umu\')">Rechazar</button><br><br>';
+            echo '<textarea name="observacionesCertificaciones" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
         if (!empty($rutaDiplomados)) {
@@ -134,6 +138,7 @@
             echo '</select>';
             echo '<input type="submit" name="btnAntiguedadAprobado" value="Aprobar"></input>';
             echo '<button name="btnRechGrado" onclick="evaluar(\'no aprobado umu\')">Rechazar</button><br><br>';
+            echo '<textarea name="observacionesDiplomados" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
         if (!empty($rutaCursosST)) {
@@ -148,6 +153,7 @@
             echo '</select>';
             echo '<input type="submit" name="btnAntiguedadAprobado" value="Aprobar"></input>';
             echo '<button name="btnRechGrado" onclick="evaluar(\'no aprobado umu\')">Rechazar</button><br><br>';
+            echo '<textarea name="observacionesCursosST" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
         if (!empty($rutaCursos)) {
@@ -159,6 +165,7 @@
             echo '<input type="number" id="cursos" name="cursos" required>';
             echo '<input type="submit" name="btnAntiguedadAprobado" value="Aprobar"></input>';
             echo '<button name="btnRechGrado" onclick="evaluar(\'no aprobado umu\')">Rechazar</button><br><br>';
+            echo '<textarea name="observacionesCursos" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
         if (!empty($rutaInstructorDip)) {
@@ -173,6 +180,7 @@
             echo '</select>';
             echo '<input type="submit" name="btnAntiguedadAprobado" value="Aprobar"></input>';
             echo '<button name="btnRechGrado" onclick="evaluar(\'no aprobado umu\')">Rechazar</button><br><br>';
+            echo '<textarea name="observacionesInstructorDip" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
         if (!empty($rutaInstructorCer)) {
@@ -187,6 +195,7 @@
             echo '</select>';
             echo '<input type="submit" name="btnAntiguedadAprobado" value="Aprobar"></input>';
             echo '<button name="btnRechGrado" onclick="evaluar(\'no aprobado umu\')">Rechazar</button><br><br>';
+            echo '<textarea name="observacionesInstructorCer" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
         if (!empty($rutaAsesorRes)) {
@@ -198,6 +207,7 @@
             echo '<input type="number" id="asesorRes" name="asesorRes" required>';
             echo '<input type="submit" name="btnAntiguedadAprobado" value="Aprobar"></input>';
             echo '<button name="btnRechGrado" onclick="evaluar(\'no aprobado umu\')">Rechazar</button><br><br>';
+            echo '<textarea name="observacionesAsesorRes" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
         if (!empty($rutaAsesorTit)) {
@@ -209,6 +219,7 @@
             echo '<input type="number" id="asesorTit" name="asesorTit" required>';
             echo '<input type="submit" name="btnAntiguedadAprobado" value="Aprobar"></input>';
             echo '<button name="btnRechGrado" onclick="evaluar(\'no aprobado umu\')">Rechazar</button><br><br>';
+            echo '<textarea name="observacionesAsesorTit" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
         if (!empty($rutaDireccionTesis)) {
@@ -223,6 +234,7 @@
             echo '</select>';
             echo '<input type="submit" name="btnAntiguedadAprobado" value="Aprobar"></input>';
             echo '<button name="btnRechGrado" onclick="evaluar(\'no aprobado umu\')">Rechazar</button><br><br>';
+            echo '<textarea name="observacionesDireccionTesis" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
         echo '<br><br><br>';
