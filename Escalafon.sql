@@ -8,10 +8,12 @@ CREATE TABLE Login (
    Contrasena VARCHAR(255) NOT NULL,
    Permisos enum('admin','empleado')
 );  
-    
-INSERT INTO Login VALUES (NULL, 'Alfre', '123');
-INSERT INTO Login VALUES (NULL, 'Nya', '123');
-INSERT INTO Login VALUES (NULL, 'Leo', '123');
+
+
+INSERT INTO Login VALUES (NULL, 'Alfre', '123',1);
+INSERT INTO Login VALUES (NULL, 'Nya', '123',1);
+INSERT INTO Login VALUES (NULL, 'Leo', '123',1);
+insert into Login values (null,'usuario','123',2);
 
 SELECT * FROM Login WHERE Usuario = 'Alfre' AND Contrasena = '123';
 DROP TABLE if EXISTS Empleados;
@@ -21,6 +23,7 @@ CREATE TABLE Empleados(
    Grado ENUM("Doctorado","Maestría","Licenciatura"),
    rutaGrado varchar(100),
    Antiguedad INT,
+   rutaAntiguedad varchar(100),
    CursoCap INT,
    rutaCursoCap varchar(100),
    Certificaciones BOOLEAN,
@@ -32,7 +35,7 @@ CREATE TABLE Empleados(
    Cursos INT,
    rutaCursos varchar(100),
    InstructorDip BOOLEAN,
-   rutaInstructor varchar(100),
+   rutaInstructorDip varchar(100),
    InstructorCer BOOLEAN,
    rutaInstructorCer varchar(100),
    AsesorRes INT,
@@ -48,8 +51,24 @@ VALUES
 ('Juan Pérez', 'Maestría', 5, 3, true, false, true, 2, true, false, 1, 0, true),
 ('María López', 'Licenciatura', 2, 4, false, true, false, 0, false, true, 0, 2, false);
 ('María López', 'Licenciatura', 2, 4, false, true, false, 0, false, true, 0, 2, FALSE);*/
-
-SELECT * FROM empleados;
+    
+DROP table if exists observaciones;
+create table observaciones(
+   id int PRIMARY KEY AUTO_INCREMENT,
+   fkEmpleado int,
+   OvGrado varchar(200),
+   OvAntiguedad varchar(200),
+   OvCursoCap varchar(200),
+   OvCertificaciones varchar(200),
+   OvDiplomados varchar(200),
+   OvCursosST varchar(200),
+   OvCursos varchar(200),
+   OvInstructorDip varchar(200),
+   OvInstructorCer varchar(200),
+   OvAsesorRes varchar(200),
+   OvAsesorTit varchar(200),
+   OvDireccionTesis varchar(200),
+   FOREIGN key(fkEmpleado) REFERENCES Empleados(id));
 
 DROP TABLE if EXISTS Puntaje;
 CREATE TABLE Puntaje(
@@ -93,7 +112,7 @@ CREATE PROCEDURE insertarEmpleados(
    IN _Cursos INT,
    IN _rutaCursos VARCHAR(100),
    IN _InstructorDip BOOLEAN,
-   IN _rutaInstructor VARCHAR(100),
+   IN _rutaInstructorDip VARCHAR(100),
    IN _InstructorCer BOOLEAN,
    IN _rutaInstructorCer VARCHAR(100),
    IN _AsesorRes INT,
@@ -107,13 +126,13 @@ BEGIN
       INSERT INTO Empleados (
          Nombre, Grado, rutaGrado, Antiguedad, CursoCap, rutaCursoCap, Certificaciones,
          rutaCertificaciones, Diplomados, rutaDiplomados, CursosST, rutaCursosST,
-         Cursos, rutaCursos, InstructorDip, rutaInstructor, InstructorCer,
+         Cursos, rutaCursos, InstructorDip, rutaInstructorDip, InstructorCer,
          rutaInstructorCer, AsesorRes, rutaAsesorRes, AsesorTit, rutaAsesorTit,
          DireccionTesis, rutaDireccionTesis
       ) VALUES (
          _Nombre, _Grado, _rutaGrado, _Antiguedad, _CursoCap, _rutaCursoCap, _Certificaciones,
          _rutaCertificaciones, _Diplomados, _rutaDiplomados, _CursosST, _rutaCursosST,
-         _Cursos, _rutaCursos, _InstructorDip, _rutaInstructor, _InstructorCer,
+         _Cursos, _rutaCursos, _InstructorDip, _rutaInstructorDip, _InstructorCer,
          _rutaInstructorCer, _AsesorRes, _rutaAsesorRes, _AsesorTit, _rutaAsesorTit,
          _DireccionTesis, _rutaDireccionTesis
       );
@@ -142,59 +161,69 @@ DELIMITER ;
 
 -- TRIGGERS ----------------------------------------------------------------------------------------------------------------------
 
-DROP TRIGGER if EXISTS actualizar_puntaje_update;
+DROP TRIGGER IF EXISTS actualizar_puntaje_update;
 DELIMITER //
-CREATE TRIGGER actualizar_puntaje_update AFTER UPDATE ON empleados
+CREATE TRIGGER actualizar_puntaje_update AFTER UPDATE ON Empleados
 FOR EACH ROW
 BEGIN
    DECLARE puntaje INT;
 
-   -- Calcular el puntaje total
+   -- Calcular el puntaje total y verificar documentos
    SET puntaje = 0;
 
-   IF NEW.Grado = 'Doctorado' THEN
+   IF NEW.Grado = 'Doctorado' AND NEW.rutaGrado = 'Aprobado owo' THEN
       SET puntaje = puntaje + 30;
-   ELSEIF NEW.Grado = 'Maestría' THEN
+   ELSEIF NEW.Grado = 'Maestría' AND NEW.rutaGrado = 'Aprobado owo' THEN
       SET puntaje = puntaje + 20;
-   ELSEIF NEW.Grado = 'Licenciatura' THEN
+   ELSEIF NEW.Grado = 'Licenciatura' AND NEW.rutaGrado = 'Aprobado owo' THEN
       SET puntaje = puntaje + 10;
    END IF;
 
-   SET puntaje = puntaje + NEW.Antiguedad * 10;
+   IF NEW.RutaAntiguedad = 'Aprobado owo' THEN
+      SET puntaje = puntaje + NEW.Antiguedad * 10;
+   END IF;
 
-   IF NEW.CursoCap > 29 THEN
+   IF NEW.CursoCap > 29 AND NEW.rutaCursoCap = 'Aprobado owo' THEN
       SET puntaje = puntaje + 2;
-   ELSE 
-   	SET puntaje = puntaje + 1;
+   ELSEIF NEW.CursoCap < 30 AND NEW.rutaCursoCap = 'Aprobado owo' THEN
+      SET puntaje = puntaje + 1;
    END IF;
 
-   IF NEW.Certificaciones = TRUE THEN
+   IF NEW.rutaCertificaciones = 'Aprobado owo' THEN
       SET puntaje = puntaje + 20;
    END IF;
 
-   IF NEW.Diplomados = TRUE THEN
+   IF NEW.rutaDiplomados = 'Aprobado owo' THEN
       SET puntaje = puntaje + 10;
    END IF;
 
-   IF NEW.CursosST = TRUE THEN
+   IF NEW.rutaCursosST = 'Aprobado owo' THEN
       SET puntaje = puntaje + 20;
    END IF;
 
-   SET puntaje = puntaje + NEW.Cursos * 10;
+   IF NEW.rutaCursos = 'Aprobado owo' AND NEW.Cursos > 29 THEN
+      SET puntaje = puntaje + 15;
+   ELSEIF NEW.rutaCursos = 'Aprobado owo' AND NEW.Cursos < 30 THEN
+      SET puntaje = puntaje + 7;
+   END IF;
 
-   IF NEW.InstructorDip = TRUE THEN
+   IF NEW.rutaInstructorDip = 'Aprobado owo' THEN
       SET puntaje = puntaje + 15;
    END IF;
 
-   IF NEW.InstructorCer = TRUE THEN
+   IF NEW.rutaInstructorCer = 'Aprobado owo' THEN
       SET puntaje = puntaje + 20;
    END IF;
 
-   SET puntaje = puntaje + NEW.AsesorRes * 5;
+   IF NEW.rutaAsesorRes = 'Aprobado owo' THEN
+      SET puntaje = puntaje + NEW.AsesorRes;
+   END IF;
 
-   SET puntaje = puntaje + NEW.AsesorTit * 5;
+   IF NEW.rutaAsesorTit = 'Aprobado owo' THEN
+      SET puntaje = puntaje + NEW.AsesorTit;
+   END IF;
 
-   IF NEW.DireccionTesis = TRUE THEN
+   IF NEW.RutaDireccionTesis = 'Aprobado owo' THEN
       SET puntaje = puntaje + 10;
    END IF;
 
@@ -210,59 +239,69 @@ END;
 //
 DELIMITER ;
 
-DROP TRIGGER if EXISTS actualizar_puntaje_insert;
+DROP TRIGGER IF EXISTS actualizar_puntaje_insert;
 DELIMITER //
-CREATE TRIGGER actualizar_puntaje_insert AFTER INSERT ON empleados
+CREATE TRIGGER actualizar_puntaje_insert AFTER INSERT ON Empleados
 FOR EACH ROW
 BEGIN
    DECLARE puntaje INT;
 
-   -- Calcular el puntaje total
+   -- Calcular el puntaje total y verificar documentos
    SET puntaje = 0;
 
-   IF NEW.Grado = 'Doctorado' THEN
+   IF NEW.Grado = 'Doctorado' AND NEW.rutaGrado = 'Aprobado owo' THEN
       SET puntaje = puntaje + 30;
-   ELSEIF NEW.Grado = 'Maestría' THEN
+   ELSEIF NEW.Grado = 'Maestría' AND NEW.rutaGrado = 'Aprobado owo' THEN
       SET puntaje = puntaje + 20;
-   ELSEIF NEW.Grado = 'Licenciatura' THEN
+   ELSEIF NEW.Grado = 'Licenciatura' AND NEW.rutaGrado = 'Aprobado owo' THEN
       SET puntaje = puntaje + 10;
    END IF;
 
-   SET puntaje = puntaje + NEW.Antiguedad * 10;
+   IF NEW.RutaAntiguedad = 'Aprobado owo' THEN
+      SET puntaje = puntaje + NEW.Antiguedad * 10;
+   END IF;
 
-   IF NEW.CursoCap > 29 THEN
+   IF NEW.CursoCap > 29 AND NEW.rutaCursoCap = 'Aprobado owo' THEN
       SET puntaje = puntaje + 2;
-   ELSE 
-   	SET puntaje = puntaje + 1;
+   ELSEIF NEW.CursoCap < 30 AND NEW.rutaCursoCap = 'Aprobado owo' THEN
+      SET puntaje = puntaje + 1;
    END IF;
 
-   IF NEW.Certificaciones = TRUE THEN
+   IF NEW.rutaCertificaciones = 'Aprobado owo' THEN
       SET puntaje = puntaje + 20;
    END IF;
 
-   IF NEW.Diplomados = TRUE THEN
+   IF NEW.rutaDiplomados = 'Aprobado owo' THEN
       SET puntaje = puntaje + 10;
    END IF;
 
-   IF NEW.CursosST = TRUE THEN
+   IF NEW.rutaCursosST = 'Aprobado owo' THEN
       SET puntaje = puntaje + 20;
    END IF;
 
-   SET puntaje = puntaje + NEW.Cursos * 10;
+   IF NEW.rutaCursos = 'Aprobado owo' AND NEW.Cursos > 29 THEN
+      SET puntaje = puntaje + 15;
+   ELSEIF NEW.rutaCursos = 'Aprobado owo' AND NEW.Cursos < 30 THEN
+      SET puntaje = puntaje + 7;
+   END IF;
 
-   IF NEW.InstructorDip = TRUE THEN
+   IF NEW.rutaInstructorDip = 'Aprobado owo' THEN
       SET puntaje = puntaje + 15;
    END IF;
 
-   IF NEW.InstructorCer = TRUE THEN
+   IF NEW.rutaInstructorCer = 'Aprobado owo' THEN
       SET puntaje = puntaje + 20;
    END IF;
 
-   SET puntaje = puntaje + NEW.AsesorRes * 5;
+   IF NEW.rutaAsesorRes = 'Aprobado owo' THEN
+      SET puntaje = puntaje + NEW.AsesorRes;
+   END IF;
 
-   SET puntaje = puntaje + NEW.AsesorTit * 5;
+   IF NEW.rutaAsesorTit = 'Aprobado owo' THEN
+      SET puntaje = puntaje + NEW.AsesorTit;
+   END IF;
 
-   IF NEW.DireccionTesis = TRUE THEN
+   IF NEW.RutaDireccionTesis = 'Aprobado owo' THEN
       SET puntaje = puntaje + 10;
    END IF;
 
@@ -281,10 +320,6 @@ DELIMITER ;
 
 
 -- ------------------------------------------------------------------------------------------------------------------------
-
-SELECT * FROM empleados;
-SELECT * FROM VistaPuntajes;
-DESCRIBE empleados;
 
 UPDATE Empleados
 SET
