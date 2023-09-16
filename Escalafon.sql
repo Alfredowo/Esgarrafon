@@ -26,23 +26,23 @@ CREATE TABLE Empleados(
    rutaAntiguedad varchar(100),
    CursoCap INT,
    rutaCursoCap varchar(100),
-   Certificaciones BOOLEAN,
+   --Certificaciones BOOLEAN,
    rutaCertificaciones varchar(100),
-   Diplomados BOOLEAN,
+   --Diplomados BOOLEAN,
    rutaDiplomados varchar(100),
-   CursosST BOOLEAN,
+   --CursosST BOOLEAN,
    rutaCursosST varchar(100),
    Cursos INT,
    rutaCursos varchar(100),
-   InstructorDip BOOLEAN,
+   --InstructorDip BOOLEAN,
    rutaInstructorDip varchar(100),
-   InstructorCer BOOLEAN,
+   --InstructorCer BOOLEAN,
    rutaInstructorCer varchar(100),
    AsesorRes INT,
    rutaAsesorRes varchar(100),
    AsesorTit INT,
    rutaAsesorTit varchar(100),
-   DireccionTesis BOOLEAN,
+   --DireccionTesis BOOLEAN,
    rutaDireccionTesis varchar(100)
 );
 
@@ -101,46 +101,48 @@ CREATE PROCEDURE insertarEmpleados(
    IN _Grado ENUM("Doctorado","Maestría","Licenciatura"),
    IN _rutaGrado VARCHAR(100),
    IN _Antiguedad INT,
+   IN _rutaAntiguedad varchar(100),
    IN _CursoCap INT,
    IN _rutaCursoCap VARCHAR(100),
-   IN _Certificaciones BOOLEAN,
+   --IN _Certificaciones BOOLEAN,
    IN _rutaCertificaciones VARCHAR(100),
-   IN _Diplomados BOOLEAN,
+   --IN _Diplomados BOOLEAN,
    IN _rutaDiplomados VARCHAR(100),
-   IN _CursosST BOOLEAN,
+   --IN _CursosST BOOLEAN,
    IN _rutaCursosST VARCHAR(100),
    IN _Cursos INT,
    IN _rutaCursos VARCHAR(100),
-   IN _InstructorDip BOOLEAN,
+   --IN _InstructorDip BOOLEAN,
    IN _rutaInstructorDip VARCHAR(100),
-   IN _InstructorCer BOOLEAN,
+   --IN _InstructorCer BOOLEAN,
    IN _rutaInstructorCer VARCHAR(100),
    IN _AsesorRes INT,
    IN _rutaAsesorRes VARCHAR(100),
    IN _AsesorTit INT,
    IN _rutaAsesorTit VARCHAR(100),
-   IN _DireccionTesis BOOLEAN,
+   --IN _DireccionTesis BOOLEAN,
    IN _rutaDireccionTesis VARCHAR(100))
 BEGIN
    IF _id < 0 THEN
       INSERT INTO Empleados (
-         Nombre, Grado, rutaGrado, Antiguedad, CursoCap, rutaCursoCap, Certificaciones,
-         rutaCertificaciones, Diplomados, rutaDiplomados, CursosST, rutaCursosST,
-         Cursos, rutaCursos, InstructorDip, rutaInstructorDip, InstructorCer,
+         Nombre, Grado, rutaGrado, Antiguedad,rutaAntiguedad, CursoCap, rutaCursoCap, /*Certificaciones,*/
+         rutaCertificaciones, /*Diplomados,*/ rutaDiplomados, /*CursosST,*/ rutaCursosST,
+         Cursos, rutaCursos, /*InstructorDip,*/ rutaInstructorDip, /*InstructorCer,*/
          rutaInstructorCer, AsesorRes, rutaAsesorRes, AsesorTit, rutaAsesorTit,
-         DireccionTesis, rutaDireccionTesis
+         /*DireccionTesis,*/ rutaDireccionTesis
       ) VALUES (
-         _Nombre, _Grado, _rutaGrado, _Antiguedad, _CursoCap, _rutaCursoCap, _Certificaciones,
-         _rutaCertificaciones, _Diplomados, _rutaDiplomados, _CursosST, _rutaCursosST,
-         _Cursos, _rutaCursos, _InstructorDip, _rutaInstructorDip, _InstructorCer,
+         _Nombre, _Grado, _rutaGrado, _Antiguedad,_rutaAntiguedad, _CursoCap, _rutaCursoCap, /*_Certificaciones,*/
+         _rutaCertificaciones, /*_Diplomados,*/ _rutaDiplomados, /*_CursosST,*/ _rutaCursosST,
+         _Cursos, _rutaCursos, /*_InstructorDip,*/ _rutaInstructorDip, /*_InstructorCer,*/
          _rutaInstructorCer, _AsesorRes, _rutaAsesorRes, _AsesorTit, _rutaAsesorTit,
-         _DireccionTesis, _rutaDireccionTesis
+         /*_DireccionTesis,*/ _rutaDireccionTesis
       );
    ELSEIF _id > 0 THEN
       UPDATE Empleados SET
          Nombre = _Nombre,
          Grado = _Grado,
          Antiguedad = _Antiguedad,
+         rutaAntiguedad = _rutaAntiguedad,
          CursoCap = _CursoCap,
          Certificaciones = _Certificaciones,
          Diplomados = _Diplomados,
@@ -239,7 +241,7 @@ END;
 //
 DELIMITER ;
 
-DROP TRIGGER IF EXISTS actualizar_puntaje_insert;
+/*DROP TRIGGER IF EXISTS actualizar_puntaje_insert;
 DELIMITER //
 CREATE TRIGGER actualizar_puntaje_insert AFTER INSERT ON Empleados
 FOR EACH ROW
@@ -315,7 +317,15 @@ BEGIN
    END IF;
 END;
 //
-DELIMITER ;
+DELIMITER ;*/
+
+delimiter //
+drop TRIGGER if not exists after_insertar_usuario;
+create trigger after_insertar_usuario AFTER insert on Empleados
+for each ROW
+BEGIN
+call insertarEmpleados(-1,new.Usuario,null,'',null,'',null'',,null,'',null,'',
+null,'',null,'',null,'',null,'',null,'',null,'',null,'');
 
 
 
