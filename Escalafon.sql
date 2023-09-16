@@ -26,23 +26,23 @@ CREATE TABLE Empleados(
    rutaAntiguedad varchar(100),
    CursoCap INT,
    rutaCursoCap varchar(100),
-   --Certificaciones BOOLEAN,
+   -- Certificaciones BOOLEAN,
    rutaCertificaciones varchar(100),
-   --Diplomados BOOLEAN,
+   -- Diplomados BOOLEAN,
    rutaDiplomados varchar(100),
-   --CursosST BOOLEAN,
+   -- CursosST BOOLEAN,
    rutaCursosST varchar(100),
    Cursos INT,
    rutaCursos varchar(100),
-   --InstructorDip BOOLEAN,
+   -- InstructorDip BOOLEAN,
    rutaInstructorDip varchar(100),
-   --InstructorCer BOOLEAN,
+   -- InstructorCer BOOLEAN,
    rutaInstructorCer varchar(100),
    AsesorRes INT,
    rutaAsesorRes varchar(100),
    AsesorTit INT,
    rutaAsesorTit varchar(100),
-   --DireccionTesis BOOLEAN,
+   -- DireccionTesis BOOLEAN,
    rutaDireccionTesis varchar(100)
 );
 
@@ -104,23 +104,23 @@ CREATE PROCEDURE insertarEmpleados(
    IN _rutaAntiguedad varchar(100),
    IN _CursoCap INT,
    IN _rutaCursoCap VARCHAR(100),
-   --IN _Certificaciones BOOLEAN,
+   -- IN _Certificaciones BOOLEAN,
    IN _rutaCertificaciones VARCHAR(100),
-   --IN _Diplomados BOOLEAN,
+   -- IN _Diplomados BOOLEAN,
    IN _rutaDiplomados VARCHAR(100),
-   --IN _CursosST BOOLEAN,
+   -- IN _CursosST BOOLEAN,
    IN _rutaCursosST VARCHAR(100),
    IN _Cursos INT,
    IN _rutaCursos VARCHAR(100),
-   --IN _InstructorDip BOOLEAN,
+   -- IN _InstructorDip BOOLEAN,
    IN _rutaInstructorDip VARCHAR(100),
-   --IN _InstructorCer BOOLEAN,
+   -- IN _InstructorCer BOOLEAN,
    IN _rutaInstructorCer VARCHAR(100),
    IN _AsesorRes INT,
    IN _rutaAsesorRes VARCHAR(100),
    IN _AsesorTit INT,
    IN _rutaAsesorTit VARCHAR(100),
-   --IN _DireccionTesis BOOLEAN,
+   -- IN _DireccionTesis BOOLEAN,
    IN _rutaDireccionTesis VARCHAR(100))
 BEGIN
    IF _id < 0 THEN
@@ -241,86 +241,8 @@ END;
 //
 DELIMITER ;
 
-/*DROP TRIGGER IF EXISTS actualizar_puntaje_insert;
-DELIMITER //
-CREATE TRIGGER actualizar_puntaje_insert AFTER INSERT ON Empleados
-FOR EACH ROW
-BEGIN
-   DECLARE puntaje INT;
-
-   -- Calcular el puntaje total y verificar documentos
-   SET puntaje = 0;
-
-   IF NEW.Grado = 'Doctorado' AND NEW.rutaGrado = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 30;
-   ELSEIF NEW.Grado = 'Maestría' AND NEW.rutaGrado = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 20;
-   ELSEIF NEW.Grado = 'Licenciatura' AND NEW.rutaGrado = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 10;
-   END IF;
-
-   IF NEW.RutaAntiguedad = 'Aprobado owo' THEN
-      SET puntaje = puntaje + NEW.Antiguedad * 10;
-   END IF;
-
-   IF NEW.CursoCap > 29 AND NEW.rutaCursoCap = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 2;
-   ELSEIF NEW.CursoCap < 30 AND NEW.rutaCursoCap = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 1;
-   END IF;
-
-   IF NEW.rutaCertificaciones = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 20;
-   END IF;
-
-   IF NEW.rutaDiplomados = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 10;
-   END IF;
-
-   IF NEW.rutaCursosST = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 20;
-   END IF;
-
-   IF NEW.rutaCursos = 'Aprobado owo' AND NEW.Cursos > 29 THEN
-      SET puntaje = puntaje + 15;
-   ELSEIF NEW.rutaCursos = 'Aprobado owo' AND NEW.Cursos < 30 THEN
-      SET puntaje = puntaje + 7;
-   END IF;
-
-   IF NEW.rutaInstructorDip = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 15;
-   END IF;
-
-   IF NEW.rutaInstructorCer = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 20;
-   END IF;
-
-   IF NEW.rutaAsesorRes = 'Aprobado owo' THEN
-      SET puntaje = puntaje + NEW.AsesorRes;
-   END IF;
-
-   IF NEW.rutaAsesorTit = 'Aprobado owo' THEN
-      SET puntaje = puntaje + NEW.AsesorTit;
-   END IF;
-
-   IF NEW.RutaDireccionTesis = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 10;
-   END IF;
-
-   -- Actualizar o insertar en la tabla Puntaje
-   IF EXISTS (SELECT 1 FROM Puntaje WHERE fkEmpleado = NEW.id) THEN
-      -- Actualizar el registro existente
-      UPDATE Puntaje SET Puntaje = puntaje WHERE fkEmpleado = NEW.id;
-   ELSE
-      -- Insertar un nuevo registro
-      INSERT INTO Puntaje (fkEmpleado, Puntaje) VALUES (NEW.id, puntaje);
-   END IF;
-END;
-//
-DELIMITER ;*/
-
+drop TRIGGER if exists after_insertar_usuario;
 delimiter //
-drop TRIGGER if not exists after_insertar_usuario;
 create trigger after_insertar_usuario AFTER insert on Login
 for each ROW
 BEGIN
