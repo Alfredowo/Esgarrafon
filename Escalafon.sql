@@ -321,11 +321,16 @@ DELIMITER ;*/
 
 delimiter //
 drop TRIGGER if not exists after_insertar_usuario;
-create trigger after_insertar_usuario AFTER insert on Empleados
+create trigger after_insertar_usuario AFTER insert on Login
 for each ROW
 BEGIN
-call insertarEmpleados(-1,new.Usuario,null,'',null,'',null'',,null,'',null,'',
-null,'',null,'',null,'',null,'',null,'',null,'',null,'');
+if new.Permisos = 'empleado' then
+call insertarEmpleados(-1,new.Usuario,null,'',null,'',null,'','','','',null,'',
+'','',null,'',null,'','');
+end if;
+end;
+//
+delimiter ;
 
 
 
