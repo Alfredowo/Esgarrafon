@@ -5,25 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Escalagfón</title>
     <style>
-        body{
+        .bodylogina{
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             /*background-color: rgb(126, 169, 171);*/
             background-image: url(1.jpg);
             background-repeat: no-repeat;
             background-size: cover;
             height: 800px;
-            margin: 50px;
         }
-        h1{
+        .h1logina{
             color: antiquewhite;
             border-bottom: 6px solid rgb(90, 146, 163);
         }
-        form{
+        .formowo{
             color: antiquewhite;
             margin: 30px;
+            padding: auto;
             border: 2px solid powderblue;
         }
-        input[type=submit]{
+        .form2owo{
+            color: azure;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        .tituolowo{
+            color: azure;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #0ff;
+        }
+        .neon{
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-bottom: 2px solid #0ff;
+            background-color: transparent;
+            color: #fff;
+            margin-top: 5px;
+            transition: border-bottom-color 0.3s;
+        }
+        .botonuwu{
             background-color: rgb(45, 118, 131);
             border: none;
             color: azure;
@@ -31,10 +56,13 @@
             cursor: pointer;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
+        .botonuwu:hover{
+            background-color: rgb(101, 163, 173);
+        }
 
         /* Estilos para la barra de menú */
         .menu {
-            background-color: #333; /* Color de fondo de la barra de menú */
+            background-color: #071b36ee; /* Color de fondo de la barra de menú */
             display: flex;
             justify-content: flex-end; /* Alinea los botones a la derecha */
             align-items: center; /* Centra verticalmente los botones */
@@ -44,18 +72,17 @@
         /* Resto del código CSS se mantiene igual */
 
         .menu-button {
-            background-color: #555; /* Color de fondo de los botones */
+            background-color: rgb(45, 118, 131); /* Color de fondo de los botones */
             color: white; /* Color del texto de los botones */
             border: none;
             padding: 10px 20px; /* Espaciado interno de los botones */
             margin: 0 10px; /* Margen horizontal entre los botones */
             cursor: pointer;
         }
-
         .menu-button:hover {
-            background-color: #777; /* Color de fondo al pasar el mouse por encima */
+            background-color: rgb(101, 163, 173); /* Color de fondo al pasar el mouse por encima */
         }
-
+        
         /* Estilos para el modal (ventana emergente de registro)*/
         .modal {
             display: none;
@@ -68,53 +95,55 @@
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.7);
         }
-
         .modal-content {
-            background-color: #fefefe;
+            background-color: #000000;
             margin: 15% auto;
             padding: 20px;
-            border: 1px solid #888;
+            border: 1px solid #5a448f;
             width: 60%;
         }
-
         .close {
+            color: azure;
             float: right;
             cursor: pointer;
         }
-
-    </style>
+</style>
 </head>
-<body>
+<body class="bodylogina">
     <div class="menu">
         <button class="menu-button" id="adminButton">Administrativos</button>
         <button class="menu-button" id="employeeButton">Empleados</button>
     </div>    
     <header></header>
     <main>
-        <center><h1>Iniciar sesión</h1></center>
+        <center><h1 class="h1logina">Administrativos</h1></center>
         <center>
-            <form action="procesar_login.php" method="POST">
+            <form class="formowo" action="procesar_login.php" method="POST">
                 <br>
-                Usuario: <input type="text" name="usuario" id="usuario" required><br><br>
-                Contraseña: <input type="password" name="contrasena" id="contrasena" required><br><br>
-                <input type="submit" value="Iniciar sesión">
+                Usuario: 
+                <br><br>
+                <input type="text" name="usuario" id="usuario" required><br><br>
+                Contraseña: 
+                <br><br>
+                <input type="password" name="contrasena" id="contrasena" required><br><br>
+                <input type="submit" class="botonuwu" value="Iniciar sesión">
                 <br>
                 <br>
             </form>
-            <button id="openRegisterModal">Registrarse</button>
+            <button class="botonuwu" id="openRegisterModal">Registrarse</button>
         </center>
     </main>
 
     <!-- Modal de Registro -->
     <div id="registerModal" class="modal">
         <div class="modal-content">
-            <span class="close" id="closeRegisterModal">&times;</span>
-            <h2>Registro</h2>
-            <form id="registerForm">
-                Usuario: <input type="text" name="registroUsuario" id="registroUsuario" required><br><br>
-                Contraseña: <input type="password" name="registroContrasena" id="registroContrasena" required><br><br>
-                Confirmar Contraseña: <input type="password" name="confirmarContrasena" id="confirmarContrasena" required><br><br>
-                <input type="submit" value="Registrar">
+            <span  class="close" id="closeRegisterModal">&times;</span>
+            <h2 class="tituolowo">Registro</h2>
+            <form class="form2owo" id="registerForm">
+                Usuario: <input class="neon" type="text" name="registroUsuario" id="registroUsuario" required><br><br>
+                Contraseña: <input type="password" class="neon"  name="registroContrasena" id="registroContrasena" required><br><br>
+                Confirmar Contraseña: <input type="password" class="neon"  name="confirmarContrasena" id="confirmarContrasena" required><br><br>
+                <input class="botonuwu" type="submit" value="Registrar">
             </form>
         </div>
     </div>
