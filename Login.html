@@ -110,6 +110,7 @@
 </style>
 </head>
 <body class="bodylogina">
+    <!-- panel superior para admins o users -->
     <div class="menu">
         <button class="menu-button" id="adminButton">Administrativos</button>
         <button class="menu-button" id="employeeButton">Empleados</button>
@@ -143,7 +144,7 @@
                 Usuario: <input class="neon" type="text" name="registroUsuario" id="registroUsuario" required><br><br>
                 Contraseña: <input type="password" class="neon"  name="registroContrasena" id="registroContrasena" required><br><br>
                 Confirmar Contraseña: <input type="password" class="neon"  name="confirmarContrasena" id="confirmarContrasena" required><br><br>
-                <input class="botonuwu" type="submit" value="Registrar">
+                <button class="botonuwu" id="registrar">Registrar</button>
             </form>
         </div>
     </div>
@@ -184,25 +185,47 @@
             const registroUsuario = document.getElementById("registroUsuario").value;
             const registroContrasena = document.getElementById("registroContrasena").value;
             const confirmarContrasena = document.getElementById("confirmarContrasena").value;
-    
+
             if (registroContrasena !== confirmarContrasena) {
                 alert("Las contraseñas no coinciden");
             } else {
-                // Aquí debes agregar el código para verificar si el usuario ya existe en la base de datos
-                // Si el usuario no existe, realiza el registro en la base de datos y cierra el modal
-                // Si el usuario ya existe, muestra un mensaje de error
-                // Puedes utilizar AJAX o fetch para realizar la verificación y el registro en la base de datos
-                // Luego, cierra el modal de registro
-                // Ejemplo: fetch("verificar_registro.php", { method: "POST", body: { usuario: registroUsuario }})
-                //           .then(response => response.json())
-                //           .then(data => {
-                //               if (data.existe) {
-                //                   alert("El usuario ya existe");
-                //               } else {
-                //                   // Realiza el registro en la base de datos
-                //                   // Cierra el modal
-                //               }
-                //           });
+                alert("Las contraseñas SI coinciden");
+                // Hacer una solicitud al servidor para verificar si el usuario existe
+                fetch("verificar_registro.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ usuario: registroUsuario })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.existe) {
+                        alert("El usuario ya existe");
+                    } else {
+                        // Si el usuario no existe, realizar el registro en la base de datos
+                        fetch("registrar_usuario.php", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                usuario: registroUsuario,
+                                contrasena: registroContrasena
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.registrado) {
+                                alert("Registro exitoso");
+                                // Cierra el modal
+                                registerModal.style.display = "none";
+                            } else {
+                                alert("Error al registrar usuario");
+                            }
+                        });
+                    }
+                });
             }
         });
     </script>    

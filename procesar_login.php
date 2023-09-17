@@ -1,8 +1,6 @@
 <?php
 // Conectar a la base de datos y validar las credenciales aquí
-//require("conexion.php");
-session_start();
-$conn = mysqli_connect("localhost", "userPro", "123", "Escalafon");
+require("conexion.php");
 $usuario = $_POST['usuario'];
 $password = $_POST['contrasena'];
 
