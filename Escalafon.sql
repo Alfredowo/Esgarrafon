@@ -232,7 +232,7 @@ BEGIN
    -- Actualizar o insertar en la tabla Puntaje
    IF EXISTS (SELECT 1 FROM Puntaje WHERE fkEmpleado = NEW.id) THEN
       -- Actualizar el registro existente
-      UPDATE Puntaje SET Puntaje = puntaje WHERE fkEmpleado = NEW.id;
+      UPDATE Puntaje SET Puntaje = puntaje + Puntaje WHERE fkEmpleado = NEW.id;
    ELSE
       -- Insertar un nuevo registro
       INSERT INTO Puntaje (fkEmpleado, Puntaje) VALUES (NEW.id, puntaje);

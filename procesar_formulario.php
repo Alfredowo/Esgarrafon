@@ -163,15 +163,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $evaluarGrado=0;
 
     //Evaluar los archivos
-    if($valorGrado=='Doctorado')
+    if($valorGradoBD=='Doctorado')
         $evaluarGrado=1;
-        else if($valorGrado=='Maestría')
+        else if($valorGradoBD=='Maestria')
             $evaluarGrado=2;
-            else if($valorGrado=='Licenciatura')
+            else if($valorGradoBD=='Licenciatura')
                 $evaluarGrado=3;
-    if($grado=='Aprobar'&&($valorGradoBD!=$evaluarGrado||$valorGradoBD==null))
+    if($grado=='Aprobar'&&($valorGrado!=$evaluarGrado||$valorGradoBD==null))
     {
-        echo "si entró";
+        echo "update Empleados set rutaGrado='Aprobado owo',
+        Grado=".$valorGrado." where id=".$id;
         $insertarGrado=$conn->query("update Empleados set rutaGrado='Aprobado owo',
         Grado=".$valorGrado." where id=".$id);
         $vaciarGrado=$conn->query("update Empleados set rutaGrado='' where id=".$id);
