@@ -106,7 +106,7 @@
 <h1>Administrador</h1>
     <form action="procesar_formulario" method="post">
         <?php
-        //(!empty($rutaGrado)) {
+        //if(!empty($rutaGrado)) {
             echo '<label>Grado de estudio: </label>';
             echo '<a href="'.$rutaGrado.'" target="_blank" class="btn">Verificar</a><br>';
             echo '<label>Aprobar como: </label><br>';
