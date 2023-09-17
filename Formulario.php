@@ -8,32 +8,34 @@
     <style>
     body {
         font-family: 'Poppins', sans-serif;
-        background-color: #13141D;
-        background-repeat: no-repeat;
+        /*background-color: #13141D;*/
+        background: linear-gradient(to bottom,#13141D,#5B5C5F);
         background-size: cover;
+        background-attachment: fixed;
         height: 900px;
         margin: 30px;
-    }
-    header{
-        margin: 10px;
-        background-color: #47495F;
     }
     h1 {
         color: antiquewhite;
         border-bottom: 6px solid rgb(66, 68, 94);
         margin-bottom: 20px; 
     }
-    main {
-        color: #c4c3ca;
-        background-color: #1f2029;
-        padding: 20px; 
-        margin: 0 auto; 
-        max-width: 800px;
-    }
-    label, input, select {
+    input, select {
         margin-bottom: 10px;
     }
-    input[type=submit] {
+    label{
+        margin-bottom: 10px;
+        font-weight:bold;
+
+    }
+    a{
+        color: #3B9E99;
+    }
+    a:hover{
+        color: #9AD0CD;
+    }
+    .Botonesinput {
+        float: right;
         background-color: #0E0F1B;
         border: none;
         color: azure;
@@ -41,20 +43,58 @@
         cursor: pointer;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
+    .Botonesinput:hover{
+        background-color: #467F44;
+    }
+    .botoncito{
+        background-color: #0E0F1B;
+        border: none;
+        color: azure;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .botoncito:hover{
+        background-color: #2A2C46;
+    }
     #nuevoEmpleado {
     margin-left: 240px; 
     }
-    a{
-            float: right;
-            margin-right: 10px; 
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-    }
     button {
-    float: right;
-    background-color: #13141D;
-    border: none;
-    padding: 3px 10px; /* Ajusta el padding según tu preferencia */
+        font-family: Verdana,Geneva,Tahoma,sans-serif;
+        color: #c4c3ca;
+        cursor: pointer;
+        float: right;
+        background-color: #13141D;
+        border: none;
+        padding: 10px 20px; /* Ajusta el padding según tu preferencia */
     }
+    button:hover{
+        background-color: #C64040;
+    }
+    form{
+        color: #c4c3ca;
+        background-color: #1f2029;
+        padding: 10px; 
+        margin: 0 auto; 
+        max-width: 800px;
+
+    }
+    textarea {
+        width: 80%;
+        padding: 3px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: none; 
+    }
+    textarea:focus {
+        outline: none; 
+    }
+    input[type="number"] {
+        width: 30%;
+        font-size: 16px;
+}
 </style>
 </head>
 <h1>Administrador</h1>
