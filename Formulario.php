@@ -60,7 +60,7 @@
     #nuevoEmpleado {
     margin-left: 240px; 
     }
-    button {
+    .button {
         font-family: Verdana,Geneva,Tahoma,sans-serif;
         color: #c4c3ca;
         cursor: pointer;
@@ -69,7 +69,7 @@
         border: none;
         padding: 10px 20px; /* Ajusta el padding según tu preferencia */
     }
-    button:hover{
+    .button:hover{
         background-color: #C64040;
     }
     form{
@@ -150,8 +150,8 @@
             echo '<input type="radio" id="doctorado" name="grado_estudio" value="1" checked> Doctorado<br>';
             echo '<input type="radio" id="maestria" name="grado_estudio" value="2"> Maestría<br>';
             echo '<input type="radio" id="licenciatura" name="grado_estudio" value="3"> Licenciatura<br><br>';
-            echo '<input type="submit" name="btnGrado" value="Aprobar"></input>';
-            echo '<input type="submit" name="btnGrado" value="Rechazar"></input><br><br>';
+            echo '<input type="submit" class="Botonesinput" name="btnGrado" value="Aprobar"></input>';
+            echo '<input type="submit"  class="button" name="btnGrado" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesGrado" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
@@ -161,8 +161,8 @@
             echo 'Verificar';
             echo '</a><br>';
             echo '<input type="number" id="antiguedad" name="antiguedad" required>';
-            echo '<input type="submit" name="btnAntiguedad" value="Aprobar"></input>';
-            echo '<input type="submit" name="btnAntiguedad" value="Rechazar"></input><br><br>';
+            echo '<input type="submit" class="Botonesinput" name="btnAntiguedad" value="Aprobar"></input>';
+            echo '<input type="submit" class="button" class="Botonesinput" name="btnAntiguedad" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesAntiguedad" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';    
         }
         
@@ -173,8 +173,8 @@
             echo '</a><br>';
             //Si es >= 30hrs 2pts y <30hrs 1pt
             echo '<input type="number" id="cursosCap" name="cursosCap" required>';
-            echo '<input type="submit" name="btnCursoCap" value="Aprobar"></input>';
-            echo '<input type="submit" name="btnCursoCap" value="Rechazar"></input><br><br>';
+            echo '<input type="submit" class="Botonesinput" name="btnCursoCap" value="Aprobar"></input>';
+            echo '<input type="submit" class="button" name="btnCursoCap" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesCursosCap" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
@@ -188,8 +188,8 @@
             echo '<option value="true">Si</option>';
             echo '<option value="false">No</option>';
             echo '</select>';
-            echo '<input type="submit" name="btnCertificaciones" value="Aprobar"></input>';
-            echo '<input type="submit" name="btnCertificaciones" value="Rechazar"></input><br><br>';
+            echo '<input type="submit" class="Botonesinput" name="btnCertificaciones" value="Aprobar"></input>';
+            echo '<input type="submit" class="button" name="btnCertificaciones" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesCertificaciones" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
@@ -203,8 +203,8 @@
             echo '<option value="true">Si</option>';
             echo '<option value="false">No</option>';
             echo '</select>';
-            echo '<input type="submit" name="btnDiplomados value="Aprobar"></input>';
-            echo '<input type="submit" name="btnDiplomados" value="Rechazar"></input><br><br>';
+            echo '<input type="submit" class="Botonesinput" name="btnDiplomados value="Aprobar"></input>';
+            echo '<input type="submit" class="button" name="btnDiplomados" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesDiplomados" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
@@ -218,8 +218,8 @@
             echo '<option value="true">Si</option>';
             echo '<option value="false">No</option>';
             echo '</select>';
-            echo '<input type="submit" name="btnCursosST" value="Aprobar"></input>';
-            echo '<input type="submit" name="btnCursosST" value="Rechazar"></input><br><br>';
+            echo '<input type="submit" class="Botonesinput" name="btnCursosST" value="Aprobar"></input>';
+            echo '<input type="submit" class="button" name="btnCursosST" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesCursosST" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
@@ -230,8 +230,8 @@
             echo '</a><br>';
             // '<!-- si es >30hrs 15pts si es <30 7pts -->';
             echo '<input type="number" id="cursos" name="cursos" required>';
-            echo '<input type="submit" name="btnCursos" value="Aprobar"></input>';
-            echo '<input type="submit" name="btnCursos" value="Rechazar"></input><br><br>';
+            echo '<input type="submit" class="Botonesinput" name="btnCursos" value="Aprobar"></input>';
+            echo '<input type="submit" class="button" name="btnCursos" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesCursos" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
@@ -245,8 +245,8 @@
             echo '<option value="true">Si</option>';
             echo '<option value="false">No</option>';
             echo '</select>';
-            echo '<input type="submit" name="btnInstructorDip" value="Aprobar"></input>';
-            echo '<input type="submit" name="btnInstructorDip" value="Rechazar"></input><br><br>';
+            echo '<input type="submit" class="Botonesinput" name="btnInstructorDip" value="Aprobar"></input>';
+            echo '<input type="submit" class="button" name="btnInstructorDip" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesInstructorDip" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
@@ -260,8 +260,8 @@
             echo '<option value="true">Si</option>';
             echo '<option value="false">No</option>';
             echo '</select>';
-            echo '<input type="submit" name="btnInstructorCer" value="Aprobar"></input>';
-            echo '<input type="submit" name="btnInstructorCer" value="Rechazar"></input><br><br>';
+            echo '<input type="submit" class="Botonesinput" name="btnInstructorCer" value="Aprobar"></input>';
+            echo '<input type="submit" class="button" name="btnInstructorCer" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesInstructorCer" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
@@ -272,8 +272,8 @@
             echo '</a><br>';
             echo '<!-- 1pt por cada una -->';
             echo '<input type="number" id="asesorRes" name="asesorRes" required>';
-            echo '<input type="submit" name="btnAsesorRes" value="Aprobar"></input>';
-            echo '<input type="submit" name="btnAsesorRes" value="Rechazar"></input><br><br>';
+            echo '<input type="submit" class="Botonesinput" name="btnAsesorRes" value="Aprobar"></input>';
+            echo '<input type="submit" class="button" name="btnAsesorRes" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesAsesorRes" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
@@ -284,8 +284,8 @@
             echo '</a><br>';
             echo '<!-- 1pt por cada una -->';
             echo '<input type="number" id="asesorTit" name="asesorTit" required>';
-            echo '<input type="submit" name="btnAsesorTit" value="Aprobar"></input>';
-            echo '<input type="submit" name="btnAsesorTit" value="Rechazar"></input><br><br>';
+            echo '<input type="submit" class="Botonesinput" name="btnAsesorTit" value="Aprobar"></input>';
+            echo '<input type="submit" class="button" name="btnAsesorTit" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesAsesorTit" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
@@ -299,8 +299,8 @@
             echo '<option value="true">Si</option>';
             echo '<option value="false">No</option>';
             echo '</select>';
-            echo '<input type="submit" name="btnDireccionTesis" value="Aprobar"></input>';
-            echo '<input type="submit" name="btnDireccionTesis" value="Rechazar"></input><br><br>';
+            echo '<input type="submit" class="Botonesinput" name="btnDireccionTesis" value="Aprobar"></input>';
+            echo '<input type="submit" class="button" name="btnDireccionTesis" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesDireccionTesis" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         echo '<br><br><br>';
