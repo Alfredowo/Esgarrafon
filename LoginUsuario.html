@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Escalagfón</title>
+    <title>Login usuarios</title>
     <style>
         * { box-sizing: border-box; }
         body {
@@ -174,10 +174,7 @@
             inset 0 1px 0 rgba(255,255,255,0.3),
             inset 0 -10px 10px rgba(255,255,255,0.1);
         } 
-        /* Estilos para el contenido de la página */ 
-        .contenido { 
-            
-        } 
+        
         .uy{
             background-color: rgba(255, 0, 0, 0);
             border: none;
@@ -186,6 +183,7 @@
     </style>
 </head>
 <body>
+    <!-- menu superior para elegir entre usuarios y administradores -->
     <div class="menu"> 
         <button class="menu-button" id="adminButton">Administrativos</button> 
         <button class="menu-button" id="employeeButton">Empleados</button> 
@@ -204,9 +202,10 @@
         // Agrega un controlador de clic para el botón "Empleados" 
         employeeButton.addEventListener("click", function() { 
             // Muestra un mensaje en la página 
-            alert("Ya estás en esta página"); 
+            alert("Ya estás en login empleados"); 
         }); 
     </script>
+    
     <header></header>
     <h1 class="titulo">INICIO DE SESIÓN</h1>
     <form action="procesar_login_us.php" method="POST">
