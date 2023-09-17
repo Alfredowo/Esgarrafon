@@ -69,7 +69,8 @@ create table observaciones(
    OvAsesorRes varchar(200),
    OvAsesorTit varchar(200),
    OvDireccionTesis varchar(200),
-   FOREIGN key(fkEmpleado) REFERENCES Empleados(id));
+   FOREIGN key(fkEmpleado) REFERENCES Empleados(id)
+);
 
 DROP TABLE if EXISTS Puntaje;
 CREATE TABLE Puntaje(

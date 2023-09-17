@@ -7,7 +7,7 @@ $usuario = $_POST['usuario'];
 $password = $_POST['contrasena'];
 
 // Validar usuario y contraseña en la base de datos
-$query = "SELECT * FROM Login WHERE Usuario = '$usuario' AND Contrasena = '$password'";
+$query = "SELECT * FROM Login WHERE Usuario = '$usuario' AND Contrasena = '$password' AND Permisos = 'empleado'";
 $result = mysqli_query($conn, $query);
 
 if (!$result) {
@@ -17,7 +17,7 @@ if (!$result) {
 if (mysqli_num_rows($result) == 1) {
     // Las credenciales son correctas
     $_SESSION['usuario'] = $_POST['usuario'];
-    header('Location: Formulario.php');
+    header('Location: FormularioUsuario.php');
     exit;
 } else {
     echo "Error: Usuario o contraseña incorrectos.";
