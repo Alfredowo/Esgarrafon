@@ -102,9 +102,8 @@
         <?php
         function extraer(){
             require("conexion.php");
-            $consulta = "select id, Nombre from Empleados";
-            $resultado=$conn->query($consulta);
             $id=$_POST['empleado'];
+            echo '<input type="text" name="id" value="'.$id.'" style="display: none"></input>';
     
             $ConsultarutaGrado=$conn->query("select rutaGrado from Empleados where id=$id");
             $filaGrado = $ConsultarutaGrado->fetch_assoc();
@@ -310,6 +309,7 @@
         </form>
         <form action="seleccionarEmpleado.php">
             <center><input type="submit" value="Regresar"></center>
+            <a style="position:absolute; right:20px;" value="Mirar puntajes" href="Resultados.php" class="button" target="_blank">Mirar Puntujes</a>
         </form>
         <br><br>
 </body>

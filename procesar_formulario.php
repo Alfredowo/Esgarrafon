@@ -6,95 +6,68 @@ session_start();
 require("conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-// Obtener datos del formulario
-/*$id = $_POST['empleado'];
-$grado_estudio = $_POST['grado_estudio'];
-$antiguedad = $_POST['antiguedad'];
-$cursos = isset($_POST['cursos']) ? $_POST['cursos'] : [];
-$cursosCap = $_POST['cursosCap'];
-$certificaciones = $_POST['certificaciones'];
-$diplomados = $_POST['diplomados'];
-$cursosST = $_POST["cursosST"];
-$cursosImpartidos = $_POST["cursos"];
-$instructorDiplomados = $_POST["instructorDip"];
-$instructorCertificaciones = $_POST["instructorCer"];
-$asesorResidencias = $_POST["asesorRes"];
-$asesorTitulacion = $_POST["asesorTit"];
-$direccionTesis = $_POST["direccionTesis"];
-} else {
-    echo "fatal error, borra system32 y reinicia tu pc";*/
-    $valor=$_POST['btnGrado'];
-    echo $valor;
-}
+    $id = $_POST['id'];
+    //Posibles repetidos
+    $consultaGrado=$conn->query("select Grado from Empleados where id='.$id.'");
+    $valorGradoBD=$consultaGrado->fetch_assoc();
 
-// Calcular el puntaje total
-/*
-$puntaje = 0;
+    if(isset($_POST['btnGrado']))
+    {
+        $grado = $_POST['btnGrado'];
+    }else $grado=null;
+    if(isset($_POST['btnAntiguedad']))
+    {
+        $antiguedad = $_POST['btnAntiguedad'];
+    }else $antiguedad=null;
+        /*$cursos = $_POST['btnCursos'];
+        $cursosCap = $_POST['btncursoCap'];
+        $certificaciones = $_POST['btnCertificaciones'];
+        $diplomados = $_POST['btnDiplomados'];
+        $cursosST = $_POST["btnCursosST"];
+        $cursosImpartidos = $_POST["btnCursos"];
+        $instructorDiplomados = $_POST["btnInstructorDip"];
+        $instructorCertificaciones = $_POST["btnInstructorCer"];
+        $asesorResidencias = $_POST["btnAsesorRes"];
+        $asesorTitulacion = $_POST["btnAsesorTit"];
+        $direccionTesis = $_POST["btnDireccionTesis"];*/
 
-if ($grado_estudio == "doctorado") {
-    $puntaje += 30;
-} elseif ($grado_estudio == "maestria") {
-    $puntaje += 20;
-} elseif ($grado_estudio == "licenciatura") {
-    $puntaje += 10;
-}
+    //Obtener valor a insertar
+    if(isset($_POST['grado_estudio'])){
+        $valorGrado=$_POST['grado_estudio'];
+    }else $valorGrado=null;
+    if(isset($_POST['antiguedad'])){
+        $valorAntiguedad=$_POST['antiguedad'];
+    }else $valorAntiguedad=null;
+        /*$valorCursosCap=$_POST['cursosCap'];
+        $valorCertificaciones=$_POST['certificaciones'];
+        $valorDiplomados=$_POST['diplomados'];
+        $valorCursosST=$_POST['cursosST'];
+        $valorCursos=$_POST['cursos'];
+        $valorInstructorDip=$_POST['instructorDip'];
+        $valorInstructorCer=$_POST['instructorCer'];
+        $valorAsesorRes=$_POST['asesorRes'];
+        $valorAsesorTit=$_POST['asesorTit'];
+        $valorDireccionTesis=$_POST['direccionTesis'];*/
 
-$puntaje += $antiguedad * 10;
 
-foreach ($cursos as $curso) {
-    if ($curso == "cursos_30") {
-        $puntaje += 2;
-    } elseif ($curso == "cursos_menos_30") {
-        $puntaje += 1;
+    //Variables extra
+    $evaluarGrado=0;
+
+    //Evaluar los archivos
+    if($valorGrado=='Doctorado')
+        $evaluarGrado=1;
+        else if($valorGrado=='Maestría')
+            $evaluarGrado=2;
+            else if($valorGrado=='Licenciatura')
+                $evaluarGrado=3;
+    if($grado=='Aprobar'&&($valorGradoBD!=$evaluarGrado||$valorGradoBD==null))
+    {
+        $insertarGrado=$conn->query("update Empleados set rutaGrado='Aprobado owo',
+        Grado=".$valorGrado." where id=".$id);
     }
-}
-
-$puntaje += $certificaciones * 20;
-$puntaje += $diplomados * 10;
-*/
-
-// Guardar la información en la base de datos
-/*echo "la id es: $id";
-$nombre = mysqli_query($conn, "SELECT Nombre FROM Empleados WHERE id = $id");
-echo "el nombre es: $nombre";
-
-// Obtener el nombre del empleado en función de la ID
-/*
-$nombre = "";
-if ($id > 0) {
-    $consulta_nombre = "SELECT Nombre FROM Empleados WHERE id = $id";
-    $resultado_nombre = mysqli_query($conn, $consulta_nombre);
-    if ($resultado_nombre) {
-        $fila_nombre = mysqli_fetch_assoc($resultado_nombre);
-        $nombre = $fila_nombre['Nombre'];
-    } else {
-        echo "Error al obtener el nombre del empleado.";
-    }
-}
-*/
-
-/*if($id>0) { //actualizar registro
-    echo "si se encuentra la id, actualizar";
-    $query = "CALL insertarEmpleados($id, '$nombre', '$grado_estudio', $antiguedad, $cursosCap, 
-    $certificaciones, $diplomados, $cursosST, $cursosImpartidos, $instructorDiplomados, 
-    $instructorCertificaciones, $asesorResidencias, $asesorTitulacion, $direccionTesis)";
-} else { //agregar nuevo
-    echo "no se encuentra la id, crear registro nuevo";
-    $query = "CALL insertarEmpleados(-1, '$id', '$grado_estudio', $antiguedad, $cursos, $certificaciones, 
-    $diplomados, $cursosST, $cursosImpartidos, $instructorDiplomados, $instructorCertificaciones, 
-    $asesorResidencias, $asesorTitulacion, $direccionTesis)";
-}
-
-$result = mysqli_query($conn, $query);
-
-if ($result) {
-    // Redirigir al usuario a la página de resultados
-    header('Location: Resultados.php');
-    exit;
-    echo "todo bien uwu";
+    $conn->close();
 } else {
-    echo "Error al guardar los datos en la base de datos.";
+    echo "Error, no existe un ruta que evaluar";
 }
-mysqli_close($conn);*/
-?>
+
 
