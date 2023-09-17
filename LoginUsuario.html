@@ -185,6 +185,7 @@
     </style>
 </head>
 <body>
+    <!-- menu superior para elegir entre usuarios y administradores -->
     <div class="menu"> 
         <button class="menu-button" id="adminButton">Administrativos</button> 
         <button class="menu-button" id="employeeButton">Empleados</button> 
@@ -203,9 +204,10 @@
         // Agrega un controlador de clic para el botón "Empleados" 
         employeeButton.addEventListener("click", function() { 
             // Muestra un mensaje en la página 
-            alert("Ya estás en esta página"); 
+            alert("Ya estás en login empleados"); 
         }); 
     </script>
+    
     <header></header>
     <h1 class="titulo">INICIO DE SESIÓN</h1>
     <form action="procesar_login_us.php" method="POST">
