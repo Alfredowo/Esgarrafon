@@ -1,5 +1,7 @@
 <?php
 // Conectar a la base de datos y validar las credenciales aquí
+//require("conexion.php");
+session_start();
 require("conexion.php");
 $usuario = $_POST['usuario'];
 $password = $_POST['contrasena'];
@@ -15,7 +17,7 @@ if (!$result) {
 if (mysqli_num_rows($result) == 1) {
     // Las credenciales son correctas
     $_SESSION['usuario'] = $_POST['usuario'];
-    header('Location: Formulario.php');
+    header('Location: seleccionarEmpleado.php');
     exit;
 } else {
     echo "Error: Usuario o contraseña incorrectos.";

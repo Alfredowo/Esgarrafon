@@ -3,54 +3,184 @@
 // Conectar a la base de datos (debes configurar la conexión)
 require("conexion.php");
 session_start();
+require("conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-// Obtener datos del formulario
-$id = $_POST['empleado'];
-$grado_estudio = $_POST['grado_estudio'];
-$antiguedad = $_POST['antiguedad'];
-//$cursos = isset($_POST['cursos']) ? $_POST['cursos'] : [];
-$cursosCap = $_POST['cursosCap'];
-$certificaciones = $_POST['certificaciones'];
-$diplomados = $_POST['diplomados'];
-$cursosST = $_POST["cursosST"];
-$cursosImpartidos = $_POST["cursos"];
-$instructorDiplomados = $_POST["instructorDip"];
-$instructorCertificaciones = $_POST["instructorCer"];
-$asesorResidencias = $_POST["asesorRes"];
-$asesorTitulacion = $_POST["asesorTit"];
-$direccionTesis = $_POST["direccionTesis"];
+    $id = $_POST['id'];
+    //Posibles repetidos
+    $consultaGrado=$conn->query("select Grado from Empleados where id='.$id.'");
+    $valorGradoBD=$consultaGrado->fetch_assoc();
+
+    if(isset($_POST['btnGrado']))
+    {
+        $grado = $_POST['btnGrado'];
+    }else $grado=null;
+    if(isset($_POST['btnAntiguedad']))
+    {
+        $antiguedad = $_POST['btnAntiguedad'];
+    }else $antiguedad=null;
+    if(isset($_POST['btnCursos'])) {
+        $cursos = $_POST['btnCursos'];
+    } else {
+        $cursos = null;
+    }
+    
+    if(isset($_POST['btncursoCap'])) {
+        $cursosCap = $_POST['btncursoCap'];
+    } else {
+        $cursosCap = null;
+    }
+    
+    if(isset($_POST['btnCertificaciones'])) {
+        $certificaciones = $_POST['btnCertificaciones'];
+    } else {
+        $certificaciones = null;
+    }
+    
+    if(isset($_POST['btnDiplomados'])) {
+        $diplomados = $_POST['btnDiplomados'];
+    } else {
+        $diplomados = null;
+    }
+    
+    if(isset($_POST['btnCursosST'])) {
+        $cursosST = $_POST['btnCursosST'];
+    } else {
+        $cursosST = null;
+    }
+    
+    if(isset($_POST['btnCursos'])) {
+        $cursosImpartidos = $_POST['btnCursos'];
+    } else {
+        $cursosImpartidos = null;
+    }
+    
+    if(isset($_POST['btnInstructorDip'])) {
+        $instructorDiplomados = $_POST['btnInstructorDip'];
+    } else {
+        $instructorDiplomados = null;
+    }
+    
+    if(isset($_POST['btnInstructorCer'])) {
+        $instructorCertificaciones = $_POST['btnInstructorCer'];
+    } else {
+        $instructorCertificaciones = null;
+    }
+    
+    if(isset($_POST['btnAsesorRes'])) {
+        $asesorResidencias = $_POST['btnAsesorRes'];
+    } else {
+        $asesorResidencias = null;
+    }
+    
+    if(isset($_POST['btnAsesorTit'])) {
+        $asesorTitulacion = $_POST['btnAsesorTit'];
+    } else {
+        $asesorTitulacion = null;
+    }
+    
+    if(isset($_POST['btnDireccionTesis'])) {
+        $direccionTesis = $_POST['btnDireccionTesis'];
+    } else {
+        $direccionTesis = null;
+    }
+
+    //Obtener valor a insertar
+    if(isset($_POST['grado_estudio'])){
+        $valorGrado=$_POST['grado_estudio'];
+    }else $valorGrado=null;
+    if(isset($_POST['antiguedad'])){
+        $valorAntiguedad=$_POST['antiguedad'];
+    }else $valorAntiguedad=null;
+    if(isset($_POST['btnCursos'])) {
+        $cursos = $_POST['btnCursos'];
+    } else {
+        $cursos = null;
+    }
+    
+    if(isset($_POST['btncursoCap'])) {
+        $cursosCap = $_POST['btncursoCap'];
+    } else {
+        $cursosCap = null;
+    }
+    
+    if(isset($_POST['btnCertificaciones'])) {
+        $certificaciones = $_POST['btnCertificaciones'];
+    } else {
+        $certificaciones = null;
+    }
+    
+    if(isset($_POST['btnDiplomados'])) {
+        $diplomados = $_POST['btnDiplomados'];
+    } else {
+        $diplomados = null;
+    }
+    
+    if(isset($_POST["btnCursosST"])) {
+        $cursosST = $_POST["btnCursosST"];
+    } else {
+        $cursosST = null;
+    }
+    
+    if(isset($_POST["btnCursos"])) {
+        $cursosImpartidos = $_POST["btnCursos"];
+    } else {
+        $cursosImpartidos = null;
+    }
+    
+    if(isset($_POST["btnInstructorDip"])) {
+        $instructorDiplomados = $_POST["btnInstructorDip"];
+    } else {
+        $instructorDiplomados = null;
+    }
+    
+    if(isset($_POST["btnInstructorCer"])) {
+        $instructorCertificaciones = $_POST["btnInstructorCer"];
+    } else {
+        $instructorCertificaciones = null;
+    }
+    
+    if(isset($_POST["btnAsesorRes"])) {
+        $asesorResidencias = $_POST["btnAsesorRes"];
+    } else {
+        $asesorResidencias = null;
+    }
+    
+    if(isset($_POST["btnAsesorTit"])) {
+        $asesorTitulacion = $_POST["btnAsesorTit"];
+    } else {
+        $asesorTitulacion = null;
+    }
+    
+    if(isset($_POST["btnDireccionTesis"])) {
+        $direccionTesis = $_POST["btnDireccionTesis"];
+    } else {
+        $direccionTesis = null;
+    }
+
+
+    //Variables extra
+    $evaluarGrado=0;
+
+    //Evaluar los archivos
+    if($valorGradoBD=='Doctorado')
+        $evaluarGrado=1;
+        else if($valorGradoBD=='Maestria')
+            $evaluarGrado=2;
+            else if($valorGradoBD=='Licenciatura')
+                $evaluarGrado=3;
+    if($grado=='Aprobar'&&($valorGrado!=$evaluarGrado||$valorGradoBD==null))
+    {
+        echo "update Empleados set rutaGrado='Aprobado owo',
+        Grado=".$valorGrado." where id=".$id;
+        $insertarGrado=$conn->query("update Empleados set rutaGrado='Aprobado owo',
+        Grado=".$valorGrado." where id=".$id);
+        $vaciarGrado=$conn->query("update Empleados set rutaGrado='' where id=".$id);
+    }
+    $conn->close();
 } else {
-    echo "fatal error, borra system32 y reinicia tu pc";
+    echo "Error, no existe un ruta que evaluar";
 }
+//header("Location: Formulario.php");
 
-// Guardar la información en la base de datos
-echo "la id es: $id";
-$nombre = mysqli_query($conn, "SELECT Nombre FROM Empleados WHERE id = $id");
-echo "el nombre es: $nombre";
-
-if($id>0) { //actualizar registro
-    echo "si se encuentra la id, actualizar";
-    $query = "CALL insertarEmpleados($id, '$nombre', '$grado_estudio', $antiguedad, $cursosCap, 
-    $certificaciones, $diplomados, $cursosST, $cursosImpartidos, $instructorDiplomados, 
-    $instructorCertificaciones, $asesorResidencias, $asesorTitulacion, $direccionTesis)";
-} else { //agregar nuevo, (no deberia de pasar)
-    echo "no se encuentra la id, crear registro nuevo";
-    $query = "CALL insertarEmpleados(-1, '$id', '$grado_estudio', $antiguedad, $cursos, $certificaciones, 
-    $diplomados, $cursosST, $cursosImpartidos, $instructorDiplomados, $instructorCertificaciones, 
-    $asesorResidencias, $asesorTitulacion, $direccionTesis)";
-}
-
-$result = mysqli_query($conn, $query);
-
-if ($result) {
-    // Redirigir al usuario a la página de resultados(ya no se ocupa)
-    //header('Location: Resultados.php');
-    //exit;
-    echo "todo bien uwu";
-} else {
-    echo "Error al guardar los datos en la base de datos.";
-}
-mysqli_close($conn);
-?>
 

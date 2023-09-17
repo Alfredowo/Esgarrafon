@@ -57,6 +57,6 @@ if (!$result) {
     </table>
     </center>
     
-    <a href="Formulario.php">Volver al formulario de evaluación</a>
+    <!-- <a href="Formulario.php">Volver al formulario de evaluación</a> -->
 </body>
 </html>
