@@ -1,37 +1,55 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Resultado de la Subida</title>
-</head>
-<body>
-    <h1>Resultado de la Subida</h1>
+<?php
 
-    <?php
-    if(isset($_FILES['archivos']['name'])) {
-        $archivos = $_FILES['archivos'];
+// Conectar a la base de datos (debes configurar la conexión)
+require("conexion.php");
+session_start();
 
-        // Carpeta donde se guardarán los archivos subidos
-        $carpeta_destino = 'documentos/';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Obtener datos del formulario
+$id = $_POST['empleado'];
+$grado_estudio = $_POST['grado_estudio'];
+$antiguedad = $_POST['antiguedad'];
+//$cursos = isset($_POST['cursos']) ? $_POST['cursos'] : [];
+$cursosCap = $_POST['cursosCap'];
+$certificaciones = $_POST['certificaciones'];
+$diplomados = $_POST['diplomados'];
+$cursosST = $_POST["cursosST"];
+$cursosImpartidos = $_POST["cursos"];
+$instructorDiplomados = $_POST["instructorDip"];
+$instructorCertificaciones = $_POST["instructorCer"];
+$asesorResidencias = $_POST["asesorRes"];
+$asesorTitulacion = $_POST["asesorTit"];
+$direccionTesis = $_POST["direccionTesis"];
+} else {
+    echo "fatal error, borra system32 y reinicia tu pc";
+}
 
-        // Iterar a través de los archivos
-        for($i = 0; $i < count($archivos['name']); $i++) {
-            $nombre_archivo = $archivos['name'][$i];
-            $nombre_temporal = $archivos['tmp_name'][$i];
-            $ruta_destino = $carpeta_destino . $nombre_archivo;
+// Guardar la información en la base de datos
+echo "la id es: $id";
+$nombre = mysqli_query($conn, "SELECT Nombre FROM Empleados WHERE id = $id");
+echo "el nombre es: $nombre";
 
-            // Comprobar si el archivo es válido (puedes agregar más validaciones según tus necesidades)
-            if(move_uploaded_file($nombre_temporal, $ruta_destino)) {
-                echo "<p>El archivo $nombre_archivo ha sido aceptado.</p>";
-            } else {
-                echo "<p>El archivo $nombre_archivo ha sido rechazado.</p>";
-            }
-        }
-    } else {
-        echo "<p>No se han subido archivos.</p>";
-    }
-    ?>
+if($id>0) { //actualizar registro
+    echo "si se encuentra la id, actualizar";
+    $query = "CALL insertarEmpleados($id, '$nombre', '$grado_estudio', $antiguedad, $cursosCap, 
+    $certificaciones, $diplomados, $cursosST, $cursosImpartidos, $instructorDiplomados, 
+    $instructorCertificaciones, $asesorResidencias, $asesorTitulacion, $direccionTesis)";
+} else { //agregar nuevo, (no deberia de pasar)
+    echo "no se encuentra la id, crear registro nuevo";
+    $query = "CALL insertarEmpleados(-1, '$id', '$grado_estudio', $antiguedad, $cursos, $certificaciones, 
+    $diplomados, $cursosST, $cursosImpartidos, $instructorDiplomados, $instructorCertificaciones, 
+    $asesorResidencias, $asesorTitulacion, $direccionTesis)";
+}
 
-    <a href="index.html">Volver</a>
-</body>
-</html>
+$result = mysqli_query($conn, $query);
+
+if ($result) {
+    // Redirigir al usuario a la página de resultados(ya no se ocupa)
+    //header('Location: Resultados.php');
+    //exit;
+    echo "todo bien uwu";
+} else {
+    echo "Error al guardar los datos en la base de datos.";
+}
+mysqli_close($conn);
+?>
