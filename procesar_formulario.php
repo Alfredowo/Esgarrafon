@@ -3,11 +3,11 @@
 // Conectar a la base de datos (debes configurar la conexión)
 //require("conexion.php");
 session_start();
-$conn = mysqli_connect("localhost", "userPro", "123", "Escalafon");
+require("conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Obtener datos del formulario
-$id = $_POST['empleado'];
+/*$id = $_POST['empleado'];
 $grado_estudio = $_POST['grado_estudio'];
 $antiguedad = $_POST['antiguedad'];
 $cursos = isset($_POST['cursos']) ? $_POST['cursos'] : [];
@@ -22,7 +22,9 @@ $asesorResidencias = $_POST["asesorRes"];
 $asesorTitulacion = $_POST["asesorTit"];
 $direccionTesis = $_POST["direccionTesis"];
 } else {
-    echo "fatal error, borra system32 y reinicia tu pc";
+    echo "fatal error, borra system32 y reinicia tu pc";*/
+    $valor=$_POST['btnGrado'];
+    echo $valor;
 }
 
 // Calcular el puntaje total
@@ -52,7 +54,7 @@ $puntaje += $diplomados * 10;
 */
 
 // Guardar la información en la base de datos
-echo "la id es: $id";
+/*echo "la id es: $id";
 $nombre = mysqli_query($conn, "SELECT Nombre FROM Empleados WHERE id = $id");
 echo "el nombre es: $nombre";
 
@@ -71,7 +73,7 @@ if ($id > 0) {
 }
 */
 
-if($id>0) { //actualizar registro
+/*if($id>0) { //actualizar registro
     echo "si se encuentra la id, actualizar";
     $query = "CALL insertarEmpleados($id, '$nombre', '$grado_estudio', $antiguedad, $cursosCap, 
     $certificaciones, $diplomados, $cursosST, $cursosImpartidos, $instructorDiplomados, 
@@ -93,6 +95,6 @@ if ($result) {
 } else {
     echo "Error al guardar los datos en la base de datos.";
 }
-mysqli_close($conn);
+mysqli_close($conn);*/
 ?>
 
