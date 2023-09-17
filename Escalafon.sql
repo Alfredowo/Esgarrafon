@@ -20,7 +20,7 @@ DROP TABLE if EXISTS Empleados;
 CREATE TABLE Empleados(
    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
    Nombre VARCHAR(50),
-   Grado ENUM("Doctorado","Maestría","Licenciatura"),
+   Grado ENUM("Doctorado","Maestria","Licenciatura"),
    rutaGrado varchar(100),
    Antiguedad INT,
    rutaAntiguedad varchar(100),
@@ -98,7 +98,7 @@ DELIMITER &&
 CREATE PROCEDURE insertarEmpleados(
    IN _id INT,
    IN _Nombre VARCHAR(50),
-   IN _Grado ENUM("Doctorado","Maestría","Licenciatura"),
+   IN _Grado ENUM("Doctorado","Maestria","Licenciatura"),
    IN _rutaGrado VARCHAR(100),
    IN _Antiguedad INT,
    IN _rutaAntiguedad varchar(100),
@@ -175,7 +175,7 @@ BEGIN
 
    IF NEW.Grado = 'Doctorado' AND NEW.rutaGrado = 'Aprobado owo' THEN
       SET puntaje = puntaje + 30;
-   ELSEIF NEW.Grado = 'Maestría' AND NEW.rutaGrado = 'Aprobado owo' THEN
+   ELSEIF NEW.Grado = 'Maestria' AND NEW.rutaGrado = 'Aprobado owo' THEN
       SET puntaje = puntaje + 20;
    ELSEIF NEW.Grado = 'Licenciatura' AND NEW.rutaGrado = 'Aprobado owo' THEN
       SET puntaje = puntaje + 10;
@@ -253,25 +253,3 @@ end if;
 end;
 //
 delimiter ;
-
-
-
--- ------------------------------------------------------------------------------------------------------------------------
-
-UPDATE Empleados
-SET
-   Grado = 'Doctorado', 
-   Antiguedad = 10,      
-   CursoCap = 3,        
-   Certificaciones = 1, 
-   Diplomados = 1,      
-   CursosST = 1,        
-   Cursos = 10,         
-   InstructorDip = 1,   
-   InstructorCer = 0,   
-   AsesorRes = 2,       
-   AsesorTit = 1,      
-   DireccionTesis = 1   
-WHERE id = 2; 
-
-SELECT * FROM VistaPuntajes;

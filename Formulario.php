@@ -147,7 +147,7 @@
             echo '<a href="'.$filaGrado['rutaGrado'].'" target="_blank" class="btn">Verificar</a><br>';
             echo '<label>Aprobar como: </label><br>';
             echo '<input type="radio" id="doctorado" name="grado_estudio" value="1" checked> Doctorado<br>';
-            echo '<input type="radio" id="maestria" name="grado_estudio" value="2"> Maestría<br>';
+            echo '<input type="radio" id="Maestría" name="grado_estudio" value="2"> Maestría<br>';
             echo '<input type="radio" id="licenciatura" name="grado_estudio" value="3"> Licenciatura<br><br>';
             echo '<input type="submit" class="Botonesinput" name="btnGrado" value="Aprobar"></input>';
             echo '<input type="submit"  class="button" name="btnGrado" value="Rechazar"></input><br><br>';
