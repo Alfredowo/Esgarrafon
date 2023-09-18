@@ -165,80 +165,106 @@ DELIMITER ;
 
 -- TRIGGERS ----------------------------------------------------------------------------------------------------------------------
 
+drop trigger if exists insertar_puntaje_insert;
+delimiter //
+create trigger insertar_puntaje_insert after insert on Empleados
+for each row
+begin
+insert into Puntaje values(null,new.id,0);
+end;
+//
+delimiter ;
+
 DROP TRIGGER IF EXISTS actualizar_puntaje_update;
 DELIMITER //
 CREATE TRIGGER actualizar_puntaje_update AFTER UPDATE ON Empleados
 FOR EACH ROW
 BEGIN
-   DECLARE puntaje INT;
+   -- DECLARE puntajee INT;
 
    -- Calcular el puntaje total y verificar documentos
-   SET puntajee = 0;
+   -- SET puntajee = 0;
 
    IF NEW.Grado = 'Doctorado' AND NEW.rutaGrado = 'Aprobado owo' THEN
-      SET puntajee = puntajee + 30;
+      -- SET puntajee = puntajee + 30;
+	update Puntaje set Puntaje = Puntaje + 30 where fkEmpleado = NEW.id;
    ELSEIF NEW.Grado = 'Maestria' AND NEW.rutaGrado = 'Aprobado owo' THEN
-      SET puntajee = puntajee + 20;
+      -- SET puntajee = puntajee + 20;
+	update Puntaje set Puntaje = Puntaje + 20 where fkEmpleado = NEW.id;
    ELSEIF NEW.Grado = 'Licenciatura' AND NEW.rutaGrado = 'Aprobado owo' THEN
-      SET puntajee = puntajee + 10;
+      -- SET puntajee = puntajee + 10;
+	update Puntaje set Puntaje = Puntaje + 10 where fkEmpleado = NEW.id;
    END IF;
 
    IF NEW.RutaAntiguedad = 'Aprobado owo' THEN
-      SET puntajee = puntajee + NEW.Antiguedad * 10;
+      -- SET puntajee = puntajee + NEW.Antiguedad * 10;
+	update Puntaje set Puntaje = Puntaje + (new.Antiguedad * 10) where fkEmpleado = NEW.id;
    END IF;
 
    IF NEW.CursoCap > 29 AND NEW.rutaCursoCap = 'Aprobado owo' THEN
-      SET puntajee = puntajee + 2;
+      -- SET puntajee = puntajee + 2;
+	update Puntaje set Puntaje = Puntaje + 2 where fkEmpleado = NEW.id;
    ELSEIF NEW.CursoCap < 30 AND NEW.rutaCursoCap = 'Aprobado owo' THEN
-      SET puntajee = puntajee + 1;
+      -- SET puntajee = puntajee + 1;
+	update Puntaje set Puntaje = Puntaje + 1 where fkEmpleado = NEW.id;
    END IF;
 
    IF NEW.rutaCertificaciones = 'Aprobado owo' THEN
-      SET puntajee = puntajee + 20;
+      -- SET puntajee = puntajee + 20;
+	update Puntaje set Puntaje = Puntaje + 20 where fkEmpleado = NEW.id;
    END IF;
 
    IF NEW.rutaDiplomados = 'Aprobado owo' THEN
-      SET puntajee = puntajee + 10;
+      --SET puntajee = puntajee + 10;
+	update Puntaje set Puntaje = Puntaje + 10 where fkEmpleado = NEW.id;
    END IF;
 
    IF NEW.rutaCursosST = 'Aprobado owo' THEN
-      SET puntajee = puntajee + 20;
+      --SET puntajee = puntajee + 20;
+	update Puntaje set Puntaje = Puntaje + 20 where fkEmpleado = NEW.id;
    END IF;
 
    IF NEW.rutaCursos = 'Aprobado owo' AND NEW.Cursos > 29 THEN
-      SET puntajee = puntajee + 15;
+      -- SET puntajee = puntajee + 15;
+	update Puntaje set Puntaje = Puntaje + 15 where fkEmpleado = NEW.id;
    ELSEIF NEW.rutaCursos = 'Aprobado owo' AND NEW.Cursos < 30 THEN
-      SET puntajee = puntajee + 7;
+      -- SET puntajee = puntajee + 7;
+	update Puntaje set Puntaje = Puntaje + 7 where fkEmpleado = NEW.id;
    END IF;
 
    IF NEW.rutaInstructorDip = 'Aprobado owo' THEN
-      SET puntajee = puntajee + 15;
+      -- SET puntajee = puntajee + 15;
+	update Puntaje set Puntaje = Puntaje + 15 where fkEmpleado = NEW.id;
    END IF;
 
    IF NEW.rutaInstructorCer = 'Aprobado owo' THEN
-      SET puntajee = puntajee + 20;
+      -- SET puntajee = puntajee + 20;
+	update Puntaje set Puntaje = Puntaje + 20 where fkEmpleado = NEW.id;
    END IF;
 
    IF NEW.rutaAsesorRes = 'Aprobado owo' THEN
-      SET puntajee = puntajee + NEW.AsesorRes;
+      -- SET puntajee = puntajee + NEW.AsesorRes;
+	update Puntaje set Puntaje = Puntaje + new.AsesorRes where fkEmpleado = NEW.id;
    END IF;
 
    IF NEW.rutaAsesorTit = 'Aprobado owo' THEN
-      SET puntajee = puntajee + NEW.AsesorTit;
+      -- SET puntajee = puntajee + NEW.AsesorTit;
+	update Puntaje set Puntaje = Puntaje + new.AsesorTit where fkEmpleado = NEW.id;
    END IF;
 
    IF NEW.RutaDireccionTesis = 'Aprobado owo' THEN
-      SET puntajee = puntajee + 10;
+      -- SET puntajee = puntajee + 10;
+	update Puntaje set Puntaje = Puntaje + 10 where fkEmpleado = NEW.id;
    END IF;
 
    -- Actualizar o insertar en la tabla Puntaje
-   IF EXISTS (SELECT 1 FROM Puntaje WHERE fkEmpleado = NEW.id) THEN
+   /*IF EXISTS (SELECT 1 FROM Puntaje WHERE fkEmpleado = NEW.id) THEN
       -- Actualizar el registro existente
       UPDATE Puntaje SET Puntaje = (Puntaje + puntajee) WHERE fkEmpleado = NEW.id;
    ELSE
       -- Insertar un nuevo registro
       INSERT INTO Puntaje (fkEmpleado, Puntaje) VALUES (NEW.id, puntajee);
-   END IF;
+   END IF;*/
 END;
 //
 DELIMITER ;
