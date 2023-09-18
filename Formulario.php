@@ -98,11 +98,17 @@
 </style>
 </head>
 <h1>Administrador</h1>
-    <form action="procesar_formulario.php" method="post" target="_blank">
+    <form action="procesar_formulario.php" method="post" onsubmit="mostrarAlerta()">
+    <div id="alerta" style="display: none;">Operación realizada correctamente</div>
         <?php
         function extraer(){
+            session_start();
+            if (isset($_SESSION['id'])) {
+                $id = $_SESSION['id'];
+            } else {
+                $id=$_POST['empleado'];
+            }
             require("conexion.php");
-            $id=$_POST['empleado'];
             echo '<input type="text" name="id" value="'.$id.'" style="display: none"></input>';
     
             $ConsultarutaGrado=$conn->query("select rutaGrado from Empleados where id=$id");
@@ -142,7 +148,7 @@
             $filaDireccionTesis = $ConsultarutaDireccionTesis->fetch_assoc();
             $conn->close();
 
-        if (!empty($filaGrado['rutaGrado'])) {
+        if ($filaGrado['rutaGrado']!='Aprobado owo'&&!empty($filaGrado['rutaGrado'])) {
             echo '<label>Grado de estudio: </label>';
             echo '<a href="'.$filaGrado['rutaGrado'].'" target="_blank" class="btn">Verificar</a><br>';
             echo '<label>Aprobar como: </label><br>';
@@ -154,7 +160,7 @@
             echo '<textarea name="observacionesGrado" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
-        if (!empty($filaAntiguedad['rutaAntiguedad'])) {
+        if ($filaAntiguedad['rutaAntiguedad']!='Aprobado owo'&&!empty($filaAntiguedad['rutaAntiguedad'])) {
             echo '<label>Años de antigüedad: </label>';
             echo '<a href="'.$filaAntiguedad['rutaAntiguedad'].'" target="_blank" class="btn">';
             echo 'Verificar';
@@ -165,7 +171,7 @@
             echo '<textarea name="observacionesAntiguedad" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';    
         }
         
-        if (!empty($filaCursosCap['rutaCursoCap'])) {
+        if ($filaCursosCap['rutaCursoCap']!='Aprobado owo'&&!empty($filaCursosCap['rutaCursoCap'])) {
             echo '<label>Horas de cursos de capacitación impartidas:</label>';
             echo '<a href="'.$filaCursosCap['rutaCursoCap'].'" target="_blank" class="btn">';
             echo 'Verificar';
@@ -177,7 +183,7 @@
             echo '<textarea name="observacionesCursosCap" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
-        if (!empty($filaCertificaciones['rutaCertificaciones'])) {
+        if ($filaCertificaciones['rutaCertificaciones']!='Aprobado owo'&&!empty($filaCertificaciones['rutaCertificaciones'])) {
             echo '<label for="certificaciones">Cuenta con certificaciones:</label>';
             //<!-- 20pts si sí -->'
             echo '<a href="'.$filaCertificaciones['rutaCertificaciones'].'" target="_blank" class="btn">';
@@ -192,7 +198,7 @@
             echo '<textarea name="observacionesCertificaciones" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
-        if (!empty($filaDilomados['rutaDiplomados'])) {
+        if ($filaDilomados['rutaDiplomados']!='Aprobado owo'&&!empty($filaDilomados['rutaDiplomados'])) {
             echo '<label for="diplomados">Cuenta con diplomados:</label>';
             echo '<a href="'.$filaDilomados['rutaDiplomados'].'" target="_blank" class="btn">';
             echo 'Verificar';
@@ -207,7 +213,7 @@
             echo '<textarea name="observacionesDiplomados" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
-        if (!empty($filaCursosST['rutaCursosST'])) {
+        if ($filaCursosST['rutaCursosST']!='Aprobado owo'&&!empty($filaCursosST['rutaCursosST'])) {
             echo '<label for="cursosST">Cuenta con cursos de ST:</label>';
             echo '<a href="'.$filaCursosST['rutaCursosST'].'" target="_blank" class="btn">';
             echo 'Verificar';
@@ -222,7 +228,7 @@
             echo '<textarea name="observacionesCursosST" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
-        if (!empty($filaCursos['rutaCursos'])) {
+        if ($filaCursos['rutaCursos']!='Aprobado owo'&&!empty($filaCursos['rutaCursos'])) {
             echo '<label for="cursos">Horas impartidas de cursos:</label>';
             echo '<a href="'.$filaCursos['rutaCursos'].'" target="_blank" class="btn">';
             echo 'Verificar';
@@ -234,7 +240,7 @@
             echo '<textarea name="observacionesCursos" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
-        if (!empty($filaInstructorDip['rutaInstructorDip'])) {
+        if ($filaInstructorDip['rutaInstructorDip']!='Aprobado owo'&&!empty($filaInstructorDip['rutaInstructorDip'])) {
             echo '<label for="instructorDip">Ha sido instructor de diplomados:</label>';
             echo '<a href="'.$filaInstructorDip['rutaInstructorDip'].'" target="_blank" class="btn">';
             echo 'Verificar';
@@ -249,7 +255,7 @@
             echo '<textarea name="observacionesInstructorDip" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
-        if (!empty($filaInstructorCer['rutaInstructorCer'])) {
+        if ($filaInstructorCer['rutaInstructorCer']!='Aprobado owo'&&!empty($filaInstructorCer['rutaInstructorCer'])) {
             echo '<label for="instructorCer">Ha sido instructor de certificaciones:</label>';
             echo '<a href="'.$filaInstructorCer['rutaInstructorCer'].'" target="_blank" class="btn">';
             echo 'Verificar';
@@ -264,7 +270,7 @@
             echo '<textarea name="observacionesInstructorCer" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
-        if (!empty($filaAsesorRes['rutaAsesorRes'])) {
+        if ($filaAsesorRes['rutaAsesorRes']!='Aprobado owo'&&!empty($filaAsesorRes['rutaAsesorRes'])) {
             echo '<label for="asesorRes">No. de veces que ha sido asesor de residencias:</label>';
             echo '<a href="'.$filaAsesorRes['rutaAsesorRes'].'" target="_blank" class="btn">';
             echo 'Verificar';
@@ -276,7 +282,7 @@
             echo '<textarea name="observacionesAsesorRes" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
-        if (!empty($filaAsesorTit['rutaAsesorTit'])) {
+        if ($filaAsesorTit['rutaAsesorTit']!='Aprobado owo'&&!empty($filaAsesorTit['rutaAsesorTit'])) {
             echo '<label for="asesorTit">No. de veces que ha sido asesor de titulación:</label>';
             echo '<a href="'.$filaAsesorTit['rutaAsesorTit'].'" target="_blank" class="btn">';
             echo 'Verificar';
@@ -288,12 +294,12 @@
             echo '<textarea name="observacionesAsesorTit" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
         }
         
-        if (!empty($filaDireccionTesis['rutaDireccionTesis'])) {
+        if ($filaDireccionTesis['rutaDireccionTesis']!='Aprobado owo'&&!empty($filaDireccionTesis['rutaDireccionTesis'])) {
             echo '<label for="direccionTesis">Ha hecho alguna dirección de tesis:</label>';
             echo '<a href="'.$filaDireccionTesis['rutaDireccionTesis'].'" target="_blank" class="btn">';
             echo 'Verificar';
             echo '</a><br>';
-            echo '<!-- Si sí 10pts-->';
+            // '<!-- Si sí 10pts-->';
             echo '<select name="direccionTesis" id="direccionTesis">';
             echo '<option value="true">Si</option>';
             echo '<option value="false">No</option>';
@@ -313,4 +319,14 @@
         </form>
         <br><br>
 </body>
+<script>
+    // Función para mostrar la alerta
+    function mostrarAlerta() {
+        var alerta = document.getElementById('alerta');
+        alerta.style.display = 'block';
+    }
+    setTimeout(function() {
+        alerta.style.display = 'none';
+    }, 3000);
+</script>
 </html>

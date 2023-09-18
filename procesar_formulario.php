@@ -1,12 +1,13 @@
 <?php
-
+session_start();
+$id=$_SESSION['id'];
 // Conectar a la base de datos (debes configurar la conexión)
 require("conexion.php");
 session_start();
 require("conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST['id'];
+    //$id = $_POST['id'];
     //Posibles repetidos
     $consultaGrado=$conn->query("select Grado from Empleados where id=".$id);
     $valorGradoBD=$consultaGrado->fetch_assoc();
@@ -258,6 +259,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Error, no existe un ruta que evaluar";
 }
-//header("Location: Formulario.php");
+header("Location: Formulario.php");
 
 

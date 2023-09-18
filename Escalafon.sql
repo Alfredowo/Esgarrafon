@@ -173,71 +173,71 @@ BEGIN
    DECLARE puntaje INT;
 
    -- Calcular el puntaje total y verificar documentos
-   SET puntaje = 0;
+   SET puntajee = 0;
 
    IF NEW.Grado = 'Doctorado' AND NEW.rutaGrado = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 30;
+      SET puntajee = puntajee + 30;
    ELSEIF NEW.Grado = 'Maestria' AND NEW.rutaGrado = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 20;
+      SET puntajee = puntajee + 20;
    ELSEIF NEW.Grado = 'Licenciatura' AND NEW.rutaGrado = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 10;
+      SET puntajee = puntajee + 10;
    END IF;
 
    IF NEW.RutaAntiguedad = 'Aprobado owo' THEN
-      SET puntaje = puntaje + NEW.Antiguedad * 10;
+      SET puntajee = puntajee + NEW.Antiguedad * 10;
    END IF;
 
    IF NEW.CursoCap > 29 AND NEW.rutaCursoCap = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 2;
+      SET puntajee = puntajee + 2;
    ELSEIF NEW.CursoCap < 30 AND NEW.rutaCursoCap = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 1;
+      SET puntajee = puntajee + 1;
    END IF;
 
    IF NEW.rutaCertificaciones = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 20;
+      SET puntajee = puntajee + 20;
    END IF;
 
    IF NEW.rutaDiplomados = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 10;
+      SET puntajee = puntajee + 10;
    END IF;
 
    IF NEW.rutaCursosST = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 20;
+      SET puntajee = puntajee + 20;
    END IF;
 
    IF NEW.rutaCursos = 'Aprobado owo' AND NEW.Cursos > 29 THEN
-      SET puntaje = puntaje + 15;
+      SET puntajee = puntajee + 15;
    ELSEIF NEW.rutaCursos = 'Aprobado owo' AND NEW.Cursos < 30 THEN
-      SET puntaje = puntaje + 7;
+      SET puntajee = puntajee + 7;
    END IF;
 
    IF NEW.rutaInstructorDip = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 15;
+      SET puntajee = puntajee + 15;
    END IF;
 
    IF NEW.rutaInstructorCer = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 20;
+      SET puntajee = puntajee + 20;
    END IF;
 
    IF NEW.rutaAsesorRes = 'Aprobado owo' THEN
-      SET puntaje = puntaje + NEW.AsesorRes;
+      SET puntajee = puntajee + NEW.AsesorRes;
    END IF;
 
    IF NEW.rutaAsesorTit = 'Aprobado owo' THEN
-      SET puntaje = puntaje + NEW.AsesorTit;
+      SET puntajee = puntajee + NEW.AsesorTit;
    END IF;
 
    IF NEW.RutaDireccionTesis = 'Aprobado owo' THEN
-      SET puntaje = puntaje + 10;
+      SET puntajee = puntajee + 10;
    END IF;
 
    -- Actualizar o insertar en la tabla Puntaje
    IF EXISTS (SELECT 1 FROM Puntaje WHERE fkEmpleado = NEW.id) THEN
       -- Actualizar el registro existente
-      UPDATE Puntaje SET Puntaje = puntaje + Puntaje WHERE fkEmpleado = NEW.id;
+      UPDATE Puntaje SET Puntaje = (Puntaje + puntajee) WHERE fkEmpleado = NEW.id;
    ELSE
       -- Insertar un nuevo registro
-      INSERT INTO Puntaje (fkEmpleado, Puntaje) VALUES (NEW.id, puntaje);
+      INSERT INTO Puntaje (fkEmpleado, Puntaje) VALUES (NEW.id, puntajee);
    END IF;
 END;
 //
