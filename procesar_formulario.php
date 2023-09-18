@@ -15,6 +15,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $valorAntiguedadBD=$consultaAntiguedad->fetch_assoc();
     $consultaCursoCap=$conn->query("select CursoCap from Empleados where id=".$id);
     $valorCursoCapBD=$consultaAntiguedad->fetch_assoc();
+    $consultaCursosBD=$conn->query("select Cursos from Empleados where id=".$id);
+    $valorCursosBD=$consultaCursosBD->fetch_assoc();
+    $consultaAsesorRes=$conn->query("select AsesorRes from Empleados where id=".$id);
+    $valorAsesorResBD=$consultaAsesorRes->fetch_assoc();
+    $consultaAsesorTit=$conn->query("select AsesorTit from Empleados where id=".$id);
+    $valorAsesorTitBD=$consultaAsesorTit->fetch_assoc();
 
     if(isset($_POST['btnGrado']))
     {
@@ -244,90 +250,128 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $evaluarGrado=3;
     if($grado=='Aprobar'&&($valorGrado!=$evaluarGrado||$valorGradoBD==null))
     {
-        /*if($valorGradoBD=='Doctorado')
+        if($valorGradoBD['Grado']=='Doctorado')
         {
             $revertirGrado=$conn->query("update Puntaje set Puntaje = 
             Puntaje - 30 where fkEmpleado=".$id);
         }else
-        if($valorGradoBD=='Maestria')
+        if($valorGradoBD['Grado']=='Maestria')
         {
             $revertirGrado=$conn->query("update Puntaje set Puntaje = 
             Puntaje - 20 where fkEmpleado=".$id);
         }else
-        if($valorGradoBD=='Licenciatura')
+        if($valorGradoBD['Grado']=='Licenciatura')
         {
             $revertirGrado=$conn->query("update Puntaje set Puntaje = 
             Puntaje - 10 where fkEmpleado=".$id);
-        }*/
+        }
         $insertarGrado=$conn->query("update Empleados set rutaGrado='Aprobado owo',
         Grado=".$valorGrado." where id=".$id);
+        $insertarGrado=$conn->query("update Empleados set rutaGrado='En espera' where id=".$id);
     }else $insertarGrado=$conn->query("update Empleados set rutaGrado='Rechazado umu' where id=".$id);
+
     if($antiguedad=='Aprobar')
     {
-        /*$revertirAntiguedad=$conn->query("update Puntaje set Puntaje = Puntaje - "
-        . ($valorAntiguedadBD * 10));*/
+        if(!empty($valorAntiguedadBD['Antiguedad'])){
+            $revertirAntiguedad=$conn->query("update Puntaje set Puntaje = Puntaje - "
+            . ($valorAntiguedadBD['Antiguedad'] * 10));
+        }
         $insertarAntiguedad=$conn->query("update Empleados set rutaAntiguedad='Aprobado owo',
         Antiguedad=".$valorAntiguedad."where id=".$id);
-    }else $insertarGrado=$conn->query("update Empleados set rutaAntiguedad='Rechazado umu' where id=".$id);
+        $insertarAntiguedad=$conn->query("update Empleados set rutaAntiguedad='En espera' where id=".$id);
+    }else $insertarAntiguedad=$conn->query("update Empleados set rutaAntiguedad='Rechazado umu' where id=".$id);
+    
     if($cursosCap=='Aprobar')
     {
-        /*if($valorCursoCapBD>29)
+        if($valorCursoCapBD['CursoCap']>29&&!empty($valorCursoCapBD['CursoCap']))
         {
             $revertirCursosCap=$conn->query("update Puntaje set Puntaje = Puntaje - 2");
-        }else
-            $revertirCursosCap=$conn->query("update Puntaje set Puntaje = Puntaje - 1");*/
+        }else if($valorCursoCapBD['CursoCap']<29&&!empty($valorCursoCapBD['CursoCap'])){
+            $revertirCursosCap=$conn->query("update Puntaje set Puntaje = Puntaje - 1");
+        }
         $insertarCursosCap=$conn->query("update Empleados set rutaCursoCap='Aprobado owo',
         CursoCap=".$valorCursosCap."where id=".$id);
-    }else $insertarGrado=$conn->query("update Empleados set rutaCursoCap='Rechazado umu' where id=".$id);
+        $insertarCursosCap=$conn->query("update Empleados set rutaCursoCap='En espera' where id=".$id);
+    }else $insertarCursosCap=$conn->query("update Empleados set rutaCursoCap='Rechazado umu' where id=".$id);
+    
     if($certificaciones=='Aprobar')
     {
-        /*$revertirCertificaciones=$conn->query("update Puntaje set Puntaje=Puntaje - 20 where 
-        id = ".$id);*/
-        $insertarCertificaciones=$conn->query("update Empleados set rutaCertificaciones='Aprobado owo'
+        $insertarCertificaciones=$conn->query("update Empleados set rutaCertificaciones='Aprobado owo', Certificaciones=true 
          where id=".$id);
-    }else $insertarGrado=$conn->query("update Empleados set rutaCertificaciones='Rechazado umu' where id=".$id);
+        $insertarCertificaciones=$conn->query("update Empleados set rutaCertificaciones='En espera' where id=".$id);
+    }else $insertarCertificaciones=$conn->query("update Empleados set rutaCertificaciones='Rechazado umu' where id=".$id);
+
     if($diplomados=='Aprobar')
     {
-        /*$revertirDiplomados=$conn->query("update Puntaje set Puntaje=Puntaje - 10 where 
-        id = ".$id);*/
-        $insertarDiplomados=$conn->query("update Empleados set rutaDiplomados='Aprobado owo' 
+        $insertarDiplomados=$conn->query("update Empleados set rutaDiplomados='Aprobado owo', Diplomados=true 
         where id=".$id);
-    }else $insertarGrado=$conn->query("update Empleados set rutaDiplomados='Rechazado umu' where id=".$id);
+        $insertarDiplomados=$conn->query("update Empleados set rutaDiplomados='En espera' where id=".$id);
+    }else $insertarDiplomados=$conn->query("update Empleados set rutaDiplomados='Rechazado umu' where id=".$id);
+
     if($cursosST=='Aprobar')
     {
-        $insertarCursosST=$conn->query("update Empleados set rutaCursosST='Aprobado owo' 
+        $insertarCursosST=$conn->query("update Empleados set rutaCursosST='Aprobado owo', CursosST = true 
         where id=".$id);
-    }else $insertarGrado=$conn->query("update Empleados set rutaCursosST='Rechazado umu' where id=".$id);
+        $insertarCursosST=$conn->query("update Empleados set rutaCursosST='En espera' where id=".$id);
+    }else $insertarCursosST=$conn->query("update Empleados set rutaCursosST='Rechazado umu' where id=".$id);
+
     if($cursos=='Aprobar')
     {
+        if($valorCursosBD>29&&!empty($valorCursosBD['Cursos'])){
+            $revertirCursos=$conn->query("update Puntaje set Puntaje=Puntaje - 15 where 
+            id = ".$id);
+        }else if($valorCursosBD<29&&!empty($valorCursosBD['Cursos'])){
+            $revertirCursos=$conn->query("update Puntaje set Puntaje=Puntaje - 7 where 
+            id = ".$id);
+        }
         $insertarCursos=$conn->query("update Empleados set rutaCursos='Aprobado owo',
         Cursos=".$valorCursos."where id=".$id);
-    }else $insertarGrado=$conn->query("update Empleados set rutaCursos='Rechazado umu' where id=".$id);
+        $insertarCursos=$conn->query("update Empleados set rutaCursos='En espera' where id=".$id);
+    }else $insertarCursos=$conn->query("update Empleados set rutaCursos='Rechazado umu' where id=".$id);
+
     if($instructorDiplomados=='Aprobar')
     {
-        $insertarInstructorDip=$conn->query("update Empleados set rutaInstructorDip='Aprobado owo' 
+        $insertarInstructorDip=$conn->query("update Empleados set rutaInstructorDip='Aprobado owo', InstructorDip = true 
         where id=".$id);
-    }else $insertarGrado=$conn->query("update Empleados set rutaInstructorDip='Rechazado umu' where id=".$id);
+        $insertarInstructorDip=$conn->query("update Empleados set rutaInstructorDip='En espera' where id=".$id);
+    }else $insertarInstructorDip=$conn->query("update Empleados set rutaInstructorDip='Rechazado umu' where id=".$id);
+
     if($instructorCertificaciones=='Aprobar')
     {
-        $insertarInstructoCer=$conn->query("update Empleados set rutaInstructorCer='Aprobado owo' 
+        $insertarInstructoCer=$conn->query("update Empleados set rutaInstructorCer='Aprobado owo', InstructorCer=true 
         where id=".$id);
-    }else $insertarGrado=$conn->query("update Empleados set rutaInstructorCer='Rechazado umu' where id=".$id);
+        $insertarInstructorDip=$conn->query("update Empleados set rutaInstructorDip='En espera' where id=".$id);
+    }else $insertarInstructoCer=$conn->query("update Empleados set rutaInstructorCer='Rechazado umu' where id=".$id);
+
     if($asesorResidencias=='Aprobar')
     {
-        $insertarAsesorRes=$conn->query("update Empleados set rutaAsesorRes='Aprobado owo',
+        if(!empty($valorAsesorResBD['AsesorRes'])&&$valorAsesorResBD['AsesorRes']!=0){
+            $revertirAsesorResBD=$conn->query("update Puntaje set Puntaje=Puntaje - ".
+            $valorAsesorResBD['AsesorRes']." where id = ".$id);
+        }
+        $insertarAsesorRes=$conn->query("update Empleados set rutaAsesorRes='Aprobado owo', 
         AsesorRes=".$valorAsesorResidencias."where id=".$id);
-    }else $insertarGrado=$conn->query("update Empleados set rutaAsesorRes='Rechazado umu' where id=".$id);
+        $insertarAsesorRes=$conn->query("update Empleados set rutaAsesorRes='En espera' where id=".$id);
+    }else $insertarAsesorRes=$conn->query("update Empleados set rutaAsesorRes='Rechazado umu' where id=".$id);
+    
     if($asesorTitulacion=='Aprobar')
     {
+        if(!empty($valorAsesorTitBD['AsesorTit'])&&$valorAsesorTitBD['AsesorTit']!=0){
+            $revertirAsesorTitBD=$conn->query("update Puntaje set Puntaje=Puntaje - ".
+            $valorAsesorTitBD['AsesorTit']." where id = ".$id);
+        }
         $insertarAsesorTit=$conn->query("update Empleados set rutaAsesorTit='Aprobado owo',
         AsesorTit=".$valorAsesorTitulacion."where id=".$id);
-    }else $insertarGrado=$conn->query("update Empleados set rutaAsesorTit='Rechazado umu' where id=".$id);
+        $insertarAsesorTit=$conn->query("update Empleados set rutaAsesorTit='En espera' where id=".$id);
+    }else $insertarAsesorTit=$conn->query("update Empleados set rutaAsesorTit='Rechazado umu' where id=".$id);
+
     if($direccionTesis=='Aprobar')
     {
-        $insertarDireccionTesis=$conn->query("update Empleados set rutaDireccionTesis='Aprobado owo' 
+        $insertarDireccionTesis=$conn->query("update Empleados set rutaDireccionTesis='Aprobado owo', DireccionTesis=true 
         where id=".$id);
-    }else $insertarGrado=$conn->query("update Empleados set rutaDireccionTesis='Rechazado umu' where id=".$id);
+        $insertarDireccionTesis=$conn->query("update Empleados set rutaDireccionTesis='En espera' where id=".$id);
+    }else $insertarDireccionTesis=$conn->query("update Empleados set rutaDireccionTesis='Rechazado umu' where id=".$id);
+
     $conn->close();
 } else {
     echo "Error, no existe un ruta que evaluar";
