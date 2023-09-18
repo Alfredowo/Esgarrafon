@@ -169,7 +169,7 @@
             echo '<input type="submit" class="Botonesinput" name="btnGrado" value="Aprobar"></input>';
             echo '<input type="submit"  class="button" name="btnGrado" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesGrado" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
-       // }
+        }
         
         if ($filaAntiguedad['rutaAntiguedad']!='Aprobado owo'&&!empty($filaAntiguedad['rutaAntiguedad'])) {
             echo '<label>Años de antigüedad: </label>';
