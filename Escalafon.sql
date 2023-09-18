@@ -251,6 +251,7 @@ BEGIN
 if new.Permisos = 'empleado' then
 call insertarEmpleados(-1,new.Usuario,null,'',null,'',null,'','','','',null,'',
 '','',null,'',null,'','');
+insert into observaciones(id,fkEmpleado) values(null,new.id);
 end if;
 end;
 //

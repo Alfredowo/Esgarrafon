@@ -98,8 +98,7 @@
 </style>
 </head>
 <h1>Administrador</h1>
-    <form action="procesar_formulario.php" method="post" onsubmit="mostrarAlerta()">
-    <div id="alerta" style="display: none;">Operación realizada correctamente</div>
+    <form action="procesar_formulario.php" method="post" id="mostrarAlerta">
         <?php
         function extraer(){
             session_start();
@@ -109,6 +108,7 @@
                 $id=$_POST['empleado'];
             }
             require("conexion.php");
+            $algunDocumentoPresente=false;
             echo '<input type="text" name="id" value="'.$id.'" style="display: none"></input>';
     
             $ConsultarutaGrado=$conn->query("select rutaGrado from Empleados where id=$id");
@@ -169,6 +169,7 @@
             echo '<input type="submit" class="Botonesinput" name="btnAntiguedad" value="Aprobar"></input>';
             echo '<input type="submit" class="button" class="Botonesinput" name="btnAntiguedad" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesAntiguedad" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';    
+            $algunDocumentoPresente = true;
         }
         
         if ($filaCursosCap['rutaCursoCap']!='Aprobado owo'&&!empty($filaCursosCap['rutaCursoCap'])) {
@@ -181,6 +182,7 @@
             echo '<input type="submit" class="Botonesinput" name="btnCursoCap" value="Aprobar"></input>';
             echo '<input type="submit" class="button" name="btnCursoCap" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesCursosCap" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
+            $algunDocumentoPresente = true;
         }
         
         if ($filaCertificaciones['rutaCertificaciones']!='Aprobado owo'&&!empty($filaCertificaciones['rutaCertificaciones'])) {
@@ -196,6 +198,7 @@
             echo '<input type="submit" class="Botonesinput" name="btnCertificaciones" value="Aprobar"></input>';
             echo '<input type="submit" class="button" name="btnCertificaciones" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesCertificaciones" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
+            $algunDocumentoPresente = true;
         }
         
         if ($filaDilomados['rutaDiplomados']!='Aprobado owo'&&!empty($filaDilomados['rutaDiplomados'])) {
@@ -211,6 +214,7 @@
             echo '<input type="submit" class="Botonesinput" name="btnDiplomados value="Aprobar"></input>';
             echo '<input type="submit" class="button" name="btnDiplomados" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesDiplomados" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
+            $algunDocumentoPresente = true;
         }
         
         if ($filaCursosST['rutaCursosST']!='Aprobado owo'&&!empty($filaCursosST['rutaCursosST'])) {
@@ -226,6 +230,7 @@
             echo '<input type="submit" class="Botonesinput" name="btnCursosST" value="Aprobar"></input>';
             echo '<input type="submit" class="button" name="btnCursosST" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesCursosST" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
+            $algunDocumentoPresente = true;
         }
         
         if ($filaCursos['rutaCursos']!='Aprobado owo'&&!empty($filaCursos['rutaCursos'])) {
@@ -238,6 +243,7 @@
             echo '<input type="submit" class="Botonesinput" name="btnCursos" value="Aprobar"></input>';
             echo '<input type="submit" class="button" name="btnCursos" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesCursos" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
+            $algunDocumentoPresente = true;
         }
         
         if ($filaInstructorDip['rutaInstructorDip']!='Aprobado owo'&&!empty($filaInstructorDip['rutaInstructorDip'])) {
@@ -253,6 +259,7 @@
             echo '<input type="submit" class="Botonesinput" name="btnInstructorDip" value="Aprobar"></input>';
             echo '<input type="submit" class="button" name="btnInstructorDip" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesInstructorDip" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
+            $algunDocumentoPresente = true;
         }
         
         if ($filaInstructorCer['rutaInstructorCer']!='Aprobado owo'&&!empty($filaInstructorCer['rutaInstructorCer'])) {
@@ -268,6 +275,7 @@
             echo '<input type="submit" class="Botonesinput" name="btnInstructorCer" value="Aprobar"></input>';
             echo '<input type="submit" class="button" name="btnInstructorCer" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesInstructorCer" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
+            $algunDocumentoPresente = true;
         }
         
         if ($filaAsesorRes['rutaAsesorRes']!='Aprobado owo'&&!empty($filaAsesorRes['rutaAsesorRes'])) {
@@ -280,6 +288,7 @@
             echo '<input type="submit" class="Botonesinput" name="btnAsesorRes" value="Aprobar"></input>';
             echo '<input type="submit" class="button" name="btnAsesorRes" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesAsesorRes" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
+            $algunDocumentoPresente = true;
         }
         
         if ($filaAsesorTit['rutaAsesorTit']!='Aprobado owo'&&!empty($filaAsesorTit['rutaAsesorTit'])) {
@@ -292,6 +301,7 @@
             echo '<input type="submit" class="Botonesinput" name="btnAsesorTit" value="Aprobar"></input>';
             echo '<input type="submit" class="button" name="btnAsesorTit" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesAsesorTit" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
+            $algunDocumentoPresente = true;
         }
         
         if ($filaDireccionTesis['rutaDireccionTesis']!='Aprobado owo'&&!empty($filaDireccionTesis['rutaDireccionTesis'])) {
@@ -307,8 +317,13 @@
             echo '<input type="submit" class="Botonesinput" name="btnDireccionTesis" value="Aprobar"></input>';
             echo '<input type="submit" class="button" name="btnDireccionTesis" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesDireccionTesis" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
+            $algunDocumentoPresente = true;
         }
         echo '<br><br><br>';
+        if($algunDocumentoPresente==false)
+        {
+            echo '<div>No hay documentos a evaluar (:</div>';
+        }
     }
     extraer();
         ?>
@@ -320,13 +335,9 @@
         <br><br>
 </body>
 <script>
-    // Función para mostrar la alerta
-    function mostrarAlerta() {
-        var alerta = document.getElementById('alerta');
-        alerta.style.display = 'block';
-    }
-    setTimeout(function() {
-        alerta.style.display = 'none';
-    }, 3000);
+    mostrarAlerta.addEventListener("submit", function() { 
+            // Muestra un mensaje en la página 
+            alert("Operación realizada con éxito"); 
+        }); 
 </script>
 </html>
