@@ -19,10 +19,17 @@
 
     <form class="formuwu" action="procesar_form_us.php" method="post">
         <input type="text" name="usuario" id="usuario" required value="<?php echo isset($usuario) ? $usuario : ''; ?>">
-        <h2 class="espacio-abajo">Certificado de grado de estudios</h2>
+        <h2>Certificado de grado de estudios</h2>
+            <label class="tiritas" for="grado_estudios1">grado de estudios:</label>
+            <select name="grado_estudios1" id="grado_estudios1">
+                <option value="Doctorado" selected>Doctorado</option>
+                <option value="Mestria">Maestria</option>
+                <option value="Licenciatura">Licenciatura</option>
+            </select>
+            <br>
             <!-- Campo para ingresar el enlace -->
-            <label class="tiritas" for="grado_estudio">Enlace:</label>
-            <input class="espacio-derecha" type="text" name="grado_estudios" id="grado_estudio" required>
+            <label class="tiritas" for="grado_estudios">Enlace:</label>
+            <input class="espacio-derecha" type="text" name="grado_estudios" id="grado_estudios" required>
             <!-- Campo para ver el estatus -->
             <label class="tiritas" for="estatus_grado_estudios">Estatus:</label>
             <input class="estatus" type="text" name="estatus_grado_estudios" id="estatus_grado_estudios" readonly value="">
@@ -31,7 +38,10 @@
             <textarea class="textareaowo" id="observaciones_grado_estudios" readonly></textarea>
             <br><br><br>
 
-        <h2 class="espacio-abajo">Comprobante de años de antiguedad</h2>
+        <h2>Comprobante de años de antiguedad</h2>
+            <label class="tiritas" for="antiguedad1">Años de antiguedad:</label>
+            <input class="espacio-derecha" type="text" name="antiguedad1" id="antiguedad1" required>
+            <br>
             <!-- Campo para ingresar el enlace -->
             <label class="tiritas" for="antiguedad">Enlace:</label>
             <input class="espacio-derecha" type="text" name="antiguedad" id="antiguedad" required>
@@ -43,7 +53,10 @@
             <textarea class="textareaowo" id="observaciones_antguedad" readonly></textarea>
             <br><br><br>
 
-        <h2 class="espacio-abajo">Comprobante de Horas de cursos de capacitación impartidas</h2>
+        <h2>Comprobante de Horas de cursos de capacitación impartidas</h2>
+            <label class="tiritas" for="cursosCap1">Horas impartidas:</label>
+            <input class="espacio-derecha" type="text" name="cursosCap1" id="cursosCap1" required>
+            <br>
             <!-- Campo para ingresar el enlace -->
             <label class="tiritas" for="cursosCap">Enlace:</label>
             <input class="espacio-derecha" type="text" name="cursosCap" id="cursosCap" required>
@@ -92,7 +105,10 @@
             <textarea class="textareaowo" id="observaciones_cursosST" readonly></textarea>
             <br><br><br>
 
-        <h2 class="espacio-abajo">Comprobande de Horas impartidas de cursos</h2>
+        <h2>Comprobande de Horas impartidas de cursos</h2>
+            <label class="tiritas" for="cursos1">Horas impartidas:</label>
+            <input class="espacio-derecha" type="text" name="cursos1" id="cursos1" required>
+            <br>
             <!-- Campo para ingresar el enlace -->
             <label class="tiritas" for="cursos">Enlace:</label>
             <input class="espacio-derecha" type="text" name="cursos" id="cursos" required>
@@ -128,7 +144,10 @@
             <textarea class="textareaowo" id="observaciones_instructorCer" readonly></textarea>
             <br><br><br>
 
-        <h2 class="espacio-abajo">Comprobante de No. de veces que ha sido asesor de residencias</h2>
+        <h2>Comprobante de No. de veces que ha sido asesor de residencias</h2>
+            <label class="tiritas" for="asesorRes1">Numero de veces:</label>
+            <input class="espacio-derecha" type="text" name="asesorRes1" id="asesorRes1" required>
+            <br>
             <!-- Campo para ingresar el enlace de asesor de residencias -->
             <label class="tiritas" for="asesorRes">Enlace:</label>
             <input class="espacio-derecha" type="text" name="asesorRes" id="asesorRes" required>
@@ -140,7 +159,10 @@
             <textarea class="textareaowo" id="observaciones" readonly></textarea>
             <br><br><br>
         
-        <h2 class="espacio-abajo">Comprobante de No. de veces que ha sido asesor de titulación</h2>
+        <h2>Comprobante de No. de veces que ha sido asesor de titulación</h2>
+            <label class="tiritas" for="asesorTit1">Numero de veces:</label>
+            <input class="espacio-derecha" type="text" name="asesorTit1" id="asesorTit1" required>
+            <br>
             <!-- Campo para ingresar el enlace de asesor de titulación -->
             <label class="tiritas" for="asesorTit">Enlace:</label>
             <input class="espacio-derecha" type="text" name="asesorTit" id="asesorTit" required>
