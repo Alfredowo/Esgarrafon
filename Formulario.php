@@ -159,7 +159,8 @@
             $filaDireccionTesis = $ConsultarutaDireccionTesis->fetch_assoc();
             $conn->close();
 
-            if ($filaGrado['rutaGrado']!='Aprobado owo'&&$filaGrado['rutaGrado']!='Rechazado umu'&&!empty($filaGrado['rutaGrado'])) {
+            if ($filaGrado['rutaGrado']!='Aprobado owo'&&$filaGrado['rutaGrado']!='Rechazado umu'
+            &&!empty($filaGrado['rutaGrado'])&&$filaGrado['rutaGrado']!='En espera') {
                 echo '<label>Grado de estudio: </label>';
                 echo '<a href="'.$filaGrado['rutaGrado'].'" target="_blank" class="btn">Verificar</a><br>';
                 echo '<label>Aprobar como: </label><br>';
@@ -171,7 +172,8 @@
                 echo '<textarea name="observacionesGrado" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
             }
             
-            if ($filaAntiguedad['rutaAntiguedad']!='Aprobado owo'&&$filaAntiguedad['rutaAntiguedad']!='Rechazado umu'&&!empty($filaAntiguedad['rutaAntiguedad'])) {
+            if ($filaAntiguedad['rutaAntiguedad']!='Aprobado owo'&&$filaAntiguedad['rutaAntiguedad']!='Rechazado umu'&&
+            !empty($filaAntiguedad['rutaAntiguedad'])&&$filaAntiguedad['rutaAntiguedad']!='En espera') {
                 echo '<label>Años de antigüedad: </label>';
                 echo '<a href="'.$filaAntiguedad['rutaAntiguedad'].'" target="_blank" class="btn">';
                 echo 'Verificar';
@@ -183,7 +185,8 @@
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaCursosCap['rutaCursoCap']!='Aprobado owo'&&$filaCursosCap['rutaCursoCap']!='Rechazado umu'&&!empty($filaCursosCap['rutaCursoCap'])) {
+            if ($filaCursosCap['rutaCursoCap']!='Aprobado owo'&&$filaCursosCap['rutaCursoCap']!='Rechazado umu'&&
+            !empty($filaCursosCap['rutaCursoCap'])&&$filaCursosCap['rutaCursoCap']!='En espera') {
                 echo '<label>Horas de cursos de capacitación impartidas:</label>';
                 echo '<a href="'.$filaCursosCap['rutaCursoCap'].'" target="_blank" class="btn">';
                 echo 'Verificar';
@@ -196,7 +199,9 @@
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaCertificaciones['rutaCertificaciones']!='Aprobado owo'&&$filaCertificaciones['rutaCertificaciones']!='Rechazado umu'&&!empty($filaCertificaciones['rutaCertificaciones'])) {
+            if ($filaCertificaciones['rutaCertificaciones']!='Aprobado owo'&&
+            $filaCertificaciones['rutaCertificaciones']!='Rechazado umu'&&
+            !empty($filaCertificaciones['rutaCertificaciones'])&&$filaCertificaciones['rutaCertificaciones']!='En espera') {
                 echo '<label for="certificaciones">Cuenta con certificaciones:</label>';
                 //<!-- 20pts si sí -->'
                 echo '<a href="'.$filaCertificaciones['rutaCertificaciones'].'" target="_blank" class="btn">';
@@ -212,7 +217,8 @@
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaDilomados['rutaDiplomados']!='Aprobado owo'&&$filaDilomados['rutaDiplomados']!='Rechazado umu'&&!empty($filaDilomados['rutaDiplomados'])) {
+            if ($filaDilomados['rutaDiplomados']!='Aprobado owo'&&$filaDilomados['rutaDiplomados']!='Rechazado umu'
+            &&!empty($filaDilomados['rutaDiplomados'])&&$filaDilomados['rutaDiplomados']!='En espera') {
                 echo '<label for="diplomados">Cuenta con diplomados:</label>';
                 echo '<a href="'.$filaDilomados['rutaDiplomados'].'" target="_blank" class="btn">';
                 echo 'Verificar';
@@ -228,7 +234,8 @@
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaCursosST['rutaCursosST']!='Aprobado owo'&&$filaCursosST['rutaCursosST']!='Rechazado umu'&&!empty($filaCursosST['rutaCursosST'])) {
+            if ($filaCursosST['rutaCursosST']!='Aprobado owo'&&$filaCursosST['rutaCursosST']!='Rechazado umu'
+            &&!empty($filaCursosST['rutaCursosST'])&&$filaCursosST['rutaCursosST']!='En espera') {
                 echo '<label for="cursosST">Cuenta con cursos de ST:</label>';
                 echo '<a href="'.$filaCursosST['rutaCursosST'].'" target="_blank" class="btn">';
                 echo 'Verificar';
@@ -244,7 +251,8 @@
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaCursos['rutaCursos']!='Aprobado owo'&&$filaCursos['rutaCursos']!='Rechazado umu'&&!empty($filaCursos['rutaCursos'])) {
+            if ($filaCursos['rutaCursos']!='Aprobado owo'&&$filaCursos['rutaCursos']!='Rechazado umu'
+            &&!empty($filaCursos['rutaCursos'])&&$filaCursos['rutaCursos']!='En espera') {
                 echo '<label for="cursos">Horas impartidas de cursos:</label>';
                 echo '<a href="'.$filaCursos['rutaCursos'].'" target="_blank" class="btn">';
                 echo 'Verificar';
@@ -257,7 +265,9 @@
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaInstructorDip['rutaInstructorDip']!='Aprobado owo'&&$filaInstructorDip['rutaInstructorDip']!='Rechazado umu'&&!empty($filaInstructorDip['rutaInstructorDip'])) {
+            if ($filaInstructorDip['rutaInstructorDip']!='Aprobado owo'
+            &&$filaInstructorDip['rutaInstructorDip']!='Rechazado umu'
+            &&!empty($filaInstructorDip['rutaInstructorDip'])&&$filaInstructorDip['rutaInstructorDip']!='En espera') {
                 echo '<label for="instructorDip">Ha sido instructor de diplomados:</label>';
                 echo '<a href="'.$filaInstructorDip['rutaInstructorDip'].'" target="_blank" class="btn">';
                 echo 'Verificar';
@@ -273,7 +283,9 @@
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaInstructorCer['rutaInstructorCer']!='Aprobado owo'&&$filaInstructorCer['rutaInstructorCer']!='Rechazado umu'&&!empty($filaInstructorCer['rutaInstructorCer'])) {
+            if ($filaInstructorCer['rutaInstructorCer']!='Aprobado owo'
+            &&$filaInstructorCer['rutaInstructorCer']!='Rechazado umu'
+            &&!empty($filaInstructorCer['rutaInstructorCer'])&&$filaInstructorCer['rutaInstructorCer']!='En espera') {
                 echo '<label for="instructorCer">Ha sido instructor de certificaciones:</label>';
                 echo '<a href="'.$filaInstructorCer['rutaInstructorCer'].'" target="_blank" class="btn">';
                 echo 'Verificar';
@@ -289,7 +301,8 @@
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaAsesorRes['rutaAsesorRes']!='Aprobado owo'&&$filaAsesorRes['rutaAsesorRes']!='Rechazado umu'&&!empty($filaAsesorRes['rutaAsesorRes'])) {
+            if ($filaAsesorRes['rutaAsesorRes']!='Aprobado owo'&&$filaAsesorRes['rutaAsesorRes']!='Rechazado umu'
+            &&!empty($filaAsesorRes['rutaAsesorRes'])&&$filaAsesorRes['rutaAsesorRes']!='En espera') {
                 echo '<label for="asesorRes">No. de veces que ha sido asesor de residencias:</label>';
                 echo '<a href="'.$filaAsesorRes['rutaAsesorRes'].'" target="_blank" class="btn">';
                 echo 'Verificar';
@@ -302,7 +315,8 @@
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaAsesorTit['rutaAsesorTit']!='Aprobado owo'&&$filaAsesorTit['rutaAsesorTit']!='Rechazado umu'&&!empty($filaAsesorTit['rutaAsesorTit'])) {
+            if ($filaAsesorTit['rutaAsesorTit']!='Aprobado owo'&&$filaAsesorTit['rutaAsesorTit']!='Rechazado umu'
+            &&!empty($filaAsesorTit['rutaAsesorTit'])&&$filaAsesorTit['rutaAsesorTit']!='En espera') {
                 echo '<label for="asesorTit">No. de veces que ha sido asesor de titulación:</label>';
                 echo '<a href="'.$filaAsesorTit['rutaAsesorTit'].'" target="_blank" class="btn">';
                 echo 'Verificar';
@@ -315,7 +329,9 @@
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaDireccionTesis['rutaDireccionTesis']!='Aprobado owo'&&$filaDireccionTesis['rutaDireccionTesis']!='Rechazado umu'&&!empty($filaDireccionTesis['rutaDireccionTesis'])) {
+            if ($filaDireccionTesis['rutaDireccionTesis']!='Aprobado owo'
+            &&$filaDireccionTesis['rutaDireccionTesis']!='Rechazado umu'
+            &&!empty($filaDireccionTesis['rutaDireccionTesis'])&&$filaDireccionTesis['rutaDireccionTesis']!='En espera') {
                 echo '<label for="direccionTesis">Ha hecho alguna dirección de tesis:</label>';
                 echo '<a href="'.$filaDireccionTesis['rutaDireccionTesis'].'" target="_blank" class="btn">';
                 echo 'Verificar';
