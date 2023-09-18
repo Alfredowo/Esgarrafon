@@ -7,7 +7,7 @@ $usuario = $_POST['usuario'];
 $password = $_POST['contrasena'];
 
 // Validar usuario y contraseña en la base de datos
-$query = "SELECT * FROM Login WHERE Usuario = '$usuario' AND Contrasena = '$password'";
+$query = "SELECT * FROM Login WHERE Usuario = '$usuario' AND Contrasena = '$password' AND Permisos = 'admin'";
 $result = mysqli_query($conn, $query);
 
 if (!$result) {

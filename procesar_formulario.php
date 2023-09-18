@@ -1,7 +1,7 @@
 <?php
 
 // Conectar a la base de datos (debes configurar la conexión)
-//require("conexion.php");
+require("conexion.php");
 session_start();
 require("conexion.php");
 

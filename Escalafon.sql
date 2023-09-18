@@ -1,6 +1,7 @@
 DROP DATABASE if EXISTS Escalafon;
 CREATE DATABASE Escalafon;
 USE Escalafon;
+
 DROP TABLE if EXISTS Login;
 CREATE TABLE Login (
    Id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -9,13 +10,13 @@ CREATE TABLE Login (
    Permisos enum('admin','empleado')
 );  
 
-
 INSERT INTO Login VALUES (NULL, 'Alfre', '123',1);
 INSERT INTO Login VALUES (NULL, 'Nya', '123',1);
 INSERT INTO Login VALUES (NULL, 'Leo', '123',1);
 insert into Login values (null,'usuario','123',2);
 
 SELECT * FROM Login WHERE Usuario = 'Alfre' AND Contrasena = '123';
+
 DROP TABLE if EXISTS Empleados;
 CREATE TABLE Empleados(
    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -68,7 +69,8 @@ create table observaciones(
    OvAsesorRes varchar(200),
    OvAsesorTit varchar(200),
    OvDireccionTesis varchar(200),
-   FOREIGN key(fkEmpleado) REFERENCES Empleados(id));
+   FOREIGN key(fkEmpleado) REFERENCES Empleados(id)
+);
 
 DROP TABLE if EXISTS Puntaje;
 CREATE TABLE Puntaje(
