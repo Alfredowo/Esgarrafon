@@ -2,12 +2,11 @@
 
 // Conectar a la base de datos (debes configurar la conexión)
 require("conexion.php");
-session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Obtener datos del formulario
-$id = $_POST['empleado'];
-$grado_estudio = $_POST['grado_estudio'];
+$usuario = $_POST['usuario'];
+$grado_estudio = $_POST['grado'];
 $antiguedad = $_POST['antiguedad'];
 //$cursos = isset($_POST['cursos']) ? $_POST['cursos'] : [];
 $cursosCap = $_POST['cursosCap'];
@@ -24,19 +23,27 @@ $direccionTesis = $_POST["direccionTesis"];
     echo "fatal error, borra system32 y reinicia tu pc";
 }
 
-// Guardar la información en la base de datos
-echo "la id es: $id";
-$nombre = mysqli_query($conn, "SELECT Nombre FROM Empleados WHERE id = $id");
-echo "el nombre es: $nombre";
+echo "variables: $usuario, $grado_estudio, $antiguedad, $cursosCap, $certificaciones, $diplomados, 
+$cursosST, $cursosImpartidos, $instructorDiplomados, $instructorCertificaciones, $asesorResidencias, 
+$asesorTitulacion, $direccionTesis";
 
-if($id>0) { //actualizar registro
-    echo "si se encuentra la id, actualizar";
-    $query = "CALL insertarEmpleados($id, '$nombre', '$grado_estudio', $antiguedad, $cursosCap, 
-    $certificaciones, $diplomados, $cursosST, $cursosImpartidos, $instructorDiplomados, 
-    $instructorCertificaciones, $asesorResidencias, $asesorTitulacion, $direccionTesis)";
-} else { //agregar nuevo, (no deberia de pasar)
-    echo "no se encuentra la id, crear registro nuevo";
-    $query = "CALL insertarEmpleados(-1, '$id', '$grado_estudio', $antiguedad, $cursos, $certificaciones, 
+// Guardar la información en la base de datos
+echo "el nombre de usuario es: $usuario ";
+$resultado= mysqli_query($conn, "SELECT Id FROM Empleados WHERE Usuario = '$usuario'");
+if ($resultado) {
+    $fila = mysqli_fetch_assoc($resultado);
+    if ($fila) {
+        $id = $fila['Id'];
+        echo "El id es: $id"; //actualizar registro
+        $query = "CALL insertarEmpleados($id, '$usuario', '$grado_estudio', $antiguedad, $cursosCap, 
+        $certificaciones, $diplomados, $cursosST, $cursosImpartidos, $instructorDiplomados, 
+        $instructorCertificaciones, $asesorResidencias, $asesorTitulacion, $direccionTesis)";
+    } else {
+        echo "No se encontró un Id para el usuario: $usuario"; 
+    }
+} else {//agregar nuevo
+    echo "Agregar usuario: ";
+    $query = "CALL insertarEmpleados(-1, '$usuario', '$grado_estudio', $antiguedad, $cursosCap, $certificaciones, 
     $diplomados, $cursosST, $cursosImpartidos, $instructorDiplomados, $instructorCertificaciones, 
     $asesorResidencias, $asesorTitulacion, $direccionTesis)";
 }
@@ -49,7 +56,7 @@ if ($result) {
     //exit;
     echo "todo bien uwu";
 } else {
-    echo "Error al guardar los datos en la base de datos.";
+    echo "Error al guardar los datos en la base de datos. $result";
 }
 mysqli_close($conn);
 ?>

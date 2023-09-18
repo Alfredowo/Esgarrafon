@@ -17,13 +17,23 @@
 </style>
 </head>
 <body>
+
+    <?php
+    session_start(); // Asegúrate de iniciar la sesión en la parte superior del archivo
+
+    if (isset($_SESSION['usuario'])) {
+        $usuario = $_SESSION['usuario'];
+    }
+    ?>
+
     <h1>Subir Documentos</h1>
 
-    <form action="procesar_formulario.php" method="post">
+    <form action="procesar_form_us.php" method="post">
+        <input type="text" name="usuario" id="usuario" required value="<?php echo isset($usuario) ? $usuario : ''; ?>">
         <h2 class="espacio-abajo">Certificado de grado de estudios</h2>
             <!-- Campo para ingresar el enlace -->
-            <label for="grado_estudio">Enlace:</label>
-            <input class="espacio-derecha" type="text" name="grado_estudios" id="grado_estudio" required>
+            <label for="grado">Enlace:</label>
+            <input class="espacio-derecha" type="text" name="grado" id="grado" required>
             <!-- Campo para ver el estatus -->
             <label for="estatus_grado_estudios">Estatus:</label>
             <input class="estatus" type="text" name="estatus_grado_estudios" id="estatus_grado_estudios" readonly value="">
@@ -168,7 +178,6 @@
         <!-- Botón para enviar los enlaces -->
         <input type="submit" value="Enviar comprobantes" class="espacio-derecha">
     </form>
-
 
 </body>
 </html>
