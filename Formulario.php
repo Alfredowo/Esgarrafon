@@ -72,6 +72,17 @@
     .button:hover{
         background-color: #C64040;
     }
+    .botonregresar {
+        font-family: Verdana,Geneva,Tahoma,sans-serif;
+        color: #c4c3ca;
+        cursor: pointer;
+        background-color: #13141D;
+        border: none;
+        padding: 10px 20px; /* Ajusta el padding según tu preferencia */
+    }
+    .botonregresar:hover{
+        background-color: #4CA289 ;
+    }
     form{
         color: #c4c3ca;
         background-color: #1f2029;
@@ -158,7 +169,7 @@
             echo '<input type="submit" class="Botonesinput" name="btnGrado" value="Aprobar"></input>';
             echo '<input type="submit"  class="button" name="btnGrado" value="Rechazar"></input><br><br>';
             echo '<textarea name="observacionesGrado" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
-        }
+       // }
         
         if ($filaAntiguedad['rutaAntiguedad']!='Aprobado owo'&&!empty($filaAntiguedad['rutaAntiguedad'])) {
             echo '<label>Años de antigüedad: </label>';
@@ -329,8 +340,8 @@
         ?>
         </form>
         <form action="seleccionarEmpleado.php">
-            <center><input type="submit" value="Regresar"></center>
-            <a style="position:absolute; right:20px;" value="Mirar puntajes" href="Resultados.php" class="button" target="_blank">Mirar Puntujes</a>
+            <center><input class="botonregresar" type="submit" value="Regresar"></center>
+            <a style="position:absolute; right:20px;" value="Mirar puntajes" href="Resultados.php" class="botonregresar" target="_blank">Mirar Puntujes</a>
         </form>
         <br><br>
 </body>
