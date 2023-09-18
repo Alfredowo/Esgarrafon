@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seleccionar empleado</title>
+    <link rel="stylesheet" href="style.css">
     <?php
     require("conexion.php");
     $consulta = "select id, Nombre from Empleados";
     $resultado=$conn->query($consulta);
     ?>
 </head>
-<body>
-<h2>Seleccionar empleado:</h2>
+<body class="fondouwu">
+<h2 class="titulos">Seleccionar empleado:</h2>
+<div class="divwaos">
     <form action="Formulario.php" method="post">
-        <select name="empleado" id="empleado" onchange="extraerId()">
+        <select class="selectorewe" name="empleado" id="empleado" onchange="extraerId()">
             <?php
             if (!$resultado) {
                 die("Error en la consulta: " . $conn->error);
@@ -23,9 +25,10 @@
             }
             ?>
         </select><br><br>
-        <center><input type="submit" value="Evaluar"></center>
+        <center><input class="botonowo" type="submit" value="Evaluar"></center>
         <br><br>
     </form>
+</div>
 </body>
 </body>
 </html>
