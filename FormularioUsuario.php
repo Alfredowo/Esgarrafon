@@ -8,36 +8,71 @@
 <body class="fondouwu2">
 
     <?php
-    session_start(); // Asegúrate de iniciar la sesión en la parte superior del archivo
+    require("conexion.php"); // Asegúrate de iniciar la sesión en la parte superior del archivo
 
     if (isset($_SESSION['usuario'])) {
         $usuario = $_SESSION['usuario'];
     }
+
+    // Consulta SQL para obtener la id
+    $query = "SELECT id FROM empleados WHERE Nombre = '$usuario'";
+    $result1 = $conn->query($query);
+    if ($result1->num_rows > 0) {
+        $row1 = $result1->fetch_assoc();
+        $estatus1 = $row1["id"];
+    } else {
+        $estatus1 = "No se encontraron resultados";
+    }
+
+    // Consulta SQL para obtener el estatus
+    $sql = "SELECT rutaGrado FROM empleados WHERE Nombre = '$usuario'";
+
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $estatus = $row["rutaGrado"];
+    } else {
+        $estatus = "No se encontraron resultados";
+    }
+
+    // Consulta SQL para obtener las observaciones
+    $sql2 = "SELECT OvGrado FROM observaciones WHERE fkEmpleado = '$estatus1'";
+    $result2 = $conn->query($sql2);
+    if ($result2->num_rows > 0) {
+        $row2 = $result2->fetch_assoc();
+        $estatus2 = $row2["OvGrado"];
+    } else {
+        $estatus2 = "No se encontraron resultados";
+    }
+
     ?>
 
     <h1 class="titulos">Subir Documentos</h1>
-    <input type="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
+    <!--
+    <input type="" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
+    <input type="" name="query" id="usuario" value="<?php echo $sql; ?>"> 
+    <input type="" name="id" id="usuario" value="<?php echo $estatus1; ?>">
+    <input type="" name="id" id="usuario" value="<?php echo $estatus2; ?>">-->
 
     <!-- Formulario para Certificado de grado de estudios -->
     <form class="formuwu" action="procesar_form_us.php" method="post">
-        <input type="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
         <h2>Certificado de grado de estudios</h2>
         <!-- Campo para ingresar el enlace -->
         <label class="tiritas" for="grado_estudios">Enlace:</label>
         <input class="espacio-derecha" type="text" name="grado_estudios" id="grado_estudios" required>
         <!-- Campo para ver el estatus -->
         <label class="tiritas" for="estatus_grado_estudios">Estatus:</label>
-        <input class="estatus" type="text" name="estatus_grado_estudios" id="estatus_grado_estudios" readonly value="">
+        <input class="estatus" type="text" name="estatus_grado_estudios" id="estatus_grado_estudios" readonly value="<?php echo $estatus; ?>">
         <!-- Cuadro de texto de observaciones -->
         <label class="tiritas" for="observaciones_grado_estudios">Observaciones:</label>
-        <textarea class="textareaowo" id="observaciones_grado_estudios" readonly></textarea>
+        <input type="" name="id" id="usuario" readonly value="<?php echo $estatus2; ?>">
         <br><br><br>
         <input type="submit" name="enviar_certificado" value="Enviar certificado">
     </form>
 
     <!-- Formulario para Comprobantes de años de antigüedad -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
-    <input type="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de años de antigüedad</h2>
     <!-- Campo para ingresar el enlace -->
     <label class="tiritas" for="antiguedad">Enlace:</label>
@@ -54,7 +89,6 @@
 
 <!-- Formulario para Comprobante de Horas de cursos de capacitación impartidas -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
-    <input type="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de Horas de cursos de capacitación impartidas</h2>
     <!-- Campo para ingresar el enlace -->
     <label class="tiritas" for="cursosCap">Enlace:</label>
@@ -71,7 +105,6 @@
 
 <!-- Formulario para Comprobante de certificaciones -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
-    <input type="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de certificaciones</h2>
     <!-- Campo para ingresar el enlace -->
     <label class="tiritas" for="certificaciones">Enlace:</label>
@@ -88,7 +121,6 @@
 
 <!-- Formulario para Comprobante de diplomados -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
-    <input type="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de diplomados</h2>
     <!-- Campo para ingresar el enlace -->
     <label class="tiritas" for="diplomados">Enlace:</label>
@@ -105,7 +137,6 @@
 
 <!-- Formulario para Comprobante de cursos -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
-    <input type="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de cursos</h2>
     <!-- Campo para ingresar el enlace -->
     <label class="tiritas" for="cursos">Enlace:</label>
@@ -122,7 +153,6 @@
 
 <!-- Formulario para Comprobante de cursos -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
-    <input type="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de cursos ST</h2>
     <!-- Campo para ingresar el enlace -->
     <label class="tiritas" for="cursosST">Enlace:</label>
@@ -139,7 +169,6 @@
 
 <!-- Formulario para Comprobante de instructor de diplomados -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
-    <input type="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de instructor de diplomados</h2>
     <!-- Campo para ingresar el enlace -->
     <label class="tiritas" for="instructorDip">Enlace:</label>
@@ -156,7 +185,6 @@
 
 <!-- Formulario para Comprobante de instructor de certificaciones -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
-    <input type="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de instructor de certificaciones</h2>
     <!-- Campo para ingresar el enlace -->
     <label class="tiritas" for="instructorCer">Enlace:</label>
@@ -173,7 +201,6 @@
 
 <!-- Formulario para Comprobante de asesor de residencias -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
-    <input type="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de asesor de residencias</h2>
     <!-- Campo para ingresar el enlace de asesor de residencias -->
     <label class="tiritas" for="asesorRes">Enlace:</label>
@@ -190,7 +217,6 @@
 
 <!-- Formulario para Comprobante de asesor de titulación -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
-    <input type="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de asesor de titulación</h2>
         <!-- Campo para ingresar el enlace de asesor de titulación -->
         <label class="tiritas" for="asesorTit">Enlace:</label>
@@ -207,7 +233,6 @@
 
 <!-- Formulario para Comprobante de dirección de tesis -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
-    <input type="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de dirección de tesis</h2>
     <!-- Campo para ingresar el enlace de dirección de tesis -->
     <label class="tiritas" for="direccionTesis">Enlace:</label>
@@ -221,12 +246,6 @@
     <br><br><br>
     <input type="submit" name="enviar_direccionTesis" value="Enviar comprobante de dirección de tesis">
 </form>
-
-
-
-
-
-
 
 
 </body>
