@@ -112,13 +112,12 @@
     <form action="procesar_formulario.php" method="post" id="mostrarAlerta">
         <?php
         function extraer(){
-            session_start();
+            require("conexion.php");
             if (isset($_SESSION['id'])) {
                 $id = $_SESSION['id'];
             } else {
                 $id=$_POST['empleado'];
             }
-            require("conexion.php");
             $algunDocumentoPresente=false;
             echo '<input type="text" name="id" value="'.$id.'" style="display: none"></input>';
     
@@ -159,7 +158,8 @@
             $filaDireccionTesis = $ConsultarutaDireccionTesis->fetch_assoc();
             $conn->close();
 
-            if ($filaGrado['rutaGrado']!='Aprobado owo'&&$filaGrado['rutaGrado']!='Rechazado umu'&&!empty($filaGrado['rutaGrado'])) {
+            if ($filaGrado['rutaGrado']!='Aprobado owo'&&$filaGrado['rutaGrado']!='Rechazado umu'
+            &&!empty($filaGrado['rutaGrado'])&&$filaGrado['rutaGrado']!='En espera') {
                 echo '<label>Grado de estudio: </label>';
                 echo '<a href="'.$filaGrado['rutaGrado'].'" target="_blank" class="btn">Verificar</a><br>';
                 echo '<label>Aprobar como: </label><br>';
@@ -171,160 +171,175 @@
                 echo '<textarea name="observacionesGrado" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
             }
             
-            if ($filaAntiguedad['rutaAntiguedad']!='Aprobado owo'&&$filaAntiguedad['rutaAntiguedad']!='Rechazado umu'&&!empty($filaAntiguedad['rutaAntiguedad'])) {
+            if ($filaAntiguedad['rutaAntiguedad']!='Aprobado owo'&&$filaAntiguedad['rutaAntiguedad']!='Rechazado umu'&&
+            !empty($filaAntiguedad['rutaAntiguedad'])&&$filaAntiguedad['rutaAntiguedad']!='En espera') {
                 echo '<label>Años de antigüedad: </label>';
                 echo '<a href="'.$filaAntiguedad['rutaAntiguedad'].'" target="_blank" class="btn">';
                 echo 'Verificar';
                 echo '</a><br>';
-                echo '<input type="number" id="antiguedad" name="antiguedad" required>';
+                echo '<input type="number" id="antiguedad" name="antiguedad">';
                 echo '<input type="submit" class="Botonesinput" name="btnAntiguedad" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" class="Botonesinput" name="btnAntiguedad" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesAntiguedad" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';    
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaCursosCap['rutaCursoCap']!='Aprobado owo'&&$filaCursosCap['rutaCursoCap']!='Rechazado umu'&&!empty($filaCursosCap['rutaCursoCap'])) {
+            if ($filaCursosCap['rutaCursoCap']!='Aprobado owo'&&$filaCursosCap['rutaCursoCap']!='Rechazado umu'&&
+            !empty($filaCursosCap['rutaCursoCap'])&&$filaCursosCap['rutaCursoCap']!='En espera') {
                 echo '<label>Horas de cursos de capacitación impartidas:</label>';
                 echo '<a href="'.$filaCursosCap['rutaCursoCap'].'" target="_blank" class="btn">';
                 echo 'Verificar';
                 echo '</a><br>';
                 //Si es >= 30hrs 2pts y <30hrs 1pt
-                echo '<input type="number" id="cursosCap" name="cursosCap" required>';
+                echo '<input type="number" id="cursoCap" name="cursoCap">';
                 echo '<input type="submit" class="Botonesinput" name="btnCursoCap" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnCursoCap" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesCursosCap" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaCertificaciones['rutaCertificaciones']!='Aprobado owo'&&$filaCertificaciones['rutaCertificaciones']!='Rechazado umu'&&!empty($filaCertificaciones['rutaCertificaciones'])) {
+            if ($filaCertificaciones['rutaCertificaciones']!='Aprobado owo'&&
+            $filaCertificaciones['rutaCertificaciones']!='Rechazado umu'&&
+            !empty($filaCertificaciones['rutaCertificaciones'])&&$filaCertificaciones['rutaCertificaciones']!='En espera') {
                 echo '<label for="certificaciones">Cuenta con certificaciones:</label>';
                 //<!-- 20pts si sí -->'
                 echo '<a href="'.$filaCertificaciones['rutaCertificaciones'].'" target="_blank" class="btn">';
                 echo 'Verificar';
                 echo '</a><br>';
-                echo '<select name="certificaciones" id="certificaciones">';
+                /*echo '<select name="certificaciones" id="certificaciones">';
                 echo '<option value="true">Si</option>';
                 echo '<option value="false">No</option>';
-                echo '</select>';
+                echo '</select>';*/
                 echo '<input type="submit" class="Botonesinput" name="btnCertificaciones" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnCertificaciones" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesCertificaciones" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaDilomados['rutaDiplomados']!='Aprobado owo'&&$filaDilomados['rutaDiplomados']!='Rechazado umu'&&!empty($filaDilomados['rutaDiplomados'])) {
+            if ($filaDilomados['rutaDiplomados']!='Aprobado owo'&&$filaDilomados['rutaDiplomados']!='Rechazado umu'
+            &&!empty($filaDilomados['rutaDiplomados'])&&$filaDilomados['rutaDiplomados']!='En espera') {
                 echo '<label for="diplomados">Cuenta con diplomados:</label>';
                 echo '<a href="'.$filaDilomados['rutaDiplomados'].'" target="_blank" class="btn">';
                 echo 'Verificar';
                 echo '</a><br>';
                 //<!-- si sí 10pts -->
-                echo '<select name="diplomados" id="diplomados">';
+                /*echo '<select name="diplomados" id="diplomados">';
                 echo '<option value="true">Si</option>';
                 echo '<option value="false">No</option>';
-                echo '</select>';
+                echo '</select>';*/
                 echo '<input type="submit" class="Botonesinput" name="btnDiplomados value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnDiplomados" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesDiplomados" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaCursosST['rutaCursosST']!='Aprobado owo'&&$filaCursosST['rutaCursosST']!='Rechazado umu'&&!empty($filaCursosST['rutaCursosST'])) {
+            if ($filaCursosST['rutaCursosST']!='Aprobado owo'&&$filaCursosST['rutaCursosST']!='Rechazado umu'
+            &&!empty($filaCursosST['rutaCursosST'])&&$filaCursosST['rutaCursosST']!='En espera') {
                 echo '<label for="cursosST">Cuenta con cursos de ST:</label>';
                 echo '<a href="'.$filaCursosST['rutaCursosST'].'" target="_blank" class="btn">';
                 echo 'Verificar';
                 echo '</a><br>';
                 //'<!-- si sí 20pts -->';
-                echo '<select name="cursosST" id="cursosST">';
+                /*echo '<select name="cursosST" id="cursosST">';
                 echo '<option value="true">Si</option>';
                 echo '<option value="false">No</option>';
-                echo '</select>';
+                echo '</select>';*/
                 echo '<input type="submit" class="Botonesinput" name="btnCursosST" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnCursosST" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesCursosST" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaCursos['rutaCursos']!='Aprobado owo'&&$filaCursos['rutaCursos']!='Rechazado umu'&&!empty($filaCursos['rutaCursos'])) {
+            if ($filaCursos['rutaCursos']!='Aprobado owo'&&$filaCursos['rutaCursos']!='Rechazado umu'
+            &&!empty($filaCursos['rutaCursos'])&&$filaCursos['rutaCursos']!='En espera') {
                 echo '<label for="cursos">Horas impartidas de cursos:</label>';
                 echo '<a href="'.$filaCursos['rutaCursos'].'" target="_blank" class="btn">';
                 echo 'Verificar';
                 echo '</a><br>';
                 // '<!-- si es >30hrs 15pts si es <30 7pts -->';
-                echo '<input type="number" id="cursos" name="cursos" required>';
+                echo '<input type="number" id="cursos" name="cursos">';
                 echo '<input type="submit" class="Botonesinput" name="btnCursos" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnCursos" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesCursos" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaInstructorDip['rutaInstructorDip']!='Aprobado owo'&&$filaInstructorDip['rutaInstructorDip']!='Rechazado umu'&&!empty($filaInstructorDip['rutaInstructorDip'])) {
+            if ($filaInstructorDip['rutaInstructorDip']!='Aprobado owo'
+            &&$filaInstructorDip['rutaInstructorDip']!='Rechazado umu'
+            &&!empty($filaInstructorDip['rutaInstructorDip'])&&$filaInstructorDip['rutaInstructorDip']!='En espera') {
                 echo '<label for="instructorDip">Ha sido instructor de diplomados:</label>';
                 echo '<a href="'.$filaInstructorDip['rutaInstructorDip'].'" target="_blank" class="btn">';
                 echo 'Verificar';
                 echo '</a><br>';
                 // '<!-- Si sí 20pts-->';
-                echo '<select name="instructorDip" id="instructorDip">';
+                /*echo '<select name="instructorDip" id="instructorDip">';
                 echo '<option value="true">Si</option>';
                 echo '<option value="false">No</option>';
-                echo '</select>';
+                echo '</select>';*/
                 echo '<input type="submit" class="Botonesinput" name="btnInstructorDip" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnInstructorDip" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesInstructorDip" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaInstructorCer['rutaInstructorCer']!='Aprobado owo'&&$filaInstructorCer['rutaInstructorCer']!='Rechazado umu'&&!empty($filaInstructorCer['rutaInstructorCer'])) {
+            if ($filaInstructorCer['rutaInstructorCer']!='Aprobado owo'
+            &&$filaInstructorCer['rutaInstructorCer']!='Rechazado umu'
+            &&!empty($filaInstructorCer['rutaInstructorCer'])&&$filaInstructorCer['rutaInstructorCer']!='En espera') {
                 echo '<label for="instructorCer">Ha sido instructor de certificaciones:</label>';
                 echo '<a href="'.$filaInstructorCer['rutaInstructorCer'].'" target="_blank" class="btn">';
                 echo 'Verificar';
                 echo '</a><br>';
                 // '<!-- Si sí 30pts-->';
-                echo '<select name="instructorCer" id="instructorCer">';
+                /*echo '<select name="instructorCer" id="instructorCer">';
                 echo '<option value="true">Si</option>';
                 echo '<option value="false">No</option>';
-                echo '</select>';
+                echo '</select>';*/
                 echo '<input type="submit" class="Botonesinput" name="btnInstructorCer" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnInstructorCer" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesInstructorCer" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaAsesorRes['rutaAsesorRes']!='Aprobado owo'&&$filaAsesorRes['rutaAsesorRes']!='Rechazado umu'&&!empty($filaAsesorRes['rutaAsesorRes'])) {
+            if ($filaAsesorRes['rutaAsesorRes']!='Aprobado owo'&&$filaAsesorRes['rutaAsesorRes']!='Rechazado umu'
+            &&!empty($filaAsesorRes['rutaAsesorRes'])&&$filaAsesorRes['rutaAsesorRes']!='En espera') {
                 echo '<label for="asesorRes">No. de veces que ha sido asesor de residencias:</label>';
                 echo '<a href="'.$filaAsesorRes['rutaAsesorRes'].'" target="_blank" class="btn">';
                 echo 'Verificar';
                 echo '</a><br>';
                 echo '<!-- 1pt por cada una -->';
-                echo '<input type="number" id="asesorRes" name="asesorRes" required>';
+                echo '<input type="number" id="asesorRes" name="asesorRes">';
                 echo '<input type="submit" class="Botonesinput" name="btnAsesorRes" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnAsesorRes" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesAsesorRes" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaAsesorTit['rutaAsesorTit']!='Aprobado owo'&&$filaAsesorTit['rutaAsesorTit']!='Rechazado umu'&&!empty($filaAsesorTit['rutaAsesorTit'])) {
+            if ($filaAsesorTit['rutaAsesorTit']!='Aprobado owo'&&$filaAsesorTit['rutaAsesorTit']!='Rechazado umu'
+            &&!empty($filaAsesorTit['rutaAsesorTit'])&&$filaAsesorTit['rutaAsesorTit']!='En espera') {
                 echo '<label for="asesorTit">No. de veces que ha sido asesor de titulación:</label>';
                 echo '<a href="'.$filaAsesorTit['rutaAsesorTit'].'" target="_blank" class="btn">';
                 echo 'Verificar';
                 echo '</a><br>';
                 echo '<!-- 1pt por cada una -->';
-                echo '<input type="number" id="asesorTit" name="asesorTit" required>';
+                echo '<input type="number" id="asesorTit" name="asesorTit">';
                 echo '<input type="submit" class="Botonesinput" name="btnAsesorTit" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnAsesorTit" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesAsesorTit" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
                 $algunDocumentoPresente = true;
             }
             
-            if ($filaDireccionTesis['rutaDireccionTesis']!='Aprobado owo'&&$filaDireccionTesis['rutaDireccionTesis']!='Rechazado umu'&&!empty($filaDireccionTesis['rutaDireccionTesis'])) {
+            if ($filaDireccionTesis['rutaDireccionTesis']!='Aprobado owo'
+            &&$filaDireccionTesis['rutaDireccionTesis']!='Rechazado umu'
+            &&!empty($filaDireccionTesis['rutaDireccionTesis'])&&$filaDireccionTesis['rutaDireccionTesis']!='En espera') {
                 echo '<label for="direccionTesis">Ha hecho alguna dirección de tesis:</label>';
                 echo '<a href="'.$filaDireccionTesis['rutaDireccionTesis'].'" target="_blank" class="btn">';
                 echo 'Verificar';
                 echo '</a><br>';
                 // '<!-- Si sí 10pts-->';
-                echo '<select name="direccionTesis" id="direccionTesis">';
+                /*echo '<select name="direccionTesis" id="direccionTesis">';
                 echo '<option value="true">Si</option>';
                 echo '<option value="false">No</option>';
-                echo '</select>';
+                echo '</select>';*/
                 echo '<input type="submit" class="Botonesinput" name="btnDireccionTesis" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnDireccionTesis" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesDireccionTesis" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
@@ -341,7 +356,7 @@
         </form>
         <form action="seleccionarEmpleado.php">
             <center><input class="botonregresar" type="submit" value="Regresar"></center>
-            <a style="position:absolute; right:20px;" value="Mirar puntajes" href="Resultados.php" class="botonregresar" target="_blank">Mirar Puntujes</a>
+            <a style="position:absolute; top:10px; right:20px;" value="Mirar puntajes" href="Resultados.php" class="botonregresar" target="_blank">Mirar Puntajes</a>
         </form>
         <br><br>
 </body>

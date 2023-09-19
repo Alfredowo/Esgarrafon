@@ -10,11 +10,6 @@ CREATE TABLE Login (
    Permisos enum('admin','empleado')
 );  
 
-INSERT INTO Login VALUES (NULL, 'Alfre', '123',1);
-INSERT INTO Login VALUES (NULL, 'Nya', '123',1);
-INSERT INTO Login VALUES (NULL, 'Leo', '123',1);
-insert into Login values (null,'usuario','123',2);
-
 SELECT * FROM Login WHERE Usuario = 'Alfre' AND Contrasena = '123';
 
 DROP TABLE if EXISTS Empleados;
@@ -27,23 +22,23 @@ CREATE TABLE Empleados(
    rutaAntiguedad varchar(100),
    CursoCap INT,
    rutaCursoCap varchar(100),
-   -- Certificaciones BOOLEAN,
+   Certificaciones BOOLEAN,
    rutaCertificaciones varchar(100),
-   -- Diplomados BOOLEAN,
+   Diplomados BOOLEAN,
    rutaDiplomados varchar(100),
-   -- CursosST BOOLEAN,
+   CursosST BOOLEAN,
    rutaCursosST varchar(100),
    Cursos INT,
    rutaCursos varchar(100),
-   -- InstructorDip BOOLEAN,
+   InstructorDip BOOLEAN,
    rutaInstructorDip varchar(100),
-   -- InstructorCer BOOLEAN,
+   InstructorCer BOOLEAN,
    rutaInstructorCer varchar(100),
    AsesorRes INT,
    rutaAsesorRes varchar(100),
    AsesorTit INT,
    rutaAsesorTit varchar(100),
-   -- DireccionTesis BOOLEAN,
+   DireccionTesis BOOLEAN,
    rutaDireccionTesis varchar(100)
 );
 
@@ -106,40 +101,40 @@ CREATE PROCEDURE insertarEmpleados(
    IN _rutaAntiguedad varchar(100),
    IN _CursoCap INT,
    IN _rutaCursoCap VARCHAR(100),
-   -- IN _Certificaciones BOOLEAN,
+   IN _Certificaciones BOOLEAN,
    IN _rutaCertificaciones VARCHAR(100),
-   -- IN _Diplomados BOOLEAN,
+   IN _Diplomados BOOLEAN,
    IN _rutaDiplomados VARCHAR(100),
-   -- IN _CursosST BOOLEAN,
+   IN _CursosST BOOLEAN,
    IN _rutaCursosST VARCHAR(100),
    IN _Cursos INT,
    IN _rutaCursos VARCHAR(100),
-   -- IN _InstructorDip BOOLEAN,
+   IN _InstructorDip BOOLEAN,
    IN _rutaInstructorDip VARCHAR(100),
-   -- IN _InstructorCer BOOLEAN,
+   IN _InstructorCer BOOLEAN,
    IN _rutaInstructorCer VARCHAR(100),
    IN _AsesorRes INT,
    IN _rutaAsesorRes VARCHAR(100),
    IN _AsesorTit INT,
    IN _rutaAsesorTit VARCHAR(100),
-   -- IN _DireccionTesis BOOLEAN,
+   IN _DireccionTesis BOOLEAN,
    IN _rutaDireccionTesis VARCHAR(100))
 BEGIN
    IF _id < 0 THEN
       INSERT INTO Empleados (
-         Nombre, Grado, rutaGrado, Antiguedad,rutaAntiguedad, CursoCap, rutaCursoCap, /*Certificaciones,*/
-         rutaCertificaciones, /*Diplomados,*/ rutaDiplomados, /*CursosST,*/ rutaCursosST,
-         Cursos, rutaCursos, /*InstructorDip,*/ rutaInstructorDip, /*InstructorCer,*/
+         Nombre, Grado, rutaGrado, Antiguedad,rutaAntiguedad, CursoCap, rutaCursoCap, Certificaciones,
+         rutaCertificaciones, Diplomados, rutaDiplomados, CursosST, rutaCursosST,
+         Cursos, rutaCursos, InstructorDip, rutaInstructorDip, InstructorCer,
          rutaInstructorCer, AsesorRes, rutaAsesorRes, AsesorTit, rutaAsesorTit,
-         /*DireccionTesis,*/ rutaDireccionTesis
+         DireccionTesis, rutaDireccionTesis
       ) VALUES (
-         _Nombre, _Grado, _rutaGrado, _Antiguedad,_rutaAntiguedad, _CursoCap, _rutaCursoCap, /*_Certificaciones,*/
-         _rutaCertificaciones, /*_Diplomados,*/ _rutaDiplomados, /*_CursosST,*/ _rutaCursosST,
-         _Cursos, _rutaCursos, /*_InstructorDip,*/ _rutaInstructorDip, /*_InstructorCer,*/
+         _Nombre, _Grado, _rutaGrado, _Antiguedad,_rutaAntiguedad, _CursoCap, _rutaCursoCap, _Certificaciones,
+         _rutaCertificaciones, _Diplomados, _rutaDiplomados, _CursosST, _rutaCursosST,
+         _Cursos, _rutaCursos, _InstructorDip, _rutaInstructorDip, _InstructorCer,
          _rutaInstructorCer, _AsesorRes, _rutaAsesorRes, _AsesorTit, _rutaAsesorTit,
-         /*_DireccionTesis,*/ _rutaDireccionTesis
+         _DireccionTesis, _rutaDireccionTesis
       );
-   ELSEIF _id > 0 THEN
+   /*ELSEIF _id > 0 THEN
       UPDATE Empleados SET
          Nombre = _Nombre,
          Grado = _Grado,
@@ -156,7 +151,7 @@ BEGIN
          rutaAsesorRes = _rutaAsesorRes,
          AsesorTit = _AsesorTit,
          DireccionTesis = _DireccionTesis
-      WHERE id = _id;
+      WHERE id = _id;*/
    END IF;
 END;
 &&
@@ -171,6 +166,7 @@ create trigger insertar_puntaje_insert after insert on Empleados
 for each row
 begin
 insert into Puntaje values(null,new.id,0);
+insert into observaciones values(null,new.id,'','','','','','','','','','','','');
 end;
 //
 delimiter ;
@@ -209,18 +205,18 @@ BEGIN
 	update Puntaje set Puntaje = Puntaje + 1 where fkEmpleado = NEW.id;
    END IF;
 
-   IF NEW.rutaCertificaciones = 'Aprobado owo' THEN
+   IF NEW.rutaCertificaciones = 'Aprobado owo' and old.Certificaciones = false THEN
       -- SET puntajee = puntajee + 20;
 	update Puntaje set Puntaje = Puntaje + 20 where fkEmpleado = NEW.id;
    END IF;
 
-   IF NEW.rutaDiplomados = 'Aprobado owo' THEN
-      --SET puntajee = puntajee + 10;
+   IF NEW.rutaDiplomados = 'Aprobado owo' and old.Diplomados = false THEN
+      -- SET puntajee = puntajee + 10;
 	update Puntaje set Puntaje = Puntaje + 10 where fkEmpleado = NEW.id;
    END IF;
 
-   IF NEW.rutaCursosST = 'Aprobado owo' THEN
-      --SET puntajee = puntajee + 20;
+   IF NEW.rutaCursosST = 'Aprobado owo' and old.CursosST = false THEN
+      -- SET puntajee = puntajee + 20;
 	update Puntaje set Puntaje = Puntaje + 20 where fkEmpleado = NEW.id;
    END IF;
 
@@ -232,12 +228,12 @@ BEGIN
 	update Puntaje set Puntaje = Puntaje + 7 where fkEmpleado = NEW.id;
    END IF;
 
-   IF NEW.rutaInstructorDip = 'Aprobado owo' THEN
+   IF NEW.rutaInstructorDip = 'Aprobado owo' and old.InstructorDip = false THEN
       -- SET puntajee = puntajee + 15;
 	update Puntaje set Puntaje = Puntaje + 15 where fkEmpleado = NEW.id;
    END IF;
 
-   IF NEW.rutaInstructorCer = 'Aprobado owo' THEN
+   IF NEW.rutaInstructorCer = 'Aprobado owo' and old.InstructorCer = false THEN
       -- SET puntajee = puntajee + 20;
 	update Puntaje set Puntaje = Puntaje + 20 where fkEmpleado = NEW.id;
    END IF;
@@ -252,7 +248,7 @@ BEGIN
 	update Puntaje set Puntaje = Puntaje + new.AsesorTit where fkEmpleado = NEW.id;
    END IF;
 
-   IF NEW.RutaDireccionTesis = 'Aprobado owo' THEN
+   IF NEW.RutaDireccionTesis = 'Aprobado owo' and old.DireccionTesis = false THEN
       -- SET puntajee = puntajee + 10;
 	update Puntaje set Puntaje = Puntaje + 10 where fkEmpleado = NEW.id;
    END IF;
@@ -275,10 +271,14 @@ create trigger after_insertar_usuario AFTER insert on Login
 for each ROW
 BEGIN
 if new.Permisos = 'empleado' then
-call insertarEmpleados(-1,new.Usuario,null,'',null,'',null,'','','','',null,'',
-'','',null,'',null,'','');
-insert into observaciones(id,fkEmpleado) values(null,new.id);
+call insertarEmpleados(-1,new.Usuario,null,'',null,'',null,'',false,'',false,'',false,'',
+null,'',false,'',false,'',null,'',null,'',false,'');
 end if;
 end;
 //
 delimiter ;
+
+INSERT INTO Login VALUES (NULL, 'Alfre', '123',1);
+INSERT INTO Login VALUES (NULL, 'Nya', '123',1);
+INSERT INTO Login VALUES (NULL, 'Leo', '123',1);
+insert into Login values (null,'usuario','123',2);
