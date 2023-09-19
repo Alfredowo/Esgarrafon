@@ -163,7 +163,8 @@
             // Muestra un mensaje en la página
             alert("Ya estás en esta página");
         });
-    </script>    
+    </script>  
+
     <script>
         const openRegisterModalButton = document.getElementById("openRegisterModal");
         const registerModal = document.getElementById("registerModal");
@@ -187,42 +188,56 @@
             if (registroContrasena !== confirmarContrasena) {
                 alert("Las contraseñas no coinciden");
             } else {
-                alert("Las contraseñas SI coinciden");
+                const datosUsuario = new URLSearchParams();
+                //const datosUsuario = new FormData();
+                datosUsuario.append("registroUsuario", registroUsuario);
+                datosUsuario.append("registroContrasena", registroContrasena);
+                datosUsuario.append("permisos", 1);
+                //alert("Las contraseñas SI coinciden");
+                //alert("El usuario es " + registroUsuario);
                 // Hacer una solicitud al servidor para verificar si el usuario existe
                 fetch("verificar_registro.php", {
-                    method: "POST",
+                    method: "POST", // Cambia el método a POST
                     headers: {
-                        "Content-Type": "application/json"
+                        // Ajusta el encabezado a application/x-www-form-urlencoded
+                        "Content-Type": "application/x-www-form-urlencoded" 
                     },
-                    body: JSON.stringify({ usuario: registroUsuario })
+                    // Envía los datos POST como una cadena codificada
+                    body: "registroUsuario=" + registroUsuario 
                 })
-                .then(response => response.json())
+                .then(response => response.text())
                 .then(data => {
-                    if (data.existe) {
-                        alert("El usuario ya existe");
+                    //alert("resultado: " + data);
+                    if (data == '{"existe":true}') {
+                        alert("El usuario ya existe, crea uno nuevo");
                     } else {
-                        // Si el usuario no existe, realizar el registro en la base de datos
+                        //alert("El usuario no existe, registrar");
+                        // Si el usuario no existe, hacer otra solicitud a registrar
                         fetch("registrar_usuario.php", {
                             method: "POST",
                             headers: {
-                                "Content-Type": "application/json"
+                                "Content-Type": "application/x-www-form-urlencoded"
                             },
-                            body: JSON.stringify({
-                                usuario: registroUsuario,
-                                contrasena: registroContrasena
-                            })
+                            body: datosUsuario.toString() // Convertir el objeto a una cadena codificada
+                            //body: datosUsuario // Utiliza el objeto FormData como cuerpo de la solicitud
+                            //body: "registroUsuario=" + registroUsuario 
                         })
                         .then(response => response.json())
                         .then(data => {
-                            if (data.registrado) {
-                                alert("Registro exitoso");
-                                // Cierra el modal
-                                registerModal.style.display = "none";
-                            } else {
-                                alert("Error al registrar usuario");
-                            }
+                            // alerta que indica si el regstro fue exitoso
+                            alert(data);
+                            // Eliminar el modal del DOM
+                            registerModal.style.display = "none";
+                        })
+                        .catch(error => {
+                            console.error("Error al registrar usuario:", error);
+                            alert("Error al registrar usuario: " + error);
                         });
                     }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Ocurrió un error al verificar el usuario. " + error);
                 });
             }
         });
