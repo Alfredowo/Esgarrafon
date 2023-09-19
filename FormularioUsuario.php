@@ -109,7 +109,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <input type="" name="id" id="usuario" value="<?php echo $obervaciones1; ?>"> -->
 
     <!-- Formulario para Certificado de grado de estudios -->
-    <form class="formuwu" action="procesar_form_us.php" method="post">
+    <form class="formuwu" action="procesar_form_us.php" method="post" id="mostrarAlerta">
     <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
         <h2>Certificado de grado de estudios</h2>
         <!-- Campo para ingresar el enlace -->
@@ -312,6 +312,12 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <input class="botonowo" type="submit" name="enviar_direccionTesis" value="Enviar comprobante de dirección de tesis">
 </form>
 
+<script>
+    mostrarAlerta.addEventListener("submit", function() { 
+            // Muestra un mensaje en la página 
+            alert("Operación realizada con éxito"); 
+        }); 
+</script>
 
 </body>
 </html>

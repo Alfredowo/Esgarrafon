@@ -107,5 +107,6 @@ if ($result) {
     echo "Error al guardar los datos en la base de datos. $result";
 }
 mysqli_close($conn);
+header("Location:FormularioUsuario.php");
 ?>
 
