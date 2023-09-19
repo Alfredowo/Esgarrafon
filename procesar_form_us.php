@@ -5,6 +5,7 @@ require("conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST['usuario'];
+    //echo $usuario;
     // Guardar la información en la base de datos
     //echo "el nombre de usuario es: $usuario ";
     $resultado= mysqli_query($conn, "SELECT id FROM Empleados WHERE Nombre = '$usuario'");
@@ -38,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $antiguedad = $_POST['antiguedad'];
         // Realizar el UPDATE para el comprobante de antigüedad
         $query = "UPDATE Empleados SET rutaAntiguedad = '$antiguedad' WHERE id = $id";
-    } elseif (isset($_POST['enviar_cursos_cap'])) {
+    } elseif (isset($_POST['enviar_cursosCap'])) {
         $cursosCap = $_POST['cursosCap'];
         // Realizar el UPDATE para el comprobante de cursos de capacitación
         $query = "UPDATE Empleados SET rutaCursoCap = '$cursosCap' WHERE id = $id";
@@ -50,9 +51,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $diplomados = $_POST['diplomados'];
         // Realizar el UPDATE para el comprobante de diplomados
         $query = "UPDATE Empleados SET rutaDiplomados = '$diplomados' WHERE id = $id";
+    } elseif (isset($_POST['enviar_cursos'])) {
+        $cursos = $_POST['cursos'];
+        // Realizar el UPDATE para el comprobante de cursos impartidos
+        $query = "UPDATE Empleados SET rutaCursos = '$cursos' WHERE id = $id";
     } elseif (isset($_POST['enviar_cursosST'])) {
         $cursosST = $_POST['cursosST'];
-        // Realizar el UPDATE para el comprobante de cursos impartidos
+        // Realizar el UPDATE para el comprobante de cursosST impartidos
         $query = "UPDATE Empleados SET rutaCursosST = '$cursosST' WHERE id = $id";
     } elseif (isset($_POST['enviar_cursosImpartidos'])) {
         $cursosImpartidos = $_POST['cursosImpartidos'];
@@ -79,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Realizar el UPDATE para el comprobante de dirección de tesis
         $query = "UPDATE Empleados SET rutaDireccionTesis = '$direccionTesis' WHERE id = $id";
     }
-    echo "Datos actualizados correctamente";
+    //echo "Datos actualizados correctamente";
 } else {
     echo "Error al obtener los datos";
 }

@@ -32,7 +32,7 @@ if (!$result) {
             background-color: #13141D;
             background-repeat: no-repeat;
             background-size: cover;
-
+            color: azure;
             height: 900px;
             margin: 30px;
         }
@@ -44,13 +44,29 @@ if (!$result) {
             color: #c4c3ca;
             background-color: #1f2029;
         }
+        .botonowo{
+            /*float: right;*/
+            background-color: #0E0F1B;
+            border: none;
+            color: azure;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .botonowo:hover{
+            background-color: #2e4468;
+        }
+        .formewe{
+            background-color: #2b3444;
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
-<form method="GET" action="">
-        <label for="buscar">Buscar empleado: </label>
+<form class="formewe" method="GET" action="">
+        <label style="font-weight:bold;" for="buscar">Buscar empleado: </label>
         <input type="text" name="buscar" id="buscar" placeholder="Nombre del empleado">
-        <input type="submit" value="Buscar">
+        <input class="botonowo" type="submit" value="Buscar">
     </form>
 
     <center>
