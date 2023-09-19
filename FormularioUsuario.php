@@ -18,7 +18,7 @@
     <h1 class="titulos">Subir Documentos</h1>
 
     <form class="formuwu" action="procesar_form_us.php" method="post">
-        <input type="text" name="usuario" id="usuario" required value="<?php echo isset($usuario) ? $usuario : ''; ?>">
+    <input type="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
         <h2>Certificado de grado de estudios</h2>
             <label class="tiritas" for="grado_estudios1">grado de estudios:</label>
             <select name="grado_estudios1" id="grado_estudios1">

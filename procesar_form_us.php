@@ -29,21 +29,23 @@ $asesorTitulacion1 = $_POST["asesorTit1"];
 } else {
     echo "fatal error, borra system32 y reinicia tu pc";
 }
+
+// Mostrar todas las variables en un solo echo a ver si estan bien por que nombre
 /*
-echo "variables: $usuario, $grado_estudio, $antiguedad, $cursosCap, $certificaciones, $diplomados, 
-$cursosST, $cursosImpartidos, $instructorDiplomados, $instructorCertificaciones, $asesorResidencias, 
-$asesorTitulacion, $direccionTesis";*/
+echo "Variables: $usuario, $grado_estudio, $antiguedad, $cursosCap, $certificaciones, $diplomados, $cursosST,
+ $cursosImpartidos, $instructorDiplomados, $instructorCertificaciones, $asesorResidencias, $asesorTitulacion,
+  $direccionTesis, $grado_estudio1, $antiguedad1, $cursosCap1, $cursosImpartidos1, $asesorResidencias1,
+   $asesorTitulacion1";*/
 
 // Guardar la información en la base de datos
 //echo "el nombre de usuario es: $usuario ";
-$resultado= mysqli_query($conn, "SELECT Id FROM Empleados WHERE Usuario = '$usuario'");
+$resultado= mysqli_query($conn, "SELECT id FROM empleados WHERE Nombre = '$usuario'");
 if ($resultado) {
     $fila = mysqli_fetch_assoc($resultado);
     if ($fila) {
-        $id = $fila['Id'];
+        $id = $fila['id'];
         //echo "El id es: $id"; //actualizar registro
-        $query = "UPDATE Empleados SET
-            Nombre = '$usuario',
+        $query = "UPDATE empleados SET
             Grado = '$grado_estudio1',
             rutaGrado = '$grado_estudio',
             Antiguedad = $antiguedad1,
@@ -66,7 +68,8 @@ if ($resultado) {
             rutaAsesorRes = '$asesorResidencias',
             AsesorTit = $asesorTitulacion1,
             rutaAsesorTit = '$asesorTitulacion',
-            DireccionTesis = '$direccionTesis'
+            DireccionTesis = TRUE,
+            rutaDireccionTesis = '$direccionTesis'
         WHERE id = $id";
     } else {
         echo "No se encontró la Id para el usuario: $usuario"; 
