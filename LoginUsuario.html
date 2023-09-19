@@ -158,6 +158,38 @@
             border: none;
             cursor: pointer;
         }
+        #openRegisterModal {
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s; /* Agrega una transición suave */
+        }
+        #openRegisterModal:hover {
+            color: #02006e; /* Cambia el color del texto al pasar el mouse */
+        }
+        
+        /* Estilos para el modal (ventana emergente de registro)*/
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .modal-content {
+            background-color: #060827;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #000000;
+            width: 60%;
+        }
+        .close {
+            color: azure;
+            float: right;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -199,13 +231,108 @@
         </p>
         </div>
         <p class="p-container">
-          <span>¿Aun no tienes una cuenta? </span>
-          <span style="text-decoration: underline;">Registrate Aquí</span>
+          <span style="text-decoration: underline;" id="openRegisterModal">
+            ¿Aun no tienes una cuenta? Registrate Aquí
+            </span>
           <br>
           <br><br>
           <input type="submit" name="go" id="inicio" value="Iniciar Sesion">
         </p>
     </form>
+
+    <!-- Modal de Registro -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span  class="close" id="closeRegisterModal">&times;</span>
+            <h2 class="tituolowo">Registro</h2>
+            <form class="form2owo" id="registerForm">
+                Usuario: <br><input class="neon" type="text" name="registroUsuario" id="registroUsuario" required><br><br>
+                Contraseña: <br> <input type="password" class="neon"  name="registroContrasena" id="registroContrasena" required><br><br>
+                Confirmar Contraseña: <br><input type="password" class="neon"  name="confirmarContrasena" id="confirmarContrasena" required><br><br>
+                <button class="botonuwu" id="registrar">Registrar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        //sscript para la funcion de registro con ventana emergente ostia chaval
+        const openRegisterModalButton = document.getElementById("openRegisterModal");
+        const registerModal = document.getElementById("registerModal");
+        const closeRegisterModalButton = document.getElementById("closeRegisterModal");
+        const registerForm = document.getElementById("registerForm");
+    
+        openRegisterModalButton.addEventListener("click", function() {
+            registerModal.style.display = "block";
+        });
+    
+        closeRegisterModalButton.addEventListener("click", function() {
+            registerModal.style.display = "none";
+        });
+    
+        registerForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            const registroUsuario = document.getElementById("registroUsuario").value;
+            const registroContrasena = document.getElementById("registroContrasena").value;
+            const confirmarContrasena = document.getElementById("confirmarContrasena").value;
+
+            if (registroContrasena !== confirmarContrasena) {
+                alert("Las contraseñas no coinciden");
+            } else {
+                const datosUsuario = new URLSearchParams();
+                //const datosUsuario = new FormData();
+                datosUsuario.append("registroUsuario", registroUsuario);
+                datosUsuario.append("registroContrasena", registroContrasena);
+                datosUsuario.append("permisos", 2);
+                //alert("Las contraseñas SI coinciden");
+                //alert("El usuario es " + registroUsuario);
+                // Hacer una solicitud al servidor para verificar si el usuario existe
+                fetch("verificar_registro.php", {
+                    method: "POST", // Cambia el método a POST
+                    headers: {
+                        // Ajusta el encabezado a application/x-www-form-urlencoded
+                        "Content-Type": "application/x-www-form-urlencoded" 
+                    },
+                    // Envía los datos POST como una cadena codificada
+                    body: "registroUsuario=" + registroUsuario 
+                })
+                .then(response => response.text())
+                .then(data => {
+                    //alert("resultado: " + data);
+                    if (data == '{"existe":true}') {
+                        alert("El usuario ya existe, crea uno nuevo");
+                    } else {
+                        //alert("El usuario no existe, registrar");
+                        // Si el usuario no existe, hacer otra solicitud a registrar
+                        fetch("registrar_usuario.php", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded"
+                            },
+                            body: datosUsuario.toString() // Convertir el objeto a una cadena codificada
+                            //body: datosUsuario // Utiliza el objeto FormData como cuerpo de la solicitud
+                            //body: "registroUsuario=" + registroUsuario 
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            // alerta que indica si el regstro fue exitoso
+                            alert(data);
+                            // Eliminar el modal del DOM
+                            registerModal.style.display = "none";
+                        })
+                        .catch(error => {
+                            console.error("Error al registrar usuario:", error);
+                            alert("Error al registrar usuario: " + error);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Ocurrió un error al verificar el usuario. " + error);
+                });
+            }
+        });
+    </script>
+
     <div> 
         <a href="Empleado del Mes.html"><button class="uy" id="secreto"></button></a> 
     </div>

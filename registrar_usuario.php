@@ -21,7 +21,7 @@ if ($result) {
     // Devolver una respuesta JSON indicando que el registro fue exitoso
     //header('Content-Type: application/json');
     //echo json_encode(['registrado' => true]);
-    echo json_encode("registro exioso, $permisos");
+    echo json_encode("registro exioso");
 } else {
     // Manejo de errores si la consulta falla
     //echo json_encode(['registrado' => false]);
