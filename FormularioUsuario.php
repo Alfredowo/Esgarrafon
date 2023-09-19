@@ -110,7 +110,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
     <!-- Formulario para Certificado de grado de estudios -->
     <form class="formuwu" action="procesar_form_us.php" method="post">
-    <input name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
+    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
         <h2>Certificado de grado de estudios</h2>
         <!-- Campo para ingresar el enlace -->
         <label class="tiritas" for="grado_estudios">Enlace:</label>
@@ -127,6 +127,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
     <!-- Formulario para Comprobantes de años de antigüedad -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
+    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de años de antigüedad</h2>
     <!-- Campo para ingresar el enlace -->
     <label class="tiritas" for="antiguedad">Enlace:</label>
@@ -143,6 +144,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
 <!-- Formulario para Comprobante de Horas de cursos de capacitación impartidas -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
+    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de Horas de cursos de capacitación impartidas</h2>
     <!-- Campo para ingresar el enlace -->
     <label class="tiritas" for="cursosCap">Enlace:</label>
@@ -159,6 +161,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
 <!-- Formulario para Comprobante de certificaciones -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
+    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de certificaciones</h2>
     <!-- Campo para ingresar el enlace -->
     <label class="tiritas" for="certificaciones">Enlace:</label>
@@ -175,6 +178,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
 <!-- Formulario para Comprobante de diplomados -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
+    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de diplomados</h2>
     <!-- Campo para ingresar el enlace -->
     <label class="tiritas" for="diplomados">Enlace:</label>
@@ -191,6 +195,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
 <!-- Formulario para Comprobante de cursos -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
+    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de cursos</h2>
     <!-- Campo para ingresar el enlace -->
     <label class="tiritas" for="cursos">Enlace:</label>
@@ -207,6 +212,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
 <!-- Formulario para Comprobante de cursos -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
+    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de cursos ST</h2>
     <!-- Campo para ingresar el enlace -->
     <label class="tiritas" for="cursosST">Enlace:</label>
@@ -223,6 +229,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
 <!-- Formulario para Comprobante de instructor de diplomados -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
+    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de instructor de diplomados</h2>
     <!-- Campo para ingresar el enlace -->
     <label class="tiritas" for="instructorDip">Enlace:</label>
@@ -239,6 +246,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
 <!-- Formulario para Comprobante de instructor de certificaciones -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
+    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de instructor de certificaciones</h2>
     <!-- Campo para ingresar el enlace -->
     <label class="tiritas" for="instructorCer">Enlace:</label>
@@ -255,6 +263,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
 <!-- Formulario para Comprobante de asesor de residencias -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
+    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de asesor de residencias</h2>
     <!-- Campo para ingresar el enlace de asesor de residencias -->
     <label class="tiritas" for="asesorRes">Enlace:</label>
@@ -271,6 +280,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
 <!-- Formulario para Comprobante de asesor de titulación -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
+    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de asesor de titulación</h2>
         <!-- Campo para ingresar el enlace de asesor de titulación -->
         <label class="tiritas" for="asesorTit">Enlace:</label>
@@ -287,6 +297,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
 <!-- Formulario para Comprobante de dirección de tesis -->
 <form class="formuwu" action="procesar_form_us.php" method="post">
+    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2>Comprobante de dirección de tesis</h2>
     <!-- Campo para ingresar el enlace de dirección de tesis -->
     <label class="tiritas" for="direccionTesis">Enlace:</label>
