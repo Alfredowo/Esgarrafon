@@ -98,14 +98,14 @@ echo "Variables: $usuario, $grado_estudio, $antiguedad, $cursosCap, $certificaci
 
 $result = mysqli_query($conn, $query);
 
-if ($result) {
-    // Redirigir al usuario a la página de resultados(ya no se ocupa)
-    //header('Location: Resultados.php');
-    //exit;
-    echo "Datos registrados correctamente.";
-} else {
-    echo "Error al guardar los datos en la base de datos. $result";
-}
-mysqli_close($conn);
-?>
+// ...
 
+if ($result) {
+    echo '<script>alert("Datos registrados correctamente.");</script>';
+} else {
+    echo '<script>alert("Error al guardar los datos en la base de datos.");</script>';
+}
+
+mysqli_close($conn);
+
+?>

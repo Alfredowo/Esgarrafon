@@ -312,6 +312,20 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <input class="botonowo" type="submit" name="enviar_direccionTesis" value="Enviar comprobante de dirección de tesis">
 </form>
 
+<script>
+function enviarFormulario() {
+    // ... tu código PHP para procesar el formulario ...
+
+    if (<?php echo $result ? 'true' : 'false'; ?>) {
+        alert("Datos registrados correctamente.");
+    } else {
+        alert("Error al guardar los datos en la base de datos.");
+    }
+
+    // Evitar la redirección automática
+    return false;
+}
+</script>
 
 </body>
 </html>
