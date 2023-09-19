@@ -84,7 +84,7 @@ if ($result) {
     // Redirigir al usuario a la página de resultados(ya no se ocupa)
     //header('Location: Resultados.php');
     //exit;
-    echo "todo bien uwu";
+    echo "datos registrados correctamente";
 } else {
     echo "Error al guardar los datos en la base de datos. $result";
 }
