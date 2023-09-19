@@ -16,34 +16,51 @@
 
     // Funcion SQL para obtener los estatus
     function obtenerEstatusGrado($ruta) {
-        //require("conexion.php");
-        $conn = mysqli_connect("localhost", "userPro", "123", "Escalafon");
-        if (isset($_SESSION['usuario'])) {
-            $usuario = $_SESSION['usuario'];
-        }
-        $sql = "SELECT $ruta FROM empleados WHERE Nombre = '$usuario'";
-        $result = $conn->query($sql);
-        
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $estatus = $row[$ruta];
-        } else {
-            $estatus = "No se encontraron resultados";
-        }
-        return $estatus;
+    //require("conexion.php");
+    $conn = mysqli_connect("localhost", "userPro", "123", "Escalafon");
+    if (isset($_SESSION['usuario'])) {
+        $usuario = $_SESSION['usuario'];
     }
-    $estatus1 = obtenerEstatusGrado("rutaGrado");
-    $estatus2 = obtenerEstatusGrado("rutaAntiguedad");
-    $estatus3 = obtenerEstatusGrado("rutaCursoCap");
-    $estatus4 = obtenerEstatusGrado("rutaCertificaciones");
-    $estatus5 = obtenerEstatusGrado("rutaDiplomados");
-    $estatus6 = obtenerEstatusGrado("rutaCursosST");
-    $estatus7 = obtenerEstatusGrado("rutaCursos");
-    $estatus8 = obtenerEstatusGrado("rutaInstructorDip");
-    $estatus9 = obtenerEstatusGrado("rutaInstructorCer");
-    $estatus10 = obtenerEstatusGrado("rutaAsesorRes");
-    $estatus11 = obtenerEstatusGrado("rutaAsesorTit");
-    $estatus12 = obtenerEstatusGrado("rutaDireccionTesis");
+    $sql = "SELECT $ruta FROM Empleados WHERE Nombre = '$usuario'";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $estatus = $row[$ruta];
+    } else {
+        $estatus = "";
+    }
+    return $estatus;
+}
+function evaluarEstatus($valorBD){
+    if($valorBD=='En espera'){
+    $resultado='Aprobado';
+    }
+    else if($valorBD=='Rechazado umu'){
+        $resultado='Rechazado';
+    }
+    else if(!empty($valorBD)&&$valorBD!=null)
+    {
+        $resultado='En espera';
+    }
+    else
+    {
+        $resultado='No se encontraron resultados.';
+    }
+    return $resultado;
+}
+$estatus1 =  evaluarEstatus(obtenerEstatusGrado("rutaGrado"));
+$estatus2 =  evaluarEstatus(obtenerEstatusGrado("rutaAntiguedad"));
+$estatus3 =  evaluarEstatus(obtenerEstatusGrado("rutaCursoCap"));
+$estatus4 =  evaluarEstatus(obtenerEstatusGrado("rutaCertificaciones"));
+$estatus5 =  evaluarEstatus(obtenerEstatusGrado("rutaDiplomados"));
+$estatus6 =  evaluarEstatus(obtenerEstatusGrado("rutaCursosST"));
+$estatus7 =  evaluarEstatus(obtenerEstatusGrado("rutaCursos"));
+$estatus8 =  evaluarEstatus(obtenerEstatusGrado("rutaInstructorDip"));
+$estatus9 =  evaluarEstatus(obtenerEstatusGrado("rutaInstructorCer"));
+$estatus10 = evaluarEstatus(obtenerEstatusGrado("rutaAsesorRes"));
+$estatus11 = evaluarEstatus(obtenerEstatusGrado("rutaAsesorTit"));
+$estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
     // Funcion SQL para obtener las observaciones
     function obtenerObservaciones($ob)
