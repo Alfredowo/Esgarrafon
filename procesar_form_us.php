@@ -42,12 +42,32 @@ if ($resultado) {
     if ($fila) {
         $id = $fila['Id'];
         //echo "El id es: $id"; //actualizar registro
-        $query = "CALL insertarEmpleados
-        ($id, $usuario, '$grado_estudio1', '$grado_estudio', $antiguedad1, '$antiguedad1', $cursosCap1,
-            '$cursosCap', true, '$certificaciones', true, '$diplomados', true, '$cursosST', 
-            $cursosImpartidos1, '$cursosImpartidos', true, '$instructorDiplomados', true, 
-            '$instructorCertificaciones', $asesorResidencias1, '$asesorResidencias', $asesorTitulacion1,
-            '$asesorTitulacion', '$direccionTesis')";
+        $query = "UPDATE Empleados SET
+            Nombre = '$usuario',
+            Grado = '$grado_estudio1',
+            rutaGrado = '$grado_estudio',
+            Antiguedad = $antiguedad1,
+            rutaAntiguedad = '$antiguedad1',
+            CursoCap = $cursosCap1,
+            rutaCursoCap = '$cursosCap',
+            Certificaciones = true,
+            rutaCertificaciones = '$certificaciones',
+            Diplomados = true,
+            rutaDiplomados = '$diplomados',
+            CursosST = true,
+            rutaCursosST = '$cursosST',
+            Cursos = $cursosImpartidos1,
+            rutaCursos = '$cursosImpartidos',
+            InstructorDip = true,
+            rutaInstructorDip = '$instructorDiplomados',
+            InstructorCer = true,
+            rutaInstructorCer = '$instructorCertificaciones',
+            AsesorRes = $asesorResidencias1,
+            rutaAsesorRes = '$asesorResidencias',
+            AsesorTit = $asesorTitulacion1,
+            rutaAsesorTit = '$asesorTitulacion',
+            DireccionTesis = '$direccionTesis'
+        WHERE id = $id";
     } else {
         echo "No se encontró la Id para el usuario: $usuario"; 
     }
