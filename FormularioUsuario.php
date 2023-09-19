@@ -69,7 +69,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         if (isset($_SESSION['usuario'])) {
             $usuario = $_SESSION['usuario'];
         }
-        $query = "SELECT id FROM empleados WHERE Nombre = '$usuario'";
+        $query = "SELECT id FROM Empleados WHERE Nombre = '$usuario'";
         $result1 = $conn->query($query);
         if ($result1->num_rows > 0) {
             $row1 = $result1->fetch_assoc();
