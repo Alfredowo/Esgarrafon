@@ -8,187 +8,282 @@
 <body class="fondouwu2">
 
     <?php
-    session_start(); // Asegúrate de iniciar la sesión en la parte superior del archivo
+    require("conexion.php"); // Asegúrate de iniciar la sesión en la parte superior del archivo
 
     if (isset($_SESSION['usuario'])) {
         $usuario = $_SESSION['usuario'];
     }
+
+    // Funcion SQL para obtener los estatus
+    function obtenerEstatusGrado($ruta) {
+        //require("conexion.php");
+        $conn = mysqli_connect("localhost", "userPro", "123", "Escalafon");
+        if (isset($_SESSION['usuario'])) {
+            $usuario = $_SESSION['usuario'];
+        }
+        $sql = "SELECT $ruta FROM empleados WHERE Nombre = '$usuario'";
+        $result = $conn->query($sql);
+        
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $estatus = $row[$ruta];
+        } else {
+            $estatus = "No se encontraron resultados";
+        }
+        return $estatus;
+    }
+    $estatus1 = obtenerEstatusGrado("rutaGrado");
+    $estatus2 = obtenerEstatusGrado("rutaAntiguedad");
+    $estatus3 = obtenerEstatusGrado("rutaCursoCap");
+    $estatus4 = obtenerEstatusGrado("rutaCertificaciones");
+    $estatus5 = obtenerEstatusGrado("rutaDiplomados");
+    $estatus6 = obtenerEstatusGrado("rutaCursosST");
+    $estatus7 = obtenerEstatusGrado("rutaCursos");
+    $estatus8 = obtenerEstatusGrado("rutaInstructorDip");
+    $estatus9 = obtenerEstatusGrado("rutaInstructorCer");
+    $estatus10 = obtenerEstatusGrado("rutaAsesorRes");
+    $estatus11 = obtenerEstatusGrado("rutaAsesorTit");
+    $estatus12 = obtenerEstatusGrado("rutaDireccionTesis");
+
+    // Funcion SQL para obtener las observaciones
+    function obtenerObservaciones($ob)
+    {
+        $conn = mysqli_connect("localhost", "userPro", "123", "Escalafon");
+        if (isset($_SESSION['usuario'])) {
+            $usuario = $_SESSION['usuario'];
+        }
+        $query = "SELECT id FROM empleados WHERE Nombre = '$usuario'";
+        $result1 = $conn->query($query);
+        if ($result1->num_rows > 0) {
+            $row1 = $result1->fetch_assoc();
+            $estatus1 = $row1["id"];
+        } else {
+            $estatus1 = "nel";
+        }
+        $sql2 = "SELECT $ob FROM observaciones WHERE fkEmpleado = '$estatus1'";
+        $result2 = $conn->query($sql2);
+        if ($result2->num_rows > 0) {
+            $row2 = $result2->fetch_assoc();
+            $observaciones = $row2[$ob];
+        } else {
+            $observaciones = "";
+        }
+        return $observaciones;
+    }
+    $obervaciones1 = obtenerObservaciones("OvGrado");
+    $obervaciones2 = obtenerObservaciones("OvAntiguedad");
+    $obervaciones3 = obtenerObservaciones("OvCursoCap");
+    $obervaciones4 = obtenerObservaciones("OvCertificaciones");
+    $obervaciones5 = obtenerObservaciones("OvDiplomados");
+    $obervaciones6 = obtenerObservaciones("OvCursosST");
+    $obervaciones7 = obtenerObservaciones("OvCursos");
+    $obervaciones8 = obtenerObservaciones("OvInstructorDip");
+    $obervaciones9 = obtenerObservaciones("OvInstructorCer");
+    $obervaciones10 = obtenerObservaciones("OvAsesorRes");
+    $obervaciones11 = obtenerObservaciones("OvAsesorTit");
+    $obervaciones12 = obtenerObservaciones("OvDireccionTesis");
+
     ?>
 
     <h1 class="titulos">Subir Documentos</h1>
+    
+    <!--
+    <input type="" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
+    <input type="" name="id" id="usuario" value="<?php echo $estatus1; ?>">
+    <input type="" name="id" id="usuario" value="<?php echo $obervaciones1; ?>"> -->
 
+    <!-- Formulario para Certificado de grado de estudios -->
     <form class="formuwu" action="procesar_form_us.php" method="post">
-        <input type="text" name="usuario" id="usuario" required value="<?php echo isset($usuario) ? $usuario : ''; ?>">
         <h2>Certificado de grado de estudios</h2>
-            <label class="tiritas" for="grado_estudios1">grado de estudios:</label>
-            <select name="grado_estudios1" id="grado_estudios1">
-                <option value="Doctorado" selected>Doctorado</option>
-                <option value="Mestria">Maestria</option>
-                <option value="Licenciatura">Licenciatura</option>
-            </select>
-            <br>
-            <!-- Campo para ingresar el enlace -->
-            <label class="tiritas" for="grado_estudios">Enlace:</label>
-            <input class="espacio-derecha" type="text" name="grado_estudios" id="grado_estudios" required>
-            <!-- Campo para ver el estatus -->
-            <label class="tiritas" for="estatus_grado_estudios">Estatus:</label>
-            <input class="estatus" type="text" name="estatus_grado_estudios" id="estatus_grado_estudios" readonly value="">
-            <!-- Cuadro de texto de observaciones -->
-            <label class="tiritas" for="observaciones_grado_estudios">Observaciones:</label>
-            <textarea class="textareaowo" id="observaciones_grado_estudios" readonly></textarea>
-            <br><br><br>
-
-        <h2>Comprobante de años de antiguedad</h2>
-            <label class="tiritas" for="antiguedad1">Años de antiguedad:</label>
-            <input class="espacio-derecha" type="text" name="antiguedad1" id="antiguedad1" required>
-            <br>
-            <!-- Campo para ingresar el enlace -->
-            <label class="tiritas" for="antiguedad">Enlace:</label>
-            <input class="espacio-derecha" type="text" name="antiguedad" id="antiguedad" required>
-            <!-- Campo para ver el estatus -->
-            <label class="tiritas" for="estatus_antguedad">Estatus:</label>
-            <input class="estatus" type="text" name="estatus_antguedad" id="estatus_antguedad" readonly value="">
-            <!-- Cuadro de texto de observaciones -->
-            <label class="tiritas" for="observaciones_antguedad">Observaciones:</label>
-            <textarea class="textareaowo" id="observaciones_antguedad" readonly></textarea>
-            <br><br><br>
-
-        <h2>Comprobante de Horas de cursos de capacitación impartidas</h2>
-            <label class="tiritas" for="cursosCap1">Horas impartidas:</label>
-            <input class="espacio-derecha" type="text" name="cursosCap1" id="cursosCap1" required>
-            <br>
-            <!-- Campo para ingresar el enlace -->
-            <label class="tiritas" for="cursosCap">Enlace:</label>
-            <input class="espacio-derecha" type="text" name="cursosCap" id="cursosCap" required>
-            <!-- Campo para ver el estatus -->
-            <label class="tiritas" for="estatus_cursosCap">Estatus:</label>
-            <input class="estatus" type="text" name="estatus_cursosCap" id="estatus_cursosCap" readonly value="">
-            <!-- Cuadro de texto de observaciones -->
-            <label class="tiritas" for="observaciones_cursosCap">Observaciones:</label>
-            <textarea class="textareaowo" id="observaciones_cursosCap" readonly></textarea>
-            <br><br><br>
-
-        <h2 class="espacio-abajo">Comprobante de certificaciones</h2>
-            <!-- Campo para ingresar el enlace -->
-            <label class="tiritas" for="certificaciones">Enlace:</label>
-            <input class="espacio-derecha" type="text" name="certificaciones" id="certificaciones" required>
-            <!-- Campo para ver el estatus -->
-            <label class="tiritas"  for="estatus_certificaciones">Estatus:</label>
-            <input class="estatus" type="text" name="estatus_certificaciones" id="estatus_certificaciones" readonly value="">
-            <!-- Cuadro de texto de observaciones -->
-            <label class="tiritas" for="observaciones_certificaciones">Observaciones:</label>
-            <textarea class="textareaowo" id="observaciones_certificaciones" readonly></textarea>
-            <br><br><br>
-
-        <h2 class="espacio-abajo">Comprobante de diplomados</h2>
-            <!-- Campo para ingresar el enlace -->
-            <label class="tiritas" for="diplomados">Enlace:</label>
-            <input class="espacio-derecha" type="text" name="diplomados" id="diplomados" required>
-            <!-- Campo para ver el estatus -->
-            <label class="tiritas" for="estatus_diplomados">Estatus:</label>
-            <input class="estatus" type="text" name="estatus_diplomados" id="estatus_diplomados" readonly value="">
-            <!-- Cuadro de texto de observaciones -->
-            <label class="tiritas" for="observaciones_diplomados">Observaciones:</label>
-            <textarea class="textareaowo" id="observaciones_diplomados" readonly></textarea>
-            <br><br><br>
-
-
-        <h2 class="espacio-abajo">Comprobante de cursos de ST</h2>
-            <!-- Campo para ingresar el enlace -->
-            <label class="tiritas" for="cursosST">Enlace:</label>
-            <input class="espacio-derecha" type="text" name="cursosST" id="cursosST" required>
-            <!-- Campo para ver el estatus -->
-            <label class="tiritas" for="estatus_cursosST">Estatus:</label>
-            <input class="estatus" type="text" name="estatus_cursosST" id="estatus_cursosST" readonly value="">
-            <!-- Cuadro de texto de observaciones -->
-            <label class="tiritas" for="observaciones_cursosST">Observaciones:</label>
-            <textarea class="textareaowo" id="observaciones_cursosST" readonly></textarea>
-            <br><br><br>
-
-        <h2>Comprobande de Horas impartidas de cursos</h2>
-            <label class="tiritas" for="cursos1">Horas impartidas:</label>
-            <input class="espacio-derecha" type="text" name="cursos1" id="cursos1" required>
-            <br>
-            <!-- Campo para ingresar el enlace -->
-            <label class="tiritas" for="cursos">Enlace:</label>
-            <input class="espacio-derecha" type="text" name="cursos" id="cursos" required>
-            <!-- Campo para ver el estatus -->
-            <label class="tiritas" for="estatus_cursos">Estatus:</label>
-            <input class="estatus" type="text" name="estatus_cursos" id="estatus_cursos" readonly value="">
-            <!-- Cuadro de texto de observaciones -->
-            <label class="tiritas" for="observaciones_cursos">Observaciones:</label>
-            <textarea class="textareaowo" id="observaciones_cursos" readonly></textarea>
-            <br><br><br>
-
-        <h2 class="espacio-abajo">Comprobante de instructor de diplomados</h2>
-            <!-- Campo para ingresar el enlace -->
-            <label class="tiritas" for="instructorDip">Enlace:</label>
-            <input class="espacio-derecha" type="text" name="instructorDip" id="instructorDip" required>
-            <!-- Campo para ver el estatus -->
-            <label class="tiritas" for="estatus_instructorDip">Estatus:</label>
-            <input class="estatus" type="text" name="estatus_instructorDip" id="estatus_instructorDip" readonly value="">
-            <!-- Cuadro de texto de observaciones -->
-            <label class="tiritas" for="observaciones_instructorDip">Observaciones:</label>
-            <textarea class="textareaowo" id="observaciones_instructorDip" readonly></textarea>
-            <br><br><br>
-
-        <h2 class="espacio-abajo">Comprobante de instructor de certificaciones</h2>
-            <!-- Campo para ingresar el enlace -->
-            <label class="tiritas" for="instructorCer">Enlace:</label>
-            <input class="espacio-derecha" type="text" name="instructorCer" id="instructorCer" required>
-            <!-- Campo para ver el estatus -->
-            <label class="tiritas" for="estatus_instructorCer">Estatus:</label>
-            <input class="estatus" type="text" name="estatus_instructorCer" id="estatus_instructorCer" readonly value="">
-            <!-- Cuadro de texto de observaciones -->
-            <label class="tiritas" for="observaciones_instructorCer">Observaciones:</label>
-            <textarea class="textareaowo" id="observaciones_instructorCer" readonly></textarea>
-            <br><br><br>
-
-        <h2>Comprobante de No. de veces que ha sido asesor de residencias</h2>
-            <label class="tiritas" for="asesorRes1">Numero de veces:</label>
-            <input class="espacio-derecha" type="text" name="asesorRes1" id="asesorRes1" required>
-            <br>
-            <!-- Campo para ingresar el enlace de asesor de residencias -->
-            <label class="tiritas" for="asesorRes">Enlace:</label>
-            <input class="espacio-derecha" type="text" name="asesorRes" id="asesorRes" required>
-            <!-- Campo para ver el estatus -->
-            <label class="tiritas" for="estatus">Estatus:</label>
-            <input class="estatus" type="text" name="estatus" id="estatus" readonly value="">
-            <!-- Cuadro de texto de observaciones -->
-            <label class="tiritas" for="observaciones">Observaciones:</label>
-            <textarea class="textareaowo" id="observaciones" readonly></textarea>
-            <br><br><br>
-        
-        <h2>Comprobante de No. de veces que ha sido asesor de titulación</h2>
-            <label class="tiritas" for="asesorTit1">Numero de veces:</label>
-            <input class="espacio-derecha" type="text" name="asesorTit1" id="asesorTit1" required>
-            <br>
-            <!-- Campo para ingresar el enlace de asesor de titulación -->
-            <label class="tiritas" for="asesorTit">Enlace:</label>
-            <input class="espacio-derecha" type="text" name="asesorTit" id="asesorTit" required>
-            <!-- Campo para ver el estatus -->
-            <label class="tiritas" for="estatus">Estatus:</label>
-            <input class="estatus" type="text" name="estatus" id="estatus" readonly value="">
-            <!-- Cuadro de texto de observaciones -->
-            <label class="tiritas"  for="observaciones">Observaciones:</label>
-            <textarea class="textareaowo" id="observaciones" readonly></textarea>
-            <br><br><br>
-        
-        <h2 class="espacio-abajo">Comprobante de dirección de tesis</h2>
-            <!-- Campo para ingresar el enlace de dirección de tesis -->
-            <label class="tiritas" for="direccionTesis">Enlace:</label>
-            <input class="espacio-derecha" type="text" name="direccionTesis" id="direccionTesis" required>
-            <!-- Campo para ver el estatus -->
-            <label class="tiritas" for="estatus">Estatus:</label>
-            <input class="estatus" type="text" name="estatus" id="estatus" readonly value="">
-            <!-- Cuadro de texto de observaciones -->
-            <label class="tiritas" for="observaciones">Observaciones:</label>
-            <textarea class="textareaowo" id="observaciones" readonly></textarea>
-            <br><br><br>
-        
-        <!-- Botón para enviar los enlaces -->
-        <input class="botonowo" type="submit" value="Enviar comprobantes" class="espacio-derecha">
+        <!-- Campo para ingresar el enlace -->
+        <label class="tiritas" for="grado_estudios">Enlace:</label>
+        <input class="espacio-derecha" type="text" name="grado_estudios" id="grado_estudios" required>
+        <!-- Campo para ver el estatus -->
+        <label class="tiritas" for="estatus_grado_estudios">Estatus:</label>
+        <input class="estatus" type="text" name="estatus_grado_estudios" id="estatus_grado_estudios" readonly value="<?php echo $estatus1; ?>">
+        <!-- Cuadro de texto de observaciones -->
+        <label class="tiritas" for="observaciones_grado_estudios">Observaciones:</label>
+        <input type="" name="id" id="usuario" readonly value="<?php echo $obervaciones1; ?>">
+        <br><br><br>
+        <input type="submit" name="enviar_certificado" value="Enviar certificado">
     </form>
+
+    <!-- Formulario para Comprobantes de años de antigüedad -->
+<form class="formuwu" action="procesar_form_us.php" method="post">
+    <h2>Comprobante de años de antigüedad</h2>
+    <!-- Campo para ingresar el enlace -->
+    <label class="tiritas" for="antiguedad">Enlace:</label>
+    <input class="espacio-derecha" type="text" name="antiguedad" id="antiguedad" required>
+    <!-- Campo para ver el estatus -->
+    <label class="tiritas" for="estatus_antiguedad">Estatus:</label>
+    <input class="estatus" type="text" name="estatus_antiguedad" id="estatus_antiguedad" readonly value="<?php echo $estatus2; ?>">
+    <!-- Cuadro de texto de observaciones -->
+    <label class="tiritas" for="observaciones_antiguedad">Observaciones:</label>
+        <input type="" name="id" id="usuario" readonly value="<?php echo $obervaciones2; ?>">
+    <br><br><br>
+    <input type="submit" name="enviar_antiguedad" value="Enviar comprobante de antigüedad">
+</form>
+
+<!-- Formulario para Comprobante de Horas de cursos de capacitación impartidas -->
+<form class="formuwu" action="procesar_form_us.php" method="post">
+    <h2>Comprobante de Horas de cursos de capacitación impartidas</h2>
+    <!-- Campo para ingresar el enlace -->
+    <label class="tiritas" for="cursosCap">Enlace:</label>
+    <input class="espacio-derecha" type="text" name="cursosCap" id="cursosCap" required>
+    <!-- Campo para ver el estatus -->
+    <label class="tiritas" for="estatus_cursosCap">Estatus:</label>
+    <input class="estatus" type="text" name="estatus_cursosCap" id="estatus_cursosCap" readonly value="<?php echo $estatus3; ?>">
+    <!-- Cuadro de texto de observaciones -->
+    <label class="tiritas" for="observaciones_cursosCap">Observaciones:</label>
+        <input type="" name="id" id="usuario" readonly value="<?php echo $obervaciones3; ?>">
+    <br><br><br>
+    <input type="submit" name="enviar_cursosCap" value="Enviar comprobante de cursos de capacitación impartidas">
+</form>
+
+<!-- Formulario para Comprobante de certificaciones -->
+<form class="formuwu" action="procesar_form_us.php" method="post">
+    <h2>Comprobante de certificaciones</h2>
+    <!-- Campo para ingresar el enlace -->
+    <label class="tiritas" for="certificaciones">Enlace:</label>
+    <input class="espacio-derecha" type="text" name="certificaciones" id="certificaciones" required>
+    <!-- Campo para ver el estatus -->
+    <label class="tiritas" for="estatus_certificaciones">Estatus:</label>
+    <input class="estatus" type="text" name="estatus_certificaciones" id="estatus_certificaciones" readonly value="<?php echo $estatus4; ?>">
+    <!-- Cuadro de texto de observaciones -->
+    <label class="tiritas" for="observaciones_certificaciones">Observaciones:</label>
+        <input type="" name="id" id="usuario" readonly value="<?php echo $obervaciones4; ?>">
+    <br><br><br>
+    <input type="submit" name="enviar_certificaciones" value="Enviar comprobante de certificaciones">
+</form>
+
+<!-- Formulario para Comprobante de diplomados -->
+<form class="formuwu" action="procesar_form_us.php" method="post">
+    <h2>Comprobante de diplomados</h2>
+    <!-- Campo para ingresar el enlace -->
+    <label class="tiritas" for="diplomados">Enlace:</label>
+    <input class="espacio-derecha" type="text" name="diplomados" id="diplomados" required>
+    <!-- Campo para ver el estatus -->
+    <label class="tiritas" for="estatus_diplomados">Estatus:</label>
+    <input class="estatus" type="text" name="estatus_diplomados" id="estatus_diplomados" readonly value="<?php echo $estatus5; ?>">
+    <!-- Cuadro de texto de observaciones -->
+    <label class="tiritas" for="observaciones_diplomados">Observaciones:</label>
+        <input type="" name="id" id="usuario" readonly value="<?php echo $obervaciones5; ?>">
+    <br><br><br>
+    <input type="submit" name="enviar_diplomados" value="Enviar comprobante de diplomados">
+</form>
+
+<!-- Formulario para Comprobante de cursos -->
+<form class="formuwu" action="procesar_form_us.php" method="post">
+    <h2>Comprobante de cursos</h2>
+    <!-- Campo para ingresar el enlace -->
+    <label class="tiritas" for="cursos">Enlace:</label>
+    <input class="espacio-derecha" type="text" name="cursos" id="cursos" required>
+    <!-- Campo para ver el estatus -->
+    <label class="tiritas" for="estatus_cursos">Estatus:</label>
+    <input class="estatus" type="text" name="estatus_cursos" id="estatus_cursos" readonly value="<?php echo $estatus6; ?>">
+    <!-- Cuadro de texto de observaciones -->
+    <label class="tiritas" for="observaciones_cursos">Observaciones:</label>
+        <input type="" name="id" id="usuario" readonly value="<?php echo $obervaciones6; ?>">
+    <br><br><br>
+    <input type="submit" name="enviar_cursos" value="Enviar comprobante de cursos">
+</form>
+
+<!-- Formulario para Comprobante de cursos -->
+<form class="formuwu" action="procesar_form_us.php" method="post">
+    <h2>Comprobante de cursos ST</h2>
+    <!-- Campo para ingresar el enlace -->
+    <label class="tiritas" for="cursosST">Enlace:</label>
+    <input class="espacio-derecha" type="text" name="cursosST" id="cursosST" required>
+    <!-- Campo para ver el estatus -->
+    <label class="tiritas" for="estatus_cursos">Estatus:</label>
+    <input class="estatus" type="text" name="estatus_cursos" id="estatus_cursos" readonly value="<?php echo $estatus7; ?>">
+    <!-- Cuadro de texto de observaciones -->
+    <label class="tiritas" for="observaciones_cursos">Observaciones:</label>
+        <input type="" name="id" id="usuario" readonly value="<?php echo $obervaciones7; ?>">
+    <br><br><br>
+    <input type="submit" name="enviar_cursosST" value="Enviar comprobante de cursosST">
+</form>
+
+<!-- Formulario para Comprobante de instructor de diplomados -->
+<form class="formuwu" action="procesar_form_us.php" method="post">
+    <h2>Comprobante de instructor de diplomados</h2>
+    <!-- Campo para ingresar el enlace -->
+    <label class="tiritas" for="instructorDip">Enlace:</label>
+    <input class="espacio-derecha" type="text" name="instructorDip" id="instructorDip" required>
+    <!-- Campo para ver el estatus -->
+    <label class="tiritas" for="estatus_instructorDip">Estatus:</label>
+    <input class="estatus" type="text" name="estatus_instructorDip" id="estatus_instructorDip" readonly value="<?php echo $estatus8; ?>">
+    <!-- Cuadro de texto de observaciones -->
+    <label class="tiritas" for="observaciones_instructorDip">Observaciones:</label>
+        <input type="" name="id" id="usuario" readonly value="<?php echo $obervaciones8; ?>">
+    <br><br><br>
+    <input type="submit" name="enviar_instructorDip" value="Enviar comprobante de instructor de diplomados">
+</form>
+
+<!-- Formulario para Comprobante de instructor de certificaciones -->
+<form class="formuwu" action="procesar_form_us.php" method="post">
+    <h2>Comprobante de instructor de certificaciones</h2>
+    <!-- Campo para ingresar el enlace -->
+    <label class="tiritas" for="instructorCer">Enlace:</label>
+    <input class="espacio-derecha" type="text" name="instructorCer" id="instructorCer" required>
+    <!-- Campo para ver el estatus -->
+    <label class="tiritas" for="estatus_instructorCer">Estatus:</label>
+    <input class="estatus" type="text" name="estatus_instructorCer" id="estatus_instructorCer" readonly value="<?php echo $estatus9; ?>">
+    <!-- Cuadro de texto de observaciones -->
+    <label class="tiritas" for="observaciones_instructorCer">Observaciones:</label>
+        <input type="" name="id" id="usuario" readonly value="<?php echo $obervaciones9; ?>">
+    <br><br><br>
+    <input type="submit" name="enviar_instructorCer" value="Enviar comprobante de instructor de certificaciones">
+</form>
+
+<!-- Formulario para Comprobante de asesor de residencias -->
+<form class="formuwu" action="procesar_form_us.php" method="post">
+    <h2>Comprobante de asesor de residencias</h2>
+    <!-- Campo para ingresar el enlace de asesor de residencias -->
+    <label class="tiritas" for="asesorRes">Enlace:</label>
+    <input class="espacio-derecha" type="text" name="asesorRes" id="asesorRes" required>
+    <!-- Campo para ver el estatus -->
+    <label class="tiritas" for="estatus">Estatus:</label>
+    <input class="estatus" type="text" name="estatus" id="estatus" readonly value="<?php echo $estatus10; ?>">
+    <!-- Cuadro de texto de observaciones -->
+    <label class="tiritas" for="observaciones">Observaciones:</label>
+        <input type="" name="id" id="usuario" readonly value="<?php echo $obervaciones10; ?>">
+    <br><br><br>
+    <input type="submit" name="enviar_asesorRes" value="Enviar comprobante de asesor de residencias">
+</form>
+
+<!-- Formulario para Comprobante de asesor de titulación -->
+<form class="formuwu" action="procesar_form_us.php" method="post">
+    <h2>Comprobante de asesor de titulación</h2>
+        <!-- Campo para ingresar el enlace de asesor de titulación -->
+        <label class="tiritas" for="asesorTit">Enlace:</label>
+    <input class="espacio-derecha" type="text" name="asesorTit" id="asesorTit" required>
+    <!-- Campo para ver el estatus -->
+    <label class="tiritas" for="estatus">Estatus:</label>
+    <input class="estatus" type="text" name="estatus" id="estatus" readonly value="<?php echo $estatus11; ?>">
+    <!-- Cuadro de texto de observaciones -->
+    <label class="tiritas" for="observaciones">Observaciones:</label>
+        <input type="" name="id" id="usuario" readonly value="<?php echo $obervaciones11; ?>">
+    <br><br><br>
+    <input type="submit" name="enviar_asesorTit" value="Enviar comprobante de asesor de titulación">
+</form>
+
+<!-- Formulario para Comprobante de dirección de tesis -->
+<form class="formuwu" action="procesar_form_us.php" method="post">
+    <h2>Comprobante de dirección de tesis</h2>
+    <!-- Campo para ingresar el enlace de dirección de tesis -->
+    <label class="tiritas" for="direccionTesis">Enlace:</label>
+    <input class="espacio-derecha" type="text" name="direccionTesis" id="direccionTesis" required>
+    <!-- Campo para ver el estatus -->
+    <label class="tiritas" for="estatus">Estatus:</label>
+    <input class="estatus" type="text" name="estatus" id="estatus" readonly value="<?php echo $estatus12; ?>">
+    <!-- Cuadro de texto de observaciones -->
+    <label class="tiritas" for="observaciones">Observaciones:</label>
+        <input type="" name="id" id="usuario" readonly value="<?php echo $obervaciones12; ?>">
+    <br><br><br>
+    <input type="submit" name="enviar_direccionTesis" value="Enviar comprobante de dirección de tesis">
+</form>
+
 
 </body>
 </html>

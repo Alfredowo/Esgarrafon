@@ -4,56 +4,116 @@
 require("conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-// Obtener datos del formulario(enlaces)
-$usuario = $_POST['usuario'];
-$grado_estudio = $_POST['grado_estudios'];
-$antiguedad = $_POST['antiguedad'];
-$cursosCap = $_POST['cursosCap'];
-$certificaciones = $_POST['certificaciones'];
-$diplomados = $_POST['diplomados'];
-$cursosST = $_POST["cursosST"];
-$cursosImpartidos = $_POST["cursos"];
-$instructorDiplomados = $_POST["instructorDip"];
-$instructorCertificaciones = $_POST["instructorCer"];
-$asesorResidencias = $_POST["asesorRes"];
-$asesorTitulacion = $_POST["asesorTit"];
-$direccionTesis = $_POST["direccionTesis"];
+    $usuario = $_POST['usuario'];
+    // Guardar la información en la base de datos
+    //echo "el nombre de usuario es: $usuario ";
+    $resultado= mysqli_query($conn, "SELECT id FROM empleados WHERE Nombre = '$usuario'");
+    $fila = mysqli_fetch_assoc($resultado); 
+    /*
+    if ($resultado) {
+        echo "to bien";
+    } else {//agregar nuevo
+        echo "Fatality error, usuario no encontrado";
+    }
 
-// ints
-$grado_estudio1 = $_POST['grado_estudios1']; //tipo enum
-$antiguedad1 = $_POST['antiguedad1'];
-$cursosCap1 = $_POST['cursosCap1'];
-$cursosImpartidos1 = $_POST["cursos1"];
-$asesorResidencias1 = $_POST["asesorRes1"];
-$asesorTitulacion1 = $_POST["asesorTit1"];
-} else {
-    echo "fatal error, borra system32 y reinicia tu pc";
-}
-/*
-echo "variables: $usuario, $grado_estudio, $antiguedad, $cursosCap, $certificaciones, $diplomados, 
-$cursosST, $cursosImpartidos, $instructorDiplomados, $instructorCertificaciones, $asesorResidencias, 
-$asesorTitulacion, $direccionTesis";*/
-
-// Guardar la información en la base de datos
-//echo "el nombre de usuario es: $usuario ";
-$resultado= mysqli_query($conn, "SELECT Id FROM Empleados WHERE Usuario = '$usuario'");
-if ($resultado) {
-    $fila = mysqli_fetch_assoc($resultado);
     if ($fila) {
-        $id = $fila['Id'];
+        $id = $fila['id'];
         //echo "El id es: $id"; //actualizar registro
-        $query = "CALL insertarEmpleados
-        ($id, $usuario, '$grado_estudio1', '$grado_estudio', $antiguedad1, '$antiguedad1', $cursosCap1,
-            '$cursosCap', true, '$certificaciones', true, '$diplomados', true, '$cursosST', 
-            $cursosImpartidos1, '$cursosImpartidos', true, '$instructorDiplomados', true, 
-            '$instructorCertificaciones', $asesorResidencias1, '$asesorResidencias', $asesorTitulacion1,
-            '$asesorTitulacion', '$direccionTesis')";
+        $query = "UPDATE empleados SET
+            rutaGrado = '$grado_estudio',
+        WHERE id = $id";
     } else {
         echo "No se encontró la Id para el usuario: $usuario"; 
+    }*/
+
+    $id = $fila['id'];
+
+    // Verificar cuál de los botones se presionó y procesar el formulario correspondiente
+    
+    if (isset($_POST['enviar_certificado'])) {
+        $grado_estudio = $_POST['grado_estudios'];
+        // Realizar el UPDATE para el certificado de grado de estudios
+        $query = "UPDATE empleados SET
+            rutaGrado = '$grado_estudio'
+        WHERE id = $id";
+    } elseif (isset($_POST['enviar_antiguedad'])) {
+        $antiguedad = $_POST['antiguedad'];
+        // Realizar el UPDATE para el comprobante de antigüedad
+        $query = "UPDATE empleados SET
+            rutaAntiguedad = '$antiguedad'
+        WHERE id = $id";
+    } elseif (isset($_POST['enviar_cursos_cap'])) {
+        $cursosCap = $_POST['cursosCap'];
+        // Realizar el UPDATE para el comprobante de cursos de capacitación
+        $query = "UPDATE empleados SET
+            rutaCursoCap = '$cursosCap'
+        WHERE id = $id";
+    } elseif (isset($_POST['enviar_certificaciones'])) {
+        $certificaciones = $_POST['certificaciones'];
+        // Realizar el UPDATE para el comprobante de certificaciones
+        $query = "UPDATE empleados SET
+            rutaCertificaciones = '$certificaciones'
+        WHERE id = $id";
+    } elseif (isset($_POST['enviar_diplomados'])) {
+        $diplomados = $_POST['diplomados'];
+        // Realizar el UPDATE para el comprobante de diplomados
+        $query = "UPDATE empleados SET
+            rutaDiplomados = '$diplomados'
+        WHERE id = $id";
+    } elseif (isset($_POST['enviar_cursosST'])) {
+        $cursosST = $_POST['cursosST'];
+        // Realizar el UPDATE para el comprobante de cursos impartidos
+        $query = "UPDATE empleados SET
+            rutaCursosST = '$cursosST'
+        WHERE id = $id";
+    } elseif (isset($_POST['enviar_cursosImpartidos'])) {
+        $cursosImpartidos = $_POST['cursosImpartidos'];
+        // Realizar el UPDATE para el comprobante de cursos impartidos
+        $query = "UPDATE empleados SET
+            rutaCursos = '$cursosImpartidos'
+        WHERE id = $id";
+    } elseif (isset($_POST['enviar_instructorDip'])) {
+        $instructorDiplomados = $_POST['instructorDip'];
+        // Realizar el UPDATE para el comprobante de instructor de diplomados
+        $query = "UPDATE empleados SET
+            rutaInstructorDip = '$instructorDiplomados'
+        WHERE id = $id";
+    } elseif (isset($_POST['enviar_instructorCer'])) {
+        $instructorCertificaciones = $_POST['instructorCer'];
+        // Realizar el UPDATE para el comprobante de instructor de certificaciones
+        $query = "UPDATE empleados SET
+            rutaInstructorCer = '$instructorCertificaciones'
+        WHERE id = $id";
+    } elseif (isset($_POST['enviar_asesorRes'])) {
+        $asesorResidencias = $_POST['asesorRes'];
+        // Realizar el UPDATE para el comprobante de asesor de residencias
+        $query = "UPDATE empleados SET
+            rutaAsesorRes = '$asesorResidencias'
+        WHERE id = $id";
+    } elseif (isset($_POST['enviar_asesorTit'])) {
+        $asesorTitulacion = $_POST['asesorTit'];
+        // Realizar el UPDATE para el comprobante de asesor de titulación
+        $query = "UPDATE empleados SET
+            rutaAsesorTit = '$asesorTitulacion'
+        WHERE id = $id";
+    } elseif (isset($_POST['enviar_direccionTesis'])) {
+        $direccionTesis = $_POST['direccionTesis'];
+        // Realizar el UPDATE para el comprobante de dirección de tesis
+        $query = "UPDATE empleados SET
+            rutaDireccionTesis = '$direccionTesis'
+        WHERE id = $id";
     }
-} else {//agregar nuevo
-    echo "Fatality error, usuario no encontrado";
+    echo "Datos actualizados correctamente";
+} else {
+    echo "Fatal error, borra system32 y reinicia tu PC";
 }
+
+// Mostrar todas las variables en un solo echo a ver si estan bien por que nombre
+/*
+echo "Variables: $usuario, $grado_estudio, $antiguedad, $cursosCap, $certificaciones, $diplomados, $cursosST,
+ $cursosImpartidos, $instructorDiplomados, $instructorCertificaciones, $asesorResidencias, $asesorTitulacion,
+  $direccionTesis, $grado_estudio1, $antiguedad1, $cursosCap1, $cursosImpartidos1, $asesorResidencias1,
+   $asesorTitulacion1";*/
 
 $result = mysqli_query($conn, $query);
 
@@ -61,9 +121,10 @@ if ($result) {
     // Redirigir al usuario a la página de resultados(ya no se ocupa)
     //header('Location: Resultados.php');
     //exit;
-    echo "todo bien uwu";
+    echo "datos registrados correctamente";
 } else {
     echo "Error al guardar los datos en la base de datos. $result";
 }
 mysqli_close($conn);
 ?>
+

@@ -110,7 +110,7 @@
 </head>
 <h1>Administrador</h1>
     <form action="procesar_formulario.php" method="post" id="mostrarAlerta">
-        <?php
+    <?php
         function extraer(){
             require("conexion.php");
             if (isset($_SESSION['id'])) {
@@ -345,20 +345,20 @@
                 echo '<textarea name="observacionesDireccionTesis" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
                 $algunDocumentoPresente = true;
             }
-        echo '<br><br><br>';
-        if($algunDocumentoPresente==false)
-        {
-            echo '<div>No hay documentos a evaluar (:</div>';
+            echo '<br><br><br>';
+            if($algunDocumentoPresente==false)
+            {
+                echo '<div>No hay documentos a evaluar (:</div>';
+            }
         }
-    }
-    extraer();
-        ?>
-        </form>
-        <form action="seleccionarEmpleado.php">
-            <center><input class="botonregresar" type="submit" value="Regresar"></center>
-            <a style="position:absolute; top:10px; right:20px;" value="Mirar puntajes" href="Resultados.php" class="botonregresar" target="_blank">Mirar Puntajes</a>
-        </form>
-        <br><br>
+        extraer();
+    ?>
+    </form>
+    <form action="seleccionarEmpleado.php">
+        <center><input class="botonregresar" type="submit" value="Regresar"></center>
+        <a style="position:absolute; top:10px; right:20px;" value="Mirar puntajes" href="Resultados.php" class="botonregresar" target="_blank">Mirar Puntajes</a>
+    </form>
+    <br><br>
 </body>
 <script>
     mostrarAlerta.addEventListener("submit", function() { 
