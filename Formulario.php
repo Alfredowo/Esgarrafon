@@ -112,13 +112,12 @@
     <form action="procesar_formulario.php" method="post" id="mostrarAlerta">
         <?php
         function extraer(){
-            session_start();
+            require("conexion.php");
             if (isset($_SESSION['id'])) {
                 $id = $_SESSION['id'];
             } else {
                 $id=$_POST['empleado'];
             }
-            require("conexion.php");
             $algunDocumentoPresente=false;
             echo '<input type="text" name="id" value="'.$id.'" style="display: none"></input>';
     
@@ -178,7 +177,7 @@
                 echo '<a href="'.$filaAntiguedad['rutaAntiguedad'].'" target="_blank" class="btn">';
                 echo 'Verificar';
                 echo '</a><br>';
-                echo '<input type="number" id="antiguedad" name="antiguedad" required>';
+                echo '<input type="number" id="antiguedad" name="antiguedad">';
                 echo '<input type="submit" class="Botonesinput" name="btnAntiguedad" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" class="Botonesinput" name="btnAntiguedad" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesAntiguedad" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';    
@@ -192,7 +191,7 @@
                 echo 'Verificar';
                 echo '</a><br>';
                 //Si es >= 30hrs 2pts y <30hrs 1pt
-                echo '<input type="number" id="cursosCap" name="cursosCap" required>';
+                echo '<input type="number" id="cursoCap" name="cursoCap">';
                 echo '<input type="submit" class="Botonesinput" name="btnCursoCap" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnCursoCap" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesCursosCap" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
@@ -207,10 +206,10 @@
                 echo '<a href="'.$filaCertificaciones['rutaCertificaciones'].'" target="_blank" class="btn">';
                 echo 'Verificar';
                 echo '</a><br>';
-                echo '<select name="certificaciones" id="certificaciones">';
+                /*echo '<select name="certificaciones" id="certificaciones">';
                 echo '<option value="true">Si</option>';
                 echo '<option value="false">No</option>';
-                echo '</select>';
+                echo '</select>';*/
                 echo '<input type="submit" class="Botonesinput" name="btnCertificaciones" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnCertificaciones" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesCertificaciones" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
@@ -224,10 +223,10 @@
                 echo 'Verificar';
                 echo '</a><br>';
                 //<!-- si sí 10pts -->
-                echo '<select name="diplomados" id="diplomados">';
+                /*echo '<select name="diplomados" id="diplomados">';
                 echo '<option value="true">Si</option>';
                 echo '<option value="false">No</option>';
-                echo '</select>';
+                echo '</select>';*/
                 echo '<input type="submit" class="Botonesinput" name="btnDiplomados value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnDiplomados" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesDiplomados" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
@@ -241,10 +240,10 @@
                 echo 'Verificar';
                 echo '</a><br>';
                 //'<!-- si sí 20pts -->';
-                echo '<select name="cursosST" id="cursosST">';
+                /*echo '<select name="cursosST" id="cursosST">';
                 echo '<option value="true">Si</option>';
                 echo '<option value="false">No</option>';
-                echo '</select>';
+                echo '</select>';*/
                 echo '<input type="submit" class="Botonesinput" name="btnCursosST" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnCursosST" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesCursosST" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
@@ -258,7 +257,7 @@
                 echo 'Verificar';
                 echo '</a><br>';
                 // '<!-- si es >30hrs 15pts si es <30 7pts -->';
-                echo '<input type="number" id="cursos" name="cursos" required>';
+                echo '<input type="number" id="cursos" name="cursos">';
                 echo '<input type="submit" class="Botonesinput" name="btnCursos" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnCursos" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesCursos" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
@@ -273,10 +272,10 @@
                 echo 'Verificar';
                 echo '</a><br>';
                 // '<!-- Si sí 20pts-->';
-                echo '<select name="instructorDip" id="instructorDip">';
+                /*echo '<select name="instructorDip" id="instructorDip">';
                 echo '<option value="true">Si</option>';
                 echo '<option value="false">No</option>';
-                echo '</select>';
+                echo '</select>';*/
                 echo '<input type="submit" class="Botonesinput" name="btnInstructorDip" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnInstructorDip" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesInstructorDip" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
@@ -291,10 +290,10 @@
                 echo 'Verificar';
                 echo '</a><br>';
                 // '<!-- Si sí 30pts-->';
-                echo '<select name="instructorCer" id="instructorCer">';
+                /*echo '<select name="instructorCer" id="instructorCer">';
                 echo '<option value="true">Si</option>';
                 echo '<option value="false">No</option>';
-                echo '</select>';
+                echo '</select>';*/
                 echo '<input type="submit" class="Botonesinput" name="btnInstructorCer" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnInstructorCer" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesInstructorCer" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
@@ -308,7 +307,7 @@
                 echo 'Verificar';
                 echo '</a><br>';
                 echo '<!-- 1pt por cada una -->';
-                echo '<input type="number" id="asesorRes" name="asesorRes" required>';
+                echo '<input type="number" id="asesorRes" name="asesorRes">';
                 echo '<input type="submit" class="Botonesinput" name="btnAsesorRes" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnAsesorRes" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesAsesorRes" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
@@ -322,7 +321,7 @@
                 echo 'Verificar';
                 echo '</a><br>';
                 echo '<!-- 1pt por cada una -->';
-                echo '<input type="number" id="asesorTit" name="asesorTit" required>';
+                echo '<input type="number" id="asesorTit" name="asesorTit">';
                 echo '<input type="submit" class="Botonesinput" name="btnAsesorTit" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnAsesorTit" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesAsesorTit" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
@@ -337,10 +336,10 @@
                 echo 'Verificar';
                 echo '</a><br>';
                 // '<!-- Si sí 10pts-->';
-                echo '<select name="direccionTesis" id="direccionTesis">';
+                /*echo '<select name="direccionTesis" id="direccionTesis">';
                 echo '<option value="true">Si</option>';
                 echo '<option value="false">No</option>';
-                echo '</select>';
+                echo '</select>';*/
                 echo '<input type="submit" class="Botonesinput" name="btnDireccionTesis" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnDireccionTesis" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesDireccionTesis" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
@@ -357,7 +356,7 @@
         </form>
         <form action="seleccionarEmpleado.php">
             <center><input class="botonregresar" type="submit" value="Regresar"></center>
-            <a style="position:absolute; right:20px;" value="Mirar puntajes" href="Resultados.php" class="botonregresar" target="_blank">Mirar Puntujes</a>
+            <a style="position:absolute; top:10px; right:20px;" value="Mirar puntajes" href="Resultados.php" class="botonregresar" target="_blank">Mirar Puntajes</a>
         </form>
         <br><br>
 </body>
