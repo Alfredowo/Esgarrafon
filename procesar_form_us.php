@@ -5,6 +5,7 @@ require("conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST['usuario'];
+    //echo $usuario;
     // Guardar la información en la base de datos
     //echo "el nombre de usuario es: $usuario ";
     $resultado= mysqli_query($conn, "SELECT id FROM Empleados WHERE Nombre = '$usuario'");
@@ -79,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Realizar el UPDATE para el comprobante de dirección de tesis
         $query = "UPDATE Empleados SET rutaDireccionTesis = '$direccionTesis' WHERE id = $id";
     }
-    echo "Datos actualizados correctamente";
+    //echo "Datos actualizados correctamente";
 } else {
     echo "Error al obtener los datos";
 }
