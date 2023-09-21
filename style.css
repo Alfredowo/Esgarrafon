@@ -72,3 +72,15 @@
     border: 1px solid #ccc;
     resize: none; 
 }
+.botonregresar {
+        font-family: Verdana,Geneva,Tahoma,sans-serif;
+        color: #c4c3ca;
+        cursor: pointer;
+        background-color: #13141D;
+        border: none;
+        padding: 10px 20px; /* Ajusta el padding según tu preferencia */
+    }
+.botonregresar:hover{
+        background-color: #4CA289 ;
+    }
+
