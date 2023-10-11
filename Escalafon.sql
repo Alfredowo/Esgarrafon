@@ -89,11 +89,13 @@ CREATE TABLE Puntaje (
 INSERT INTO puntaje VALUES(NULL, 2, 50);  
 SELECT * FROM puntaje; */
 
+Drop view if exists VistaPuntajes;
 CREATE VIEW VistaPuntajes AS
-SELECT E.Nombre AS NombreEmpleado, P.Puntaje
+SELECT E.Nombre AS NombreEmpleado, P.Grado, P.Antiguedad,P.CursoCap,P.Certificaciones,
+P.Diplomados,P.CursosST,P.Cursos,P.InstructorDip,P.InstructorCer,P.AsesorRes,P.AsesorTit,
+P.DireccionTesis, P.Puntaje
 FROM Puntaje P
 INNER JOIN Empleados E ON P.fkEmpleado = E.id;
-SELECT * FROM VistaPuntajes;
     
 CREATE USER IF NOT EXISTS 'userPro'@'localhost' IDENTIFIED BY '123';
 GRANT ALL PRIVILEGES ON Escalafon.* TO 'userPro'@'localhost';
@@ -175,7 +177,7 @@ delimiter //
 create trigger insertar_puntaje_insert after insert on Empleados
 for each row
 begin
-insert into Puntaje values(null,new.id,0);
+insert into Puntaje values(null,new.id,0,0,0,0,0,0,0,0,0,0,0,0,0);
 insert into observaciones values(null,new.id,'','','','','','','','','','','','');
 end;
 //

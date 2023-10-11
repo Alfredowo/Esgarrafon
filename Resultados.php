@@ -93,7 +93,7 @@ if (!$result) {
                 echo "<td>" . $row['NombreEmpleado'] . "</td>";
                 echo "<td>" . $row['Grado'] . "</td>";
                 echo "<td>" . $row['Antiguedad'] . "</td>";
-                echo "<td>" . $row['CursosCap'] . "</td>";
+                echo "<td>" . $row['CursoCap'] . "</td>";
                 echo "<td>" . $row['Certificaciones'] . "</td>";
                 echo "<td>" . $row['Diplomados'] . "</td>";
                 echo "<td>" . $row['CursosST'] . "</td>";

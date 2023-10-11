@@ -235,7 +235,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     {
         $obInstructorCer = $_POST['observacionesInstructorCer'];
         if($obInstructorCer!='Observaciones'){
-            $obInstructorCerBD=$conn->query("update observaciones set ovInstructirCer='".$obInstructorCer."' 
+            $obInstructorCerBD=$conn->query("update observaciones set ovInstructorCer='".$obInstructorCer."' 
             where fkEmpleado=".$id);
         }
     }
