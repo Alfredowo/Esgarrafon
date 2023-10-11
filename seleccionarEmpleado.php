@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seleccionar empleado</title>
+    <style>
+    .botonregresar {
+        font-family: Verdana,Geneva,Tahoma,sans-serif;
+        color: #c4c3ca;
+        cursor: pointer;
+        background-color: #13141D;
+        border: none;
+        padding: 10px 20px; /* Ajusta el padding según tu preferencia */
+    }
+    .botonregresar:hover{
+        background-color: #4CA289 ;
+    }
+    </style>
     <link rel="stylesheet" href="style.css">
     <?php
     require("conexion.php");
@@ -27,6 +40,9 @@
         </select><br><br>
         <center><input class="botonowo" type="submit" value="Evaluar"></center>
         <br><br>
+    </form>
+    <form action="Login.html">
+        <center><input class="botonregresar" type="submit" value="Regresar"></center></form>
     </form>
 </div>
 </body>
