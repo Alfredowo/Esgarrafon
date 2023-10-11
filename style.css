@@ -72,6 +72,12 @@
     border: 1px solid #ccc;
     resize: none; 
 }
+.boton-flotante {
+    position: fixed; /* Fija el elemento en la ventana del navegador */
+    bottom: 20px; /* Distancia desde la parte inferior de la ventana */
+    right: 20px; /* Distancia desde la derecha de la ventana */
+    z-index: 1000; /* Controla la superposición del elemento */
+}
 .botonregresar {
         font-family: Verdana,Geneva,Tahoma,sans-serif;
         color: #c4c3ca;
