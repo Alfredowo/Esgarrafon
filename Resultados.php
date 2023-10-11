@@ -71,14 +71,38 @@ if (!$result) {
 
     <center>
         <table>
-            <tr>
+        <tr>
                 <th>Nombre del Empleado</th>
+                <th>Grado</th>
+                <th>Antiguedad</th>
+                <th>Cur. Capacitación</th>
+                <th>Certificaciones</th>
+                <th>Diplomados</th>
+                <th>Cursos ST</th>
+                <th>Cursos</th>
+                <th>Ins. Diplomados</th>
+                <th>Ins. Certificaciones</th>
+                <th>As. Residencias</th>
+                <th>As. Titulación</th>
+                <th>Dir. Tesis</th>
                 <th>Puntaje Total</th>
             </tr>
             <?php
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                 echo "<td>" . $row['NombreEmpleado'] . "</td>";
+                echo "<td>" . $row['Grado'] . "</td>";
+                echo "<td>" . $row['Antiguedad'] . "</td>";
+                echo "<td>" . $row['CursosCap'] . "</td>";
+                echo "<td>" . $row['Certificaciones'] . "</td>";
+                echo "<td>" . $row['Diplomados'] . "</td>";
+                echo "<td>" . $row['CursosST'] . "</td>";
+                echo "<td>" . $row['Cursos'] . "</td>";
+                echo "<td>" . $row['InstructorDip'] . "</td>";
+                echo "<td>" . $row['InstructorCer'] . "</td>";
+                echo "<td>" . $row['AsesorRes'] . "</td>";
+                echo "<td>" . $row['AsesorTit'] . "</td>";
+                echo "<td>" . $row['DireccionTesis'] . "</td>";
                 echo "<td>" . $row['Puntaje'] . "</td>";
                 echo "</tr>";
             }
