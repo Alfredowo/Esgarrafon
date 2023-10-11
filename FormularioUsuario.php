@@ -312,7 +312,9 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <input class="botonowo" type="submit" name="enviar_direccionTesis" value="Enviar comprobante de dirección de tesis">
 </form>
 <form action="Login.html">
-        <center><input type="submit" class="botonregresar" value="Regresar"></center></form>
+    <div class="boton-flotante">
+        <input type="submit" class="botonregresar" value="Regresar">
+    </div>
     </form>
 
 <script>

@@ -109,4 +109,3 @@ if ($result) {
 mysqli_close($conn);
 header("Location:FormularioUsuario.php");
 ?>
-
