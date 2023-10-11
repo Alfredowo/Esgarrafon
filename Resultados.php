@@ -64,12 +64,15 @@ if (!$result) {
 </head>
 <body>
 <form class="formewe" method="GET" action="">
+    <div style="text-align:center;">
         <label style="font-weight:bold;" for="buscar">Buscar empleado: </label>
         <input type="text" name="buscar" id="buscar" placeholder="Nombre del empleado">
         <input class="botonowo" type="submit" value="Buscar">
+    </div>
     </form>
 
     <center>
+    </br>
         <table>
         <tr>
                 <th>Nombre del Empleado</th>
