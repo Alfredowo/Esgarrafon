@@ -68,12 +68,24 @@ create table observaciones(
 );
 
 DROP TABLE if EXISTS Puntaje;
-CREATE TABLE Puntaje(
+CREATE TABLE Puntaje (
    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
    fkEmpleado INT,
-   Puntaje INT,
+   PuntajeGrado INT,
+   PuntajeAntiguedad INT,
+   PuntajeCursoCap INT,
+   PuntajeCertificaciones INT,
+   PuntajeDiplomados INT,
+   PuntajeCursosST INT,
+   PuntajeCursos INT,
+   PuntajeInstructorDip INT,
+   PuntajeInstructorCer INT,
+   PuntajeAsesorRes INT,
+   PuntajeAsesorTit INT,
+   PuntajeDireccionTesis INT,
+   PuntajeTotal INT,
    FOREIGN KEY(fkEmpleado) REFERENCES Empleados(id)
-); 
+);
 
 /*INSERT INTO puntaje VALUES(NULL, 1, 100);  
 INSERT INTO puntaje VALUES(NULL, 2, 50);  
