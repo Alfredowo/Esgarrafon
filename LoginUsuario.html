@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login usuarios</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+        color:white;
+        font-size:12px;
+        background-image: url(fondousuariouwu.png);
+        background-size: cover;
+        background-attachment: fixed;
+        height: 900px;
+        }
+        form {
+        background-color: #715674e5;
+        width:300px;
+        margin:30px auto;
+        border-radius:0.4em;
+        border:1px solid #2d1d35;
+        overflow:hidden;
+        position:relative;
+        }
+        form:after {
+        content:"";
+        display:block;
+        position:absolute;
+        height:1px;
+        width:100px;
+        left:20%;
+        background-color: #482a4e;
+        top:0;
+        }
+        form:before {
+            content:"";
+        display:block;
+        position:absolute;
+        width:8px;
+        height:5px;
+        border-radius:50%;
+        left:34%;
+        top:-7px;
+        box-shadow: 0 0 6px 4px #fff;
+        }
+        .inset {
+            padding:20px; 
+        border-top:1px solid #4c2a63;
+        }
+        form h1 {
+        font-size:18px;
+        text-align:center;
+        padding:15px 0;
+        position:relative;
+        }
+        form h1:after {
+            content:"";
+        display:block;
+        width:250px;
+        height:100px;
+        position:absolute;
+        top:0;
+        left:50px;
+        pointer-events:none;
+        transform:rotate(70deg);
+        }
+        label {
+            color:#ffffff;
+        display:block;
+        padding-bottom:9px;
+        }
+        input[type=text],
+        input[type=password] {
+            width:100%;
+        padding:8px 5px;
+        background-color: #776483;
+        border-radius:0.3em;
+        margin-bottom:20px;
+        }
+        label[for=remember]{
+            color:white;
+        display:inline-block;
+        padding-bottom:0;
+        padding-top:5px;
+        }
+        .p-container {
+            padding:0 20px 20px 20px; 
+        }
+        .p-container:after {
+            clear:both;
+        display:table;
+        content:"";
+        }
+        .p-container span {
+        display:block;
+        float:left;
+        color:#c5a3da;
+        padding-top:8px;
+        }
+        input[type=submit] {
+            padding:5px 20px;
+        border:1px solid rgba(0,0,0,0.4);
+        text-shadow:0 -1px 0 rgba(0,0,0,0.4);
+        border-radius:0.3em;
+        background:#855594;
+        color:white;
+        float:right;
+        font-weight:bold;
+        cursor:pointer;
+        font-size:13px;
+        }
+        input[type=submit]:hover {
+
+            background-color: #431a52;
+        }
+        input[type=text]:hover,
+        input[type=password]:hover,
+        label:hover ~ input[type=text],
+        label:hover ~ input[type=password] {
+            background:#3d2a47;
+        }
+        .titulo{
+            color: antiquewhite;
+            border-bottom: 6px solid rgb(131, 61, 168);
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 20px;
+              /* Estilos para la barra de menú */ 
+        }
+         /* .menu { 
+
+            background-color: rgb(34, 14, 77);
+            display: flex; 
+            justify-content: flex-end; 
+            align-items: center; 
+            height: 50px; 
+        }  
+        /* Resto del código CSS se mantiene igual */ 
+        .menu-button { 
+            padding:7px 20px;
+        border-radius:0.2em;
+        border-color: #2d1d35;
+        background:#492155;
+        color:white;
+        float:right;
+        font-weight:bold;
+        cursor:pointer;
+        font-size:13px;
+        } 
+        .menu-button:hover { 
+            background-color: #653975;
+        }  */
+        
+        .uy{
+            background-color: rgba(255, 0, 0, 0);
+            border: none;
+            cursor: pointer;
+        }
+        #openRegisterModal {
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s; /* Agrega una transición suave */
+        }
+        #openRegisterModal:hover {
+            color: #02006e; /* Cambia el color del texto al pasar el mouse */
+        }
+        
+        /* Estilos para el modal (ventana emergente de registro)*/
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .modal-content {
+            background-color: #060827;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #000000;
+            width: 60%;
+        }
+        .close {
+            color: azure;
+            float: right;
+            cursor: pointer;
+        }
+        .botonuwu{
+            background-color: rgb(45, 118, 131);
+            border: none;
+            color: azure;
+            padding: 10px 10px;
+            cursor: pointer;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .botonuwu:hover{
+            background-color: rgb(101, 163, 173);
+        }
+        .form2owo{
+            color: azure;
+            text-align: center;
+            background-color: rgba(21, 30, 82, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(14, 18, 78, 0.3);
+        }
+        .tituolowo{
+            color: azure;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .neon{
+            width: 75%;
+            padding: 9px;
+            font-size: 1em;
+            border: none;
+            border-bottom: 1px solid rgb(135, 190, 190);
+            background-color: rgba(66, 66, 117, 0.425);
+            margin-top: 3px;
+            transition: border-bottom-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <!-- menu superior para elegir entre usuarios y administradores -->
+    <!-- <div class="menu"> 
+        <button class="menu-button" id="adminButton">Administrativos</button> 
+        <button class="menu-button" id="employeeButton">Empleados</button> 
+    </div>
+    <script> 
+        // Obtén una referencia a los botones 
+        const adminButton = document.getElementById("adminButton"); 
+        const employeeButton = document.getElementById("employeeButton"); 
+     
+        // Agrega un controlador de clic para el botón "Administrativos" 
+        adminButton.addEventListener("click", function() { 
+            // Redirige a otra página 
+            window.location.href = "Login.html"; 
+        }); 
+     
+        // Agrega un controlador de clic para el botón "Empleados" 
+        employeeButton.addEventListener("click", function() { 
+            // Muestra un mensaje en la página 
+            alert("Ya estás en login empleados"); 
+        }); 
+    </script> -->
+    
+    <header></header>
+    <h1 class="titulo">INICIO DE SESIÓN</h1>
+    <form action="procesar_login_us.php" method="POST">
+        <h1>Usuario</h1>
+        <div class="inset">
+        <p>
+          <label for="usuario">Usuario</label>
+          <input type="text" name="usuario" id="usuario" required>
+        </p>
+        <p>
+          <label for="contrasena">Contraseña</label>
+          <input type="password" name="contrasena" id="contrasena"required>
+        </p>
+        </div>
+        <p class="p-container">
+          <span style="text-decoration: underline;" id="openRegisterModal">
+            ¿Aun no tienes una cuenta? Registrate Aquí
+            </span>
+          <br>
+          <br><br>
+          <input type="submit" name="go" id="inicio" value="Iniciar Sesion">
+        </p>
+    </form>
+
+    <!-- Modal de Registro -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span  class="close" id="closeRegisterModal">&times;</span>
+            <h2 class="tituolowo">Registro</h2>
+            <form class="form2owo" id="registerForm">
+                Usuario: <br><input class="neon" type="text" name="registroUsuario" id="registroUsuario" required><br><br>
+                Contraseña: <br> <input type="password" class="neon"  name="registroContrasena" id="registroContrasena" required><br><br>
+                Confirmar Contraseña: <br><input type="password" class="neon"  name="confirmarContrasena" id="confirmarContrasena" required><br><br>
+                <button class="botonuwu" id="registrar">Registrar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        //sscript para la funcion de registro con ventana emergente ostia chaval
+        const openRegisterModalButton = document.getElementById("openRegisterModal");
+        const registerModal = document.getElementById("registerModal");
+        const closeRegisterModalButton = document.getElementById("closeRegisterModal");
+        const registerForm = document.getElementById("registerForm");
+    
+        openRegisterModalButton.addEventListener("click", function() {
+            registerModal.style.display = "block";
+        });
+    
+        closeRegisterModalButton.addEventListener("click", function() {
+            registerModal.style.display = "none";
+        });
+    
+        registerForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            const registroUsuario = document.getElementById("registroUsuario").value;
+            const registroContrasena = document.getElementById("registroContrasena").value;
+            const confirmarContrasena = document.getElementById("confirmarContrasena").value;
+
+            if (registroContrasena !== confirmarContrasena) {
+                alert("Las contraseñas no coinciden");
+            } else {
+                const datosUsuario = new URLSearchParams();
+                //const datosUsuario = new FormData();
+                datosUsuario.append("registroUsuario", registroUsuario);
+                datosUsuario.append("registroContrasena", registroContrasena);
+                datosUsuario.append("permisos", 2);
+                //alert("Las contraseñas SI coinciden");
+                //alert("El usuario es " + registroUsuario);
+                // Hacer una solicitud al servidor para verificar si el usuario existe
+                fetch("verificar_registro.php", {
+                    method: "POST", // Cambia el método a POST
+                    headers: {
+                        // Ajusta el encabezado a application/x-www-form-urlencoded
+                        "Content-Type": "application/x-www-form-urlencoded" 
+                    },
+                    // Envía los datos POST como una cadena codificada
+                    body: "registroUsuario=" + registroUsuario 
+                })
+                .then(response => response.text())
+                .then(data => {
+                    //alert("resultado: " + data);
+                    if (data == '{"existe":true}') {
+                        alert("El usuario ya existe, crea uno nuevo");
+                    } else {
+                        //alert("El usuario no existe, registrar");
+                        // Si el usuario no existe, hacer otra solicitud a registrar
+                        fetch("registrar_usuario.php", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded"
+                            },
+                            body: datosUsuario.toString() // Convertir el objeto a una cadena codificada
+                            //body: datosUsuario // Utiliza el objeto FormData como cuerpo de la solicitud
+                            //body: "registroUsuario=" + registroUsuario 
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            // alerta que indica si el regstro fue exitoso
+                            alert(data);
+                            // Eliminar el modal del DOM
+                            registerModal.style.display = "none";
+                        })
+                        .catch(error => {
+                            console.error("Error al registrar usuario:", error);
+                            alert("Error al registrar usuario: " + error);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Ocurrió un error al verificar el usuario. " + error);
+                });
+            }
+        });
+    </script>
+
+    <div> 
+        <a href="Empleado del Mes.html"><button class="uy" id="secreto"></button></a> 
+    </div>
+</body>
+</html>

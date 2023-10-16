@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+        font-family: 'Poppins', sans-serif;
+        color: azure;
+        /*background-color: #13141D;*/
+        background: linear-gradient(to bottom,#13141D,#5B5C5F);
+        background-size: cover;
+        background-attachment: fixed;
+        height: 900px;
+        margin: 30px;
+    }
+    a{
+        color: #3B9E99;
+    }
+    a:hover{
+        color: #9AD0CD;
+    }
+    </style>
+</head>
+<body>
+    <hr>
+    <script>
+        // Obtén el valor del parámetro "archivo" de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const archivo = urlParams.get("archivo");
+
+        // Verifica si se proporcionó un nombre de archivo
+        if (archivo) {
+            // Construye la ruta completa al archivo PDF
+            const rutaPDF = `${archivo}`;
+
+            // Crea un elemento <embed> para mostrar el PDF
+            const embedElement = document.createElement("embed");
+            embedElement.setAttribute("src", rutaPDF);
+            embedElement.setAttribute("type", "application/pdf");
+            embedElement.setAttribute("width", "1020px");
+            embedElement.setAttribute("height", "985px");
+
+            // Agrega el elemento <embed> al cuerpo del documento
+            document.body.appendChild(embedElement);
+        } else {
+            // Si no se proporcionó un nombre de archivo, muestra un mensaje de error o redirige a otra página
+            alert("No se proporcionó un nombre de archivo válido.");
+            // Puedes redirigir al usuario a otra página o realizar otra acción aquí
+        }
+    </script>
+</body>
+</html>
