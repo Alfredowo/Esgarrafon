@@ -362,10 +362,8 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         <input type="submit" class="botonregresar" value="Regresar">
     </div>
     </form>
-    <!-- Botón flotante -->
 <Button class="boton-flotantepro" onclick="mostrarVentanaEmergente()">?</Button>
 
-<!-- Ventana emergente -->
 <div class="ventana-emergente" id="miVentanaEmergente">
   <p>Enlace del documento: Ingresar link de donde esté ubicado su archivo.<br>Ejem.: https://drive.google.com/drive/documento.pdf.</p>
   <p>Estatus: Ver si el archivo ha sido aceptado, rechazado o se encuentra en espera de evaluación.</p>
@@ -375,7 +373,6 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
 <script>
     mostrarAlerta.addEventListener("submit", function() { 
-            // Muestra un mensaje en la página 
             alert("Operación realizada con éxito"); 
         }); 
 </script>
