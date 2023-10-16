@@ -45,7 +45,7 @@ function evaluarEstatus($valorBD){
     }
     else
     {
-        $resultado='Aún no se ha enviado un enlace.';
+        $resultado='En espera';
     }
     return $resultado;
 }
