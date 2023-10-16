@@ -132,3 +132,25 @@
 .t-centrado{
     text-align: center;
 }
+.boton-flotantepro {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: #fff; /* Color de texto del botón */
+    border: none;
+    border-radius: 50%; /* Hace que el botón sea redondo */
+    width: 50px; /* Ancho del botón */
+    height: 50px; /* Alto del botón */
+    position: fixed;
+    bottom: 20px; /* Distancia desde la parte inferior */
+    left: 20px; /* Distancia desde la izquierda */
+    cursor: pointer;
+  }
+  .ventana-emergente {
+    display: none; /* Inicialmente oculta la ventana emergente */
+    position: fixed;
+    bottom: 80px; /* Distancia desde la parte inferior */
+    left: 20px; /* Distancia desde la izquierda */
+    width: 320px;
+    background-color: #13141D;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
