@@ -119,10 +119,16 @@
     <?php
         function extraer(){
             require("conexion.php");
-            if (isset($_SESSION['id2'])) {
+            /*if (isset($_SESSION['id2'])) {
                 $id = $_SESSION['id2'];
             } else {
                 $id=$_POST['empleado'];
+            }*/
+            if (isset($_POST['empleado'])) {
+                $id = $_POST['empleado'];
+                $_SESSION['id'] = $id;
+            } else {
+                $id = $_SESSION['id'];
             }
             $algunDocumentoPresente=false;
             echo '<input type="text" name="id" value="'.$id.'" style="display: none"></input>';

@@ -1,11 +1,11 @@
 <?php
 require("conexion.php");
 //session_start();
-if(!isset($_SESSION['id2'])){
+/*if(!isset($_SESSION['id2'])){
 $id = $_POST['id'];
 $_SESSION['id2'] = $id;
-}else
-$id = $_SESSION['id2'];
+}else*/
+$id = $_SESSION['id'];
 // Conectar a la base de datos (debes configurar la conexión)
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -415,5 +415,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Error, no existe un ruta que evaluar";
 }
 header("Location: Formulario.php");
-
-

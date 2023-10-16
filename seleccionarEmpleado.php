@@ -128,7 +128,7 @@
 <h2 class="titulos">Seleccionar empleado:</h2>
 <div class="divwaos2">
     <form action="Formulario.php" method="post">
-        <select class="selectorewe" name="empleado" id="empleado" onchange="extraerId()">
+        <select class="selectorewe" name="empleado" id="empleado">
             <?php
             if (!$resultado) {
                 die("Error en la consulta: " . $conn->error);
@@ -158,7 +158,7 @@
             </form>
         </div>
     </div>
-    <script>
+        <script>
         const openRegisterModalButton = document.getElementById("openRegisterModal");
         const registerModal = document.getElementById("registerModal");
         const closeRegisterModalButton = document.getElementById("closeRegisterModal");
