@@ -135,7 +135,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <h2 class="t-centrado">Comprobante de años de antigüedad</h2>
     <!-- Campo para ingresar el enlace -->
         <div class="divpro">
-    <label class="tiritas" for="antiguedad">Enlace:</label>
+    <label class="tiritas" for="antiguedad">Enlace del documento:</label>
     <input class="enlace" type="text" name="antiguedad" id="antiguedad"><br>
     <!-- Campo para ver el estatus -->
     <label class="tiritas" for="estatus_antiguedad">Estatus:</label>
@@ -156,7 +156,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <h2 class="t-centrado">Comprobante de Horas de cursos de capacitación impartidas</h2>
     <!-- Campo para ingresar el enlace -->
         <div class="divpro">
-    <label class="tiritas" for="cursosCap">Enlace:</label>
+    <label class="tiritas" for="cursosCap">Enlace del documento:</label>
     <input class="enlace" type="text" name="cursosCap" id="cursosCap"><br>
     <!-- Campo para ver el estatus -->
     <label class="tiritas" for="estatus_cursosCap">Estatus:</label>
@@ -177,7 +177,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <h2 class="t-centrado">Comprobante de certificaciones</h2>
     <!-- Campo para ingresar el enlace -->
         <div class="divpro">
-    <label class="tiritas" for="certificaciones">Enlace:</label>
+    <label class="tiritas" for="certificaciones">Enlace del documento:</label>
     <input class="enlace" type="text" name="certificaciones" id="certificaciones"><br>
     <!-- Campo para ver el estatus -->
     <label class="tiritas" for="estatus_certificaciones">Estatus:</label>
@@ -198,7 +198,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <h2 class="t-centrado">Comprobante de diplomados</h2>
     <!-- Campo para ingresar el enlace -->
         <div class="divpro">
-    <label class="tiritas" for="diplomados">Enlace:</label>
+    <label class="tiritas" for="diplomados">Enlace del documento:</label>
     <input class="enlace" type="text" name="diplomados" id="diplomados"><br>
     <!-- Campo para ver el estatus -->
     <label class="tiritas" for="estatus_diplomados">Estatus:</label>
@@ -219,7 +219,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <h2 class="t-centrado">Comprobante de cursos</h2>
     <!-- Campo para ingresar el enlace -->
         <div class="divpro">
-    <label class="tiritas" for="cursos">Enlace:</label>
+    <label class="tiritas" for="cursos">Enlace del documento:</label>
     <input class="enlace" type="text" name="cursos" id="cursos"><br>
     <!-- Campo para ver el estatus -->
     <label class="tiritas" for="estatus_cursos">Estatus:</label>
@@ -240,7 +240,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <h2 class="t-centrado">Comprobante de cursos ST</h2>
     <!-- Campo para ingresar el enlace -->
         <div class="divpro">
-    <label class="tiritas" for="cursosST">Enlace:</label>
+    <label class="tiritas" for="cursosST">Enlace del documento:</label>
     <input class="enlace" type="text" name="cursosST" id="cursosST"><br>
     <!-- Campo para ver el estatus -->
     <label class="tiritas" for="estatus_cursos">Estatus:</label>
@@ -261,7 +261,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <h2 class="t-centrado">Comprobante de instructor de diplomados</h2>
     <!-- Campo para ingresar el enlace -->
         <div class="divpro">
-    <label class="tiritas" for="instructorDip">Enlace:</label>
+    <label class="tiritas" for="instructorDip">Enlace del documento:</label>
     <input class="enlace" type="text" name="instructorDip" id="instructorDip"><br>
     <!-- Campo para ver el estatus -->
     <label class="tiritas" for="estatus_instructorDip">Estatus:</label>
@@ -282,7 +282,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <h2 class="t-centrado">Comprobante de instructor de certificaciones</h2>
     <!-- Campo para ingresar el enlace -->
         <div class="divpro">
-    <label class="tiritas" for="instructorCer">Enlace:</label>
+    <label class="tiritas" for="instructorCer">Enlace del documento:</label>
     <input class="enlace" type="text" name="instructorCer" id="instructorCer"><br>
     <!-- Campo para ver el estatus -->
     <label class="tiritas" for="estatus_instructorCer">Estatus:</label>
@@ -303,7 +303,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <h2 class="t-centrado">Comprobante de asesor de residencias</h2>
     <!-- Campo para ingresar el enlace de asesor de residencias -->
         <div class="divpro">
-    <label class="tiritas" for="asesorRes">Enlace:</label>
+    <label class="tiritas" for="asesorRes">Enlace del documento:</label>
     <input class="enlace" type="text" name="asesorRes" id="asesorRes"><br>
     <!-- Campo para ver el estatus -->
     <label class="tiritas" for="estatus">Estatus:</label>
@@ -324,7 +324,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <h2 class="t-centrado">Comprobante de asesor de titulación</h2>
         <!-- Campo para ingresar el enlace de asesor de titulación -->
         <div class="divpro">
-        <label class="tiritas" for="asesorTit">Enlace:</label>
+        <label class="tiritas" for="asesorTit">Enlace del documento:</label>
     <input class="enlace" type="text" name="asesorTit" id="asesorTit"><br>
     <!-- Campo para ver el estatus -->
     <label class="tiritas" for="estatus">Estatus:</label>
@@ -344,7 +344,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <h2 class="t-centrado">Comprobante de dirección de tesis</h2>
     <!-- Campo para ingresar el enlace de dirección de tesis -->
         <div class="divpro">
-    <label class="tiritas" for="direccionTesis">Enlace:</label>
+    <label class="tiritas" for="direccionTesis">Enlace del documento:</label>
     <input class="enlace" type="text" name="direccionTesis" id="direccionTesis"><br>
     <!-- Campo para ver el estatus -->
     <label class="tiritas" for="estatus">Estatus:</label>
