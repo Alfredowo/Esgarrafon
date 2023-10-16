@@ -28,6 +28,12 @@
         font-weight:bold;
 
     }
+    .boton-flotante {
+    position: fixed; /* Fija el elemento en la ventana del navegador */
+    bottom: 20px; /* Distancia desde la parte inferior de la ventana */
+    right: 20px; /* Distancia desde la derecha de la ventana */
+    z-index: 1000; /* Controla la superposición del elemento */
+}
     a{
         color: #3B9E99;
     }
@@ -113,8 +119,8 @@
     <?php
         function extraer(){
             require("conexion.php");
-            if (isset($_SESSION['id'])) {
-                $id = $_SESSION['id'];
+            if (isset($_SESSION['id2'])) {
+                $id = $_SESSION['id2'];
             } else {
                 $id=$_POST['empleado'];
             }
@@ -227,7 +233,7 @@
                 echo '<option value="true">Si</option>';
                 echo '<option value="false">No</option>';
                 echo '</select>';*/
-                echo '<input type="submit" class="Botonesinput" name="btnDiplomados value="Aprobar"></input>';
+                echo '<input type="submit" class="Botonesinput" name="btnDiplomados" value="Aprobar"></input>';
                 echo '<input type="submit" class="button" name="btnDiplomados" value="Rechazar"></input><br><br>';
                 echo '<textarea name="observacionesDiplomados" rows="4" cols="50" placeholder="Observaciones"></textarea><br><br>';
                 $algunDocumentoPresente = true;
@@ -355,9 +361,13 @@
     ?>
     </form>
     <form action="seleccionarEmpleado.php">
-        <center><input class="botonregresar" type="submit" value="Regresar"></center>
-        <a style="position:absolute; top:10px; right:20px;" value="Mirar puntajes" href="Resultados.php" class="botonregresar" target="_blank">Mirar Puntajes</a>
+    <div class="boton-flotante">
+        <input type="submit" class="botonregresar" value="Regresar">
+    </div>
     </form>
+        <!-- <center><input class="botonregresar boton-flotante" type="submit" value="Regresar"></center> -->
+    </form>
+        <a style="position:absolute; top:10px; right:20px;" value="Mirar puntajes" href="Resultados.php" class="botonregresar" target="_blank">Mirar Puntajes</a>
     <br><br>
 </body>
 <script>

@@ -1,11 +1,11 @@
 <?php
 require("conexion.php");
 //session_start();
-if(!isset($_SESSION['id'])){
+if(!isset($_SESSION['id2'])){
 $id = $_POST['id'];
-$_SESSION['id'] = $id;
+$_SESSION['id2'] = $id;
 }else
-$id = $_SESSION['id'];
+$id = $_SESSION['id2'];
 // Conectar a la base de datos (debes configurar la conexión)
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -374,7 +374,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     {
         $insertarInstructoCer=$conn->query("update Empleados set rutaInstructorCer='Aprobado owo', InstructorCer=true ".
         "where id=".$id);
-        $insertarInstructorDip=$conn->query("update Empleados set rutaInstructorDip='En espera' where id=".$id);
+        $insertarInstructorDip=$conn->query("update Empleados set rutaInstructorCer='En espera' where id=".$id);
     }else if($instructorCertificaciones=='Rechazar') 
         $insertarInstructoCer=$conn->query("update Empleados set rutaInstructorCer='Rechazado umu' where id=".$id);
 

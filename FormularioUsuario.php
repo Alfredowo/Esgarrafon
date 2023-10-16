@@ -122,7 +122,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         <!-- Cuadro de texto de observaciones -->
             <br>
             <label class="tiritas" for="observaciones_grado_estudios">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly value="<?php echo $obervaciones1; ?>"></textarea>
+            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones1; ?></textarea>
             <br>
         </div>
         <input class="botonowo" type="submit" name="enviar_certificado" value="Enviar certificado">
@@ -143,7 +143,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <!-- Cuadro de texto de observaciones -->
             <br>
     <label class="tiritas" for="observaciones_antiguedad">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly value="<?php echo $obervaciones2; ?>"></textarea>
+            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones2; ?></textarea>
     <br>
         </div>
     <input class="botonowo" type="submit" name="enviar_antiguedad" value="Enviar comprobante de antigüedad">
@@ -164,7 +164,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <!-- Cuadro de texto de observaciones -->
             <br>
     <label class="tiritas" for="observaciones_cursosCap">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly value="<?php echo $obervaciones3; ?>"></textarea>
+            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones3; ?></textarea>
     <br>
         </div>
     <input class="botonowo" type="submit" name="enviar_cursosCap" value="Enviar comprobante de cursos de capacitación impartidas">
@@ -185,7 +185,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <!-- Cuadro de texto de observaciones -->
             <br>
     <label class="tiritas" for="observaciones_certificaciones">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly value="<?php echo $obervaciones4; ?>"></textarea>
+            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones4; ?></textarea>
     <br>
         </div>
     <input class="botonowo" type="submit" name="enviar_certificaciones" value="Enviar comprobante de certificaciones">
@@ -206,7 +206,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <!-- Cuadro de texto de observaciones -->
             <br>
     <label class="tiritas" for="observaciones_diplomados">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly value="<?php echo $obervaciones5; ?>"></textarea>
+            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones5; ?></textarea>
     <br>
         </div>
     <input class="botonowo" type="submit" name="enviar_diplomados" value="Enviar comprobante de diplomados">
@@ -227,7 +227,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <!-- Cuadro de texto de observaciones -->
             <br>
     <label class="tiritas" for="observaciones_cursos">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly value="<?php echo $obervaciones6; ?>"></textarea>
+            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones6; ?></textarea>
     <br>
         </div>
     <input class="botonowo" type="submit" name="enviar_cursos" value="Enviar comprobante de cursos">
@@ -248,7 +248,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <!-- Cuadro de texto de observaciones -->
             <br>
     <label class="tiritas" for="observaciones_cursos">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly value="<?php echo $obervaciones7; ?>"></textarea>
+            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones7; ?></textarea>
     <br>
         </div>
     <input class="botonowo" type="submit" name="enviar_cursosST" value="Enviar comprobante de cursosST">
@@ -269,7 +269,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <!-- Cuadro de texto de observaciones -->
             <br>
     <label class="tiritas" for="observaciones_instructorDip">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly value="<?php echo $obervaciones8; ?>"></textarea>
+            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones8; ?></textarea>
     <br>
         </div>
     <input class="botonowo" type="submit" name="enviar_instructorDip" value="Enviar comprobante de instructor de diplomados">
@@ -290,7 +290,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <!-- Cuadro de texto de observaciones -->
             <br>
     <label class="tiritas" for="observaciones_instructorCer">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly value="<?php echo $obervaciones9; ?>"></textarea>
+            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones9; ?></textarea>
     <br>
         </div>
     <input class="botonowo" type="submit" name="enviar_instructorCer" value="Enviar comprobante de instructor de certificaciones">
@@ -311,7 +311,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <!-- Cuadro de texto de observaciones -->
             <br>
     <label class="tiritas" for="observaciones">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly value="<?php echo $obervaciones10; ?>"></textarea>
+            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones10; ?></textarea>
     <br>
         </div>
     <input class="botonowo" type="submit" name="enviar_asesorRes" value="Enviar comprobante de asesor de residencias">
@@ -332,7 +332,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <!-- Cuadro de texto de observaciones -->
             <br>
     <label class="tiritas" for="observaciones">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly value="<?php echo $obervaciones11; ?>"></textarea>
+            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones11; ?></textarea>
     <br>
         </div>
     <input class="botonowo" type="submit" name="enviar_asesorTit" value="Enviar comprobante de asesor de titulación">
@@ -352,7 +352,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <!-- Cuadro de texto de observaciones -->
             <br>
     <label class="tiritas" for="observaciones">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly value="<?php echo $obervaciones12; ?>"></textarea>
+            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones12; ?></textarea>
     <br>
         </div>
     <input class="botonowo" type="submit" name="enviar_direccionTesis" value="Enviar comprobante de dirección de tesis">
