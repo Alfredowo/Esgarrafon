@@ -373,11 +373,12 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <hr><br>
 </form>
 
+
 <form action="Login.html">
     <div class="boton-flotante">
         <input type="submit" class="botonregresar" value="Regresar">
     </div>
-    </form>
+</form>
 <Button class="boton-flotantepro" onclick="mostrarVentanaEmergente()">?</Button>
 
 <div class="ventana-emergente" id="miVentanaEmergente">
