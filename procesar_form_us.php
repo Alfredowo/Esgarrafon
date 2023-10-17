@@ -32,10 +32,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verificar cuál de los botones se presionó y procesar el formulario correspondiente
     
     if (isset($_POST['enviar_certificado'])) {
+        echo "simon my friennd todo bien";
         $grado_estudio = $_POST['grado_estudios'];
         // Realizar el UPDATE para el certificado de grado de estudios
         $query = "UPDATE Empleados SET rutaGrado = '$grado_estudio' WHERE id = $id";
     } elseif (isset($_POST['enviar_antiguedad'])) {
+        echo "simon my friennd todo bien";
         $antiguedad = $_POST['antiguedad'];
         // Realizar el UPDATE para el comprobante de antigüedad
         $query = "UPDATE Empleados SET rutaAntiguedad = '$antiguedad' WHERE id = $id";
@@ -109,3 +111,4 @@ if ($result) {
 mysqli_close($conn);
 header("Location:FormularioUsuario.php");
 ?>
+

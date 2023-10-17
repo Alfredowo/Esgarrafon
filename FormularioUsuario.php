@@ -113,6 +113,8 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 <form class="form" action="procesar_form_us.php" method="post" id="mostrarAlerta">
     <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
 
+    <input value="<?php echo $estatus1; ?>">
+
     <!-- Formulario para Certificado de grado de estudios -->
     <div class="container">
         <h3 class="text-center">Certificado de grado de estudios</h3>
@@ -387,19 +389,20 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
 <script>
     mostrarAlerta.addEventListener("submit", function() { 
-            alert("Operación realizada con éxito"); 
+            alert("enlace enviado con exito"); 
         }); 
 </script>
-<script>
-function mostrarVentanaEmergente() {
-  var ventanaEmergente = document.getElementById("miVentanaEmergente");
-  ventanaEmergente.style.display = "block";
-}
 
-function cerrarVentanaEmergente() {
-  var ventanaEmergente = document.getElementById("miVentanaEmergente");
-  ventanaEmergente.style.display = "none";
-}
+<script>
+    function mostrarVentanaEmergente() {
+    var ventanaEmergente = document.getElementById("miVentanaEmergente");
+    ventanaEmergente.style.display = "block";
+    }
+
+    function cerrarVentanaEmergente() {
+    var ventanaEmergente = document.getElementById("miVentanaEmergente");
+    ventanaEmergente.style.display = "none";
+    }
 </script>
 
 </body>
