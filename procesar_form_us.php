@@ -31,8 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verificar cuál de los botones se presionó y procesar el formulario correspondiente
     
-    if (isset($_POST['enviar_certificado'])) {
-        $grado_estudio = $_POST['grado_estudios'];
+    if (isset($_POST['enviar_gradoEstudio'])) {
+        $grado_estudio = $_POST['grado_estudio'];
         // Realizar el UPDATE para el certificado de grado de estudios
         $query = "UPDATE Empleados SET rutaGrado = '$grado_estudio' WHERE id = $id";
     } elseif (isset($_POST['enviar_antiguedad'])) {
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Realizar el UPDATE para el comprobante de antigüedad
         $query = "UPDATE Empleados SET rutaAntiguedad = '$antiguedad' WHERE id = $id";
     } elseif (isset($_POST['enviar_cursosCap'])) {
-        $cursosCap = $_POST['cursosCap'];
+        $cursosCap = $_POST['cursosCapz']; //echo "aaaaa1: ", $cursosCap;
         // Realizar el UPDATE para el comprobante de cursos de capacitación
         $query = "UPDATE Empleados SET rutaCursoCap = '$cursosCap' WHERE id = $id";
     } elseif (isset($_POST['enviar_certificaciones'])) {
@@ -51,18 +51,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $diplomados = $_POST['diplomados'];
         // Realizar el UPDATE para el comprobante de diplomados
         $query = "UPDATE Empleados SET rutaDiplomados = '$diplomados' WHERE id = $id";
-    } elseif (isset($_POST['enviar_cursos'])) {
-        $cursos = $_POST['cursos'];
+    } elseif (isset($_POST['enviar_cursosz'])) {
+        $cursos = $_POST['cursosz'];
         // Realizar el UPDATE para el comprobante de cursos impartidos
         $query = "UPDATE Empleados SET rutaCursos = '$cursos' WHERE id = $id";
     } elseif (isset($_POST['enviar_cursosST'])) {
         $cursosST = $_POST['cursosST'];
         // Realizar el UPDATE para el comprobante de cursosST impartidos
         $query = "UPDATE Empleados SET rutaCursosST = '$cursosST' WHERE id = $id";
-    } elseif (isset($_POST['enviar_cursosImpartidos'])) {
-        $cursosImpartidos = $_POST['cursosImpartidos'];
-        // Realizar el UPDATE para el comprobante de cursos impartidos
-        $query = "UPDATE Empleados SET rutaCursos = '$cursosImpartidos' WHERE id = $id";
     } elseif (isset($_POST['enviar_instructorDip'])) {
         $instructorDiplomados = $_POST['instructorDip'];
         // Realizar el UPDATE para el comprobante de instructor de diplomados
@@ -79,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $asesorTitulacion = $_POST['asesorTit'];
         // Realizar el UPDATE para el comprobante de asesor de titulación
         $query = "UPDATE Empleados SET rutaAsesorTit = '$asesorTitulacion' WHERE id = $id";
-} elseif (isset($_POST['enviar_direccionTesis'])) {
+    } elseif (isset($_POST['enviar_direccionTesis'])) {
         $direccionTesis = $_POST['direccionTesis'];
         // Realizar el UPDATE para el comprobante de dirección de tesis
         $query = "UPDATE Empleados SET rutaDireccionTesis = '$direccionTesis' WHERE id = $id";
@@ -109,3 +105,4 @@ if ($result) {
 mysqli_close($conn);
 header("Location:FormularioUsuario.php");
 ?>
+
