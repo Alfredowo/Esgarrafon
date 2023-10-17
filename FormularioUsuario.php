@@ -109,10 +109,6 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     ?>
 
     <h1 class="titulos">Subir Documentos</h1><hr style="border-bottom: 3px solid aqua;"><br>
-    
-    <!--
-    <input type="" name="id" id="usuario" value="<?php echo $estatus1; ?>">
-    <input type="" name="id" id="usuario" value="<?php echo $obervaciones1; ?>"> -->
 
 <form class="form" action="procesar_form_us.php" method="post" id="mostrarAlerta">
     <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
@@ -374,11 +370,12 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 </form>
 
 
-<form action="Login.html">
+<form action="LoginUsuario.html">
     <div class="boton-flotante">
         <input type="submit" class="botonregresar" value="Regresar">
     </div>
 </form>
+
 <Button class="boton-flotantepro" onclick="mostrarVentanaEmergente()">?</Button>
 
 <div class="ventana-emergente" id="miVentanaEmergente">
