@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>Subir Documentos</title>
     <link rel="stylesheet" href="style.css">
+    <link href="bootstrap-5.3.2-dist/css/bootstrap.min.css" rel="stylesheet"></head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
 </head>
 <body class="fondouwu2">
 
@@ -108,8 +114,9 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <input type="" name="id" id="usuario" value="<?php echo $estatus1; ?>">
     <input type="" name="id" id="usuario" value="<?php echo $obervaciones1; ?>"> -->
 
+    <form class="form" action="procesar_form_us.php" method="post" id="mostrarAlerta">
     <!-- Formulario para Certificado de grado de estudios -->
-        <form class="formuwu" action="procesar_form_us.php" method="post" id="mostrarAlerta">
+        
     <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
         <h2 class="t-centrado">Certificado de grado de estudios</h2>
         <!-- Campo para ingresar el enlace -->
@@ -131,23 +138,24 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
     <!-- Formulario para Comprobantes de años de antigüedad -->
 <!-- <form class="formuwu" action="procesar_form_us.php" method="post"> -->
-    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
-    <h2 class="t-centrado">Comprobante de años de antigüedad</h2>
-    <!-- Campo para ingresar el enlace -->
-        <div class="divpro">
-    <label class="tiritas" for="antiguedad">Enlace del documento:</label>
-    <input class="enlace" type="text" name="antiguedad" id="antiguedad"><br>
-    <!-- Campo para ver el estatus -->
-    <label class="tiritas" for="estatus_antiguedad">Estatus:</label>
-    <input class="estatus" type="text" name="estatus_antiguedad" id="estatus_antiguedad" readonly value="<?php echo $estatus2; ?>">
-    <!-- Cuadro de texto de observaciones -->
-            <br>
-    <label class="tiritas" for="observaciones_antiguedad">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones2; ?></textarea>
-    <br>
+<div class="container">
+    <h3 class="text-center">Comprobante de años de antigüedad</h3>
+        <input type="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
+        <div class="form-group">
+            <label for="antiguedad">Enlace del documento:</label>
+            <input class="form-control" type="text" name="antiguedad" id="antiguedad" style="margin-top: 5px;">
+        </div><br>
+        <div class="form-group">
+            <label for="estatus_antiguedad">Estatus:</label>
+            <input class="" type="text" name="estatus_antiguedad" id="estatus_antiguedad" readonly value="<?php echo $estatus2; ?>" style="border: none; background: none; pointer-events: none;">
+        </div><br>
+        <div class="form-group">
+            <label for="observaciones_antiguedad">Observaciones:</label>
+            <textarea class="form-control" name="observaciones_antiguedad" id="observaciones_antiguedad" readonly style="border: none; background: none; pointer-events: none;"><?php echo $obervaciones2; ?></textarea>
         </div>
-    <input class="botonowo" type="submit" name="enviar_antiguedad" value="Enviar comprobante de antigüedad">
-<!-- </form> -->
+        <button class="btn btn-primary" type="submit" name="enviar_antiguedad" >Enviar comprobante de antigüedad</button>
+    </form>
+</div>
 <hr>
 
 <!-- Formulario para Comprobante de Horas de cursos de capacitación impartidas -->

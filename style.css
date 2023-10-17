@@ -1,5 +1,6 @@
 .fondouwu{
     font-family: 'Poppins', sans-serif;
+    font-weight: 200; /* Fuente ligera */
     background-color: #13141D;
     color: azure;
     background-size: cover;
@@ -7,18 +8,21 @@
     height: 900px;
     margin: 30px;
 }
-.fondouwu2{
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom,#13141D,#5B5C5F);
-    color: azure;
+.fondouwu2 {
+    font-family: 'Montserrat', sans-serif;
+    background: #02082c; /* Fondo gris claro */
+    color: #333333; /* Texto negro */
     background-size: cover;
     background-attachment: fixed;
-    height: 900px;
-    margin: 30px;
+    height: auto;
+    border-radius: 10px; /* Bordes redondeados para el contenedor */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+    padding: 20px; /* Espaciado interno */
 }
+
 .titulos{
     text-align: center;
-    color: antiquewhite;
+    color: rgb(239, 246, 247);
     border-bottom: 6px solid rgb(66, 68, 94);
     margin-bottom: 20px; 
 }
@@ -154,3 +158,37 @@
     padding: 10px;
     border: 1px solid #ccc;
   }
+
+  /*estilos copiados del datec que no cambia nada pero bueno ou yeah*/
+  footer {
+    background: #1b2a4e;
+    min-height: 80%;
+}
+footer p {
+    color: #f3f3f3;
+}
+.carousel-inner {
+    max-height: 30rem;
+}
+
+/*Media query*/
+@media (max-width:768px){
+    #intro, #equipo{
+        width: 90% !important;
+    }
+    .fila{
+        width: 100% !important;
+        text-align: center;
+    }
+}
+@media (max-width:576px){
+    .wrap{
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+}
+#img-equipo{
+    max-height: 30rem !important;
+    width: 60%;
+}
