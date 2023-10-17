@@ -13,7 +13,7 @@
 </head>
 <body class="fondouwu2">
 
-    <?php
+<?php
     require("conexion.php"); // Asegúrate de iniciar la sesión en la parte superior del archivo
 
     if (isset($_SESSION['usuario'])) {
@@ -51,7 +51,7 @@ function evaluarEstatus($valorBD){
     }
     else
     {
-        $resultado='Aun no se ha adjuntado el documento';
+        $resultado='Aún no se ha enviado un enlace.';
     }
     return $resultado;
 }
