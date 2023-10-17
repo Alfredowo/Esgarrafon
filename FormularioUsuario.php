@@ -51,7 +51,7 @@ function evaluarEstatus($valorBD){
     }
     else
     {
-        $resultado='En espera';
+        $resultado='Aun no se ha adjuntado el documento';
     }
     return $resultado;
 }
@@ -214,7 +214,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         </div><br>
         <div class="form-group">
             <label for="observaciones_diplomados">Observaciones:</label>
-            <textarea class="form-control fuente" name="observaciones_diplomados" id="observaciones_diplomados" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <textarea class="form-control fuente " name="observaciones_diplomados" id="observaciones_diplomados" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
                 <?php echo $obervaciones5; ?>
             </textarea>
         </div>
@@ -235,7 +235,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         </div><br>
         <div class="form-group">
             <label for="observaciones_cursos">Observaciones:</label>
-            <textarea class="form-control fuente textareaowo2" name="observaciones_cursos" id="observaciones_cursos" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <textarea class="form-control fuente " name="observaciones_cursos" id="observaciones_cursos" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
                 <?php echo $obervaciones6; ?>
             </textarea>
         </div>
