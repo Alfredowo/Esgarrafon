@@ -31,18 +31,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verificar cuál de los botones se presionó y procesar el formulario correspondiente
     
-    if (isset($_POST['enviar_certificado'])) {
-        echo "simon my friennd todo bien";
-        $grado_estudio = $_POST['grado_estudios'];
+    if (isset($_POST['enviar_gradoEstudio'])) {
+        $grado_estudio = $_POST['grado_estudio'];
         // Realizar el UPDATE para el certificado de grado de estudios
         $query = "UPDATE Empleados SET rutaGrado = '$grado_estudio' WHERE id = $id";
     } elseif (isset($_POST['enviar_antiguedad'])) {
-        echo "simon my friennd todo bien";
         $antiguedad = $_POST['antiguedad'];
         // Realizar el UPDATE para el comprobante de antigüedad
         $query = "UPDATE Empleados SET rutaAntiguedad = '$antiguedad' WHERE id = $id";
     } elseif (isset($_POST['enviar_cursosCap'])) {
-        $cursosCap = $_POST['cursosCap'];
+        $cursosCap = $_POST['cursosCapz']; //echo "aaaaa1: ", $cursosCap;
         // Realizar el UPDATE para el comprobante de cursos de capacitación
         $query = "UPDATE Empleados SET rutaCursoCap = '$cursosCap' WHERE id = $id";
     } elseif (isset($_POST['enviar_certificaciones'])) {
@@ -61,10 +59,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cursosST = $_POST['cursosST'];
         // Realizar el UPDATE para el comprobante de cursosST impartidos
         $query = "UPDATE Empleados SET rutaCursosST = '$cursosST' WHERE id = $id";
-    } elseif (isset($_POST['enviar_cursosImpartidos'])) {
-        $cursosImpartidos = $_POST['cursosImpartidos'];
-        // Realizar el UPDATE para el comprobante de cursos impartidos
-        $query = "UPDATE Empleados SET rutaCursos = '$cursosImpartidos' WHERE id = $id";
     } elseif (isset($_POST['enviar_instructorDip'])) {
         $instructorDiplomados = $_POST['instructorDip'];
         // Realizar el UPDATE para el comprobante de instructor de diplomados
@@ -81,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $asesorTitulacion = $_POST['asesorTit'];
         // Realizar el UPDATE para el comprobante de asesor de titulación
         $query = "UPDATE Empleados SET rutaAsesorTit = '$asesorTitulacion' WHERE id = $id";
-} elseif (isset($_POST['enviar_direccionTesis'])) {
+    } elseif (isset($_POST['enviar_direccionTesis'])) {
         $direccionTesis = $_POST['direccionTesis'];
         // Realizar el UPDATE para el comprobante de dirección de tesis
         $query = "UPDATE Empleados SET rutaDireccionTesis = '$direccionTesis' WHERE id = $id";

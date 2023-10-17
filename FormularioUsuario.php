@@ -119,8 +119,8 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <div class="container">
         <h3 class="text-center">Certificado de grado de estudios</h3>
         <div class="form-group">
-            <label for="grado_estudios">Enlace del documento:</label>
-            <input class="form-control" type="text" name="grado_estudios" id="grado_estudios" style="margin-top: 5px;">
+            <label for="grado_estudio">Enlace del documento:</label>
+            <input class="form-control" type="text" name="grado_estudio" id="grado_estudio" style="margin-top: 5px;">
         </div><br>
         <div class="form-group">
             <label for="estatus_grado_estudios">Estatus:</label>
@@ -132,7 +132,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
                 <?php echo $obervaciones1; ?>
             </textarea>
         </div>
-        <button class="btn btn-primary" type="submit" name="enviar_certificado">Enviar</button>
+        <button class="btn btn-primary" type="submit" name="enviar_gradoEstudio">Enviar</button>
     </div><br>
     <hr><br>
 
@@ -161,8 +161,8 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <div class="container">
         <h3 class="text-center">Comprobante de Horas de cursos de capacitación impartidas</h3>
         <div class="form-group">
-            <label for="cursosCap">Enlace del documento:</label>
-            <input class="form-control" type="text" name="cursosCap" id="cursosCap" style="margin-top: 5px;">
+            <label for="cursosCapz">Enlace del documento:</label>
+            <input class="form-control" type="text" name="cursosCapz" id="cursosCapz" style="margin-top: 5px;">
         </div><br>
         <div class="form-group">
             <label for="estatus_cursosCap">Estatus:</label>
@@ -180,14 +180,14 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
     <!-- Formulario para Comprobante de certificaciones -->
     <div class="container">
-        <h3 class="text-center titulos">Comprobante de Horas de cursos de capacitación impartidas</h3>
+        <h3 class="text-center titulos">Comprobante de certificaciones</h3>
         <div class="form-group">
-            <label for="cursosCap">Enlace del documento:</label>
-            <input class="form-control" type="text" name="cursosCap" id="cursosCap" style="margin-top: 5px;">
+            <label for="certificaciones">Enlace del documento:</label>
+            <input class="form-control" type="text" name="certificaciones" id="certificaciones" style="margin-top: 5px;">
         </div><br>
         <div class="form-group">
-            <label for="estatus_cursosCap">Estatus:</label>
-            <input class="" type="text" name="estatus_cursosCap" id="estatus_cursosCap" readonly value="<?php echo $estatus4; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
+            <label for="estatus_certificaciones">Estatus:</label>
+            <input class="" type="text" name="estatus_certificaciones" id="estatus_certificaciones" readonly value="<?php echo $estatus4; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
             <label for="observaciones_certificaciones">Observaciones:</label>
@@ -195,7 +195,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
                 <?php echo $obervaciones4; ?>
             </textarea>
         </div>
-        <button class="btn btn-primary" type="submit" name="enviar_cursosCap">Enviar</button>
+        <button class="btn btn-primary" type="submit" name="enviar_certificaciones">Enviar</button>
     </div><br>
     <hr><br>
 
@@ -265,10 +265,10 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
     <!-- Formulario para Comprobante de instructor de diplomados -->
     <div class="container">
-        <h3 class="text-center">Certificado de grado de estudios</h3>
+        <h3 class="text-center">Comprobante de instructor de diplomados</h3>
         <div class="form-group">
-            <label for="grado_estudios">Enlace del documento:</label>
-            <input class="form-control" type="text" name="grado_estudios" id="grado_estudios" style="margin-top: 5px;">
+            <label for="instructorDip">Enlace del documento:</label>
+            <input class="form-control" type="text" name="instructorDip" id="instructorDip" style="margin-top: 5px;">
         </div><br>
         <div class="form-group">
             <label for="estatus_instructorDip">Estatus:</label>
@@ -280,7 +280,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
                 <?php echo $obervaciones8; ?>
             </textarea>
         </div>
-        <button class="btn btn-primary" type="submit" name="enviar_certificado">Enviar</button>
+        <button class="btn btn-primary" type="submit" name="enviar_instructorDip">Enviar</button>
     </div><br>
     <hr><br>
 
@@ -288,20 +288,20 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <div class="container">
         <h3 class="text-center">Comprobante de instructor de certificaciones</h3>
         <div class="form-group">
-            <label for="certificaciones">Enlace del documento:</label>
-            <input class="form-control" type="text" name="certificaciones" id="certificaciones" style="margin-top: 5px;">
+            <label for="instructorCer">Enlace del documento:</label>
+            <input class="form-control" type="text" name="instructorCer" id="instructorCer" style="margin-top: 5px;">
         </div><br>
         <div class="form-group">
-            <label for="estatus_certificaciones">Estatus:</label>
-            <input class="" type="text" name="estatus_certificaciones" id="estatus_certificaciones" readonly value="<?php echo $estatus9; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
+            <label for="estatus_instructorCer">Estatus:</label>
+            <input class="" type="text" name="estatus_instructorCer" id="estatus_instructorCer" readonly value="<?php echo $estatus9; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
             <label for="observaciones_certificaciones">Observaciones:</label>
-            <textarea class="fuente form-control" name="observaciones_certificaciones" id="observaciones_certificaciones" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <textarea class="fuente form-control" name="observaciones_instructorCer" id="observaciones_instructorCer" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
                 <?php echo $obervaciones9; ?>
             </textarea>
         </div>
-        <button class="btn btn-primary" type="submit" name="enviar_certificado">Enviar</button>
+        <button class="btn btn-primary" type="submit" name="enviar_instructorCer">Enviar</button>
     </div><br>
     <hr><br>
 
@@ -314,16 +314,16 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
             <input class="form-control" type="text" name="asesorRes" id="asesorRes" style="margin-top: 5px;">
         </div><br>
         <div class="form-group">
-            <label for="estatus_residencias">Estatus:</label>
-            <input class="" type="text" name="estatus_residencias" id="estatus_residencias" readonly value="<?php echo $estatus10; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
+            <label for="estatus_asesorRes">Estatus:</label>
+            <input class="" type="text" name="estatus_asesorRes" id="estatus_asesorRes" readonly value="<?php echo $estatus10; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
-            <label for="observaciones_residencias">Observaciones:</label>
-            <textarea class="fuente form-control" name="observaciones_residencias" id="observaciones_residencias" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <label for="observaciones_asesorRes">Observaciones:</label>
+            <textarea class="fuente form-control" name="observaciones_asesorRes" id="observaciones_asesorRes" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
                 <?php echo $obervaciones10; ?>
             </textarea>
         </div>
-        <button class="btn btn-primary" type="submit" name="enviar_certificado">Enviar</button>
+        <button class="btn btn-primary" type="submit" name="enviar_asesorRes">Enviar</button>
     </div><br>
     <hr><br>
 
@@ -336,16 +336,16 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
             <input class="form-control" type="text" name="asesorTit" id="asesorTit" style="margin-top: 5px;">
         </div><br>
         <div class="form-group">
-            <label for="estatus_titulacion">Estatus:</label>
-            <input class="" type="text" name="estatus_titulacion" id="estatus_titulacion" readonly value="<?php echo $estatus11; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
+            <label for="estatus_asesorTit">Estatus:</label>
+            <input class="" type="text" name="estatus_asesorTit" id="estatus_asesorTit" readonly value="<?php echo $estatus11; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
-            <label for="observaciones_titulacion">Observaciones:</label>
-            <textarea class="fuente form-control" name="observaciones_titulacion" id="observaciones_titulacion" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <label for="observaciones_asesorTit">Observaciones:</label>
+            <textarea class="fuente form-control" name="observaciones_asesorTit" id="observaciones_asesorTit" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
                 <?php echo $obervaciones11; ?>
             </textarea>
         </div>
-        <button class="btn btn-primary" type="submit" name="enviar_certificado">Enviar</button>
+        <button class="btn btn-primary" type="submit" name="enviar_asesorTit">Enviar</button>
     </div><br>
     <hr><br>
 
@@ -357,16 +357,16 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
             <input class="form-control" type="text" name="direccionTesis" id="direccionTesis" style="margin-top: 5px;">
         </div><br>
         <div class="form-group">
-            <label for="estatus_direccion_tesis">Estatus:</label>
-            <input class="" type="text" name="estatus_direccion_tesis" id="estatus_direccion_tesis" readonly value="<?php echo $estatus12; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
+            <label for="estatus_direccionTesis">Estatus:</label>
+            <input class="" type="text" name="estatus_direccionTesis" id="estatus_direccionTesis" readonly value="<?php echo $estatus12; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
-            <label for="observaciones_direccion_tesis">Observaciones:</label>
-            <textarea class="fuente form-control" name="observaciones_direccion_tesis" id="observaciones_direccion_tesis" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <label for="observaciones_direccionTesis">Observaciones:</label>
+            <textarea class="fuente form-control" name="observaciones_direccionTesis" id="observaciones_direccionTesis" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
                 <?php echo $obervaciones12; ?>
             </textarea>
         </div>
-        <button class="btn btn-primary" type="submit" name="enviar_certificado">Enviar</button>
+        <button class="btn btn-primary" type="submit" name="enviar_direccionTesis">Enviar</button>
     </div><br>
     <hr><br>
 </form>
