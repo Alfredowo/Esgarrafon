@@ -126,7 +126,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         </div><br>
         <div class="form-group">
             <label for="estatus_grado_estudios">Estatus:</label>
-            <input class="" type="text" name="estatus_grado_estudios" id="estatus_grado_estudios" readonly value="<?php echo $estatus1; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <input class="" type="text" name="estatus_grado_estudios" id="estatus_grado_estudios" readonly value="<?php echo $estatus1; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
             <label for="observaciones_grado_estudios">Observaciones:</label>
@@ -147,7 +147,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         </div><br>
         <div class="form-group">
             <label for="estatus_antiguedad">Estatus:</label>
-            <input class="" type="text" name="estatus_antiguedad" id="estatus_antiguedad" readonly value="<?php echo $estatus2; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <input class="" type="text" name="estatus_antiguedad" id="estatus_antiguedad" readonly value="<?php echo $estatus2; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
             <label for="observaciones_antiguedad">Observaciones:</label>
@@ -168,7 +168,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         </div><br>
         <div class="form-group">
             <label for="estatus_cursosCap">Estatus:</label>
-            <input class="" type="text" name="estatus_cursosCap" id="estatus_cursosCap" readonly value="<?php echo $estatus3; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <input class="" type="text" name="estatus_cursosCap" id="estatus_cursosCap" readonly value="<?php echo $estatus3; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
             <label for="observaciones_cursosCap">Observaciones:</label>
@@ -189,7 +189,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         </div><br>
         <div class="form-group">
             <label for="estatus_cursosCap">Estatus:</label>
-            <input class="" type="text" name="estatus_cursosCap" id="estatus_cursosCap" readonly value="<?php echo $estatus4; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <input class="" type="text" name="estatus_cursosCap" id="estatus_cursosCap" readonly value="<?php echo $estatus4; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
             <label for="observaciones_certificaciones">Observaciones:</label>
@@ -210,7 +210,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         </div><br>
         <div class="form-group">
             <label for="estatus_diplomados">Estatus:</label>
-            <input class="" type="text" name="estatus_diplomados" id="estatus_diplomados" readonly value="<?php echo $estatus5; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <input class="" type="text" name="estatus_diplomados" id="estatus_diplomados" readonly value="<?php echo $estatus5; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
             <label for="observaciones_diplomados">Observaciones:</label>
@@ -231,7 +231,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         </div><br>
         <div class="form-group">
             <label for="estatus_cursos">Estatus:</label>
-            <input class="form-control" type="text" name="estatus_cursos" id="estatus_cursos" readonly value="<?php echo $estatus6; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <input class="" type="text" name="estatus_cursos" id="estatus_cursos" readonly value="<?php echo $estatus6; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
             <label for="observaciones_cursos">Observaciones:</label>
@@ -252,7 +252,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         </div><br>
         <div class="form-group">
             <label for="estatus_cursos_ST">Estatus:</label>
-            <input class="form-control" type="text" name="estatus_cursos_ST" id="estatus_cursos_ST" readonly value="<?php echo $estatus7; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <input class="" type="text" name="estatus_cursos_ST" id="estatus_cursos_ST" readonly value="<?php echo $estatus7; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
             <label for="observaciones_cursos_ST">Observaciones:</label>
@@ -274,7 +274,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         </div><br>
         <div class="form-group">
             <label for="estatus_instructorDip">Estatus:</label>
-            <input class="" type="text" name="estatus_instructorDip" id="estatus_instructorDip" readonly value="<?php echo $estatus8; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <input class="" type="text" name="estatus_instructorDip" id="estatus_instructorDip" readonly value="<?php echo $estatus8; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
             <label for="observaciones_instructorDip">Observaciones:</label>
@@ -295,7 +295,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         </div><br>
         <div class="form-group">
             <label for="estatus_certificaciones">Estatus:</label>
-            <input class="" type="text" name="estatus_certificaciones" id="estatus_certificaciones" readonly value="<?php echo $estatus9; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <input class="" type="text" name="estatus_certificaciones" id="estatus_certificaciones" readonly value="<?php echo $estatus9; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
             <label for="observaciones_certificaciones">Observaciones:</label>
@@ -317,7 +317,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         </div><br>
         <div class="form-group">
             <label for="estatus_residencias">Estatus:</label>
-            <input class="" type="text" name="estatus_residencias" id="estatus_residencias" readonly value="<?php echo $estatus10; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <input class="" type="text" name="estatus_residencias" id="estatus_residencias" readonly value="<?php echo $estatus10; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
             <label for="observaciones_residencias">Observaciones:</label>
@@ -339,7 +339,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         </div><br>
         <div class="form-group">
             <label for="estatus_titulacion">Estatus:</label>
-            <input class="" type="text" name="estatus_titulacion" id="estatus_titulacion" readonly value="<?php echo $estatus11; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <input class="" type="text" name="estatus_titulacion" id="estatus_titulacion" readonly value="<?php echo $estatus11; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
             <label for="observaciones_titulacion">Observaciones:</label>
@@ -360,7 +360,7 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
         </div><br>
         <div class="form-group">
             <label for="estatus_direccion_tesis">Estatus:</label>
-            <input class="" type="text" name="estatus_direccion_tesis" id="estatus_direccion_tesis" readonly value="<?php echo $estatus12; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <input class="" type="text" name="estatus_direccion_tesis" id="estatus_direccion_tesis" readonly value="<?php echo $estatus12; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff; width: 1000px;">
         </div><br>
         <div class="form-group">
             <label for="observaciones_direccion_tesis">Observaciones:</label>
