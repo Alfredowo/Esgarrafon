@@ -10,8 +10,8 @@
 }
 .fondouwu2 {
     font-family: 'Montserrat', sans-serif;
-    background: #02082c; /* Fondo gris claro */
-    color: #333333; /* Texto negro */
+    background: #010922; /* Fondo gris claro */
+    color: #ffffff; /* Texto negro */
     background-size: cover;
     background-attachment: fixed;
     height: auto;
@@ -19,11 +19,13 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra ligera */
     padding: 20px; /* Espaciado interno */
 }
+.fuente {
+    color: #d6fcff; /* Texto negro */
+}
 
-.titulos{
+.titulos {
     text-align: center;
     color: rgb(239, 246, 247);
-    border-bottom: 6px solid rgb(66, 68, 94);
     margin-bottom: 20px; 
 }
 .divwaos{
@@ -153,7 +155,7 @@
     position: fixed;
     bottom: 80px; /* Distancia desde la parte inferior */
     left: 20px; /* Distancia desde la izquierda */
-    width: 320px;
+    width: 390px;
     background-color: #13141D;
     padding: 10px;
     border: 1px solid #ccc;

@@ -108,185 +108,185 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
 
     ?>
 
-    <h1 class="titulos">Subir Documentos</h1>
+    <h1 class="titulos">Subir Documentos</h1><hr style="border-bottom: 3px solid aqua;"><br>
     
     <!--
     <input type="" name="id" id="usuario" value="<?php echo $estatus1; ?>">
     <input type="" name="id" id="usuario" value="<?php echo $obervaciones1; ?>"> -->
 
-    <form class="form" action="procesar_form_us.php" method="post" id="mostrarAlerta">
-    <!-- Formulario para Certificado de grado de estudios -->
-        
-    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
-        <h2 class="t-centrado">Certificado de grado de estudios</h2>
-        <!-- Campo para ingresar el enlace -->
-        <div class="divpro">
-        <label class="tiritas" for="grado_estudios">Enlace del documento:</label>
-        <input class="enlace" type="text" name="grado_estudios" id="grado_estudios"><br>
-        <!-- Campo para ver el estatus -->
-        <label class="tiritas" for="estatus_grado_estudios">Estatus:</label>
-        <input class="estatus" type="text" name="estatus_grado_estudios" id="estatus_grado_estudios" readonly value="<?php echo $estatus1; ?>">
-        <!-- Cuadro de texto de observaciones -->
-            <br>
-            <label class="tiritas" for="observaciones_grado_estudios">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones1; ?></textarea>
-            <br>
-        </div>
-        <input class="botonowo" type="submit" name="enviar_certificado" value="Enviar certificado">
-    <!-- </form> -->
-<hr>
+<form class="form" action="procesar_form_us.php" method="post" id="mostrarAlerta">
+<input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
+
+<!-- Formulario para Certificado de grado de estudios -->
+<div class="container">
+    <h3 class="text-center">Certificado de grado de estudios</h3>
+    <div class="form-group">
+        <label for="grado_estudios">Enlace del documento:</label>
+        <input class="form-control" type="text" name="grado_estudios" id="grado_estudios" style="margin-top: 5px;">
+    </div><br>
+    <div class="form-group">
+        <label for="estatus_grado_estudios">Estatus:</label>
+        <input class="" type="text" name="estatus_grado_estudios" id="estatus_grado_estudios" readonly value="<?php echo $estatus1; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+    </div><br>
+    <div class="form-group">
+        <label for="observaciones_grado_estudios">Observaciones:</label>
+        <textarea class="fuente form-control" name="observaciones_grado_estudios" id="observaciones_grado_estudios" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <?php echo $obervaciones1; ?>
+        </textarea>
+    </div>
+    <button class="btn btn-primary" type="submit" name="enviar_certificado">Enviar certificado</button>
+</div><br>
+<hr><br>
 
     <!-- Formulario para Comprobantes de años de antigüedad -->
-<!-- <form class="formuwu" action="procesar_form_us.php" method="post"> -->
 <div class="container">
     <h3 class="text-center">Comprobante de años de antigüedad</h3>
-        <input type="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
-        <div class="form-group">
-            <label for="antiguedad">Enlace del documento:</label>
-            <input class="form-control" type="text" name="antiguedad" id="antiguedad" style="margin-top: 5px;">
-        </div><br>
-        <div class="form-group">
-            <label for="estatus_antiguedad">Estatus:</label>
-            <input class="" type="text" name="estatus_antiguedad" id="estatus_antiguedad" readonly value="<?php echo $estatus2; ?>" style="border: none; background: none; pointer-events: none;">
-        </div><br>
-        <div class="form-group">
-            <label for="observaciones_antiguedad">Observaciones:</label>
-            <textarea class="form-control" name="observaciones_antiguedad" id="observaciones_antiguedad" readonly style="border: none; background: none; pointer-events: none;"><?php echo $obervaciones2; ?></textarea>
-        </div>
-        <button class="btn btn-primary" type="submit" name="enviar_antiguedad" >Enviar comprobante de antigüedad</button>
-    </form>
-</div>
-<hr>
+    <div class="form-group">
+        <label for="antiguedad">Enlace del documento:</label>
+        <input class="form-control" type="text" name="antiguedad" id="antiguedad" style="margin-top: 5px;">
+    </div><br>
+    <div class="form-group">
+        <label for="estatus_antiguedad">Estatus:</label>
+        <input class="" type="text" name="estatus_antiguedad" id="estatus_antiguedad" readonly value="<?php echo $estatus2; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+    </div><br>
+    <div class="form-group">
+        <label for="observaciones_antiguedad">Observaciones:</label>
+        <textarea class="fuente form-control" name="observaciones_antiguedad" id="observaciones_antiguedad" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <?php echo $obervaciones2; ?>
+        </textarea>
+    </div>
+    <button class="btn btn-primary" type="submit" name="enviar_antiguedad" >Enviar comprobante de antigüedad</button>
+</div><br>
+<hr><br>
 
 <!-- Formulario para Comprobante de Horas de cursos de capacitación impartidas -->
-<!-- <form class="formuwu" action="procesar_form_us.php" method="post"> -->
-    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
-    <h2 class="t-centrado">Comprobante de Horas de cursos de capacitación impartidas</h2>
-    <!-- Campo para ingresar el enlace -->
-        <div class="divpro">
-    <label class="tiritas" for="cursosCap">Enlace del documento:</label>
-    <input class="enlace" type="text" name="cursosCap" id="cursosCap"><br>
-    <!-- Campo para ver el estatus -->
-    <label class="tiritas" for="estatus_cursosCap">Estatus:</label>
-    <input class="estatus" type="text" name="estatus_cursosCap" id="estatus_cursosCap" readonly value="<?php echo $estatus3; ?>">
-    <!-- Cuadro de texto de observaciones -->
-            <br>
-    <label class="tiritas" for="observaciones_cursosCap">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones3; ?></textarea>
-    <br>
-        </div>
-    <input class="botonowo" type="submit" name="enviar_cursosCap" value="Enviar comprobante de cursos de capacitación impartidas">
-<!-- </form> -->
-<hr>
+<div class="container">
+    <h3 class="text-center">Comprobante de Horas de cursos de capacitación impartidas</h3>
+    <div class="form-group">
+        <label for="cursosCap">Enlace del documento:</label>
+        <input class="form-control" type="text" name="cursosCap" id="cursosCap" style="margin-top: 5px;">
+    </div><br>
+    <div class="form-group">
+        <label for="estatus_cursosCap">Estatus:</label>
+        <input class="" type="text" name="estatus_cursosCap" id="estatus_cursosCap" readonly value="<?php echo $estatus3; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+    </div><br>
+    <div class="form-group">
+        <label for="observaciones_cursosCap">Observaciones:</label>
+        <textarea class="fuente form-control" name="observaciones_cursosCap" id="observaciones_cursosCap" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <?php echo $obervaciones3; ?>
+        </textarea>
+    </div>
+    <button class="btn btn-primary" type="submit" name="enviar_cursosCap">Enviar comprobante de cursos de capacitación impartidas</button>
+</div><br>
+<hr><br>
 
 <!-- Formulario para Comprobante de certificaciones -->
-<!-- <form class="formuwu" action="procesar_form_us.php" method="post"> -->
-    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
-    <h2 class="t-centrado">Comprobante de certificaciones</h2>
-    <!-- Campo para ingresar el enlace -->
-        <div class="divpro">
-    <label class="tiritas" for="certificaciones">Enlace del documento:</label>
-    <input class="enlace" type="text" name="certificaciones" id="certificaciones"><br>
-    <!-- Campo para ver el estatus -->
-    <label class="tiritas" for="estatus_certificaciones">Estatus:</label>
-    <input class="estatus" type="text" name="estatus_certificaciones" id="estatus_certificaciones" readonly value="<?php echo $estatus4; ?>">
-    <!-- Cuadro de texto de observaciones -->
-            <br>
-    <label class="tiritas" for="observaciones_certificaciones">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones4; ?></textarea>
-    <br>
-        </div>
-    <input class="botonowo" type="submit" name="enviar_certificaciones" value="Enviar comprobante de certificaciones">
-<!-- </form> -->
-<hr>
+<div class="container">
+    <h3 class="text-center titulos">Comprobante de Horas de cursos de capacitación impartidas</h3>
+    <div class="form-group">
+        <label for="cursosCap">Enlace del documento:</label>
+        <input class="form-control" type="text" name="cursosCap" id="cursosCap" style="margin-top: 5px;">
+    </div><br>
+    <div class="form-group">
+        <label for="estatus_cursosCap">Estatus:</label>
+        <input class="" type="text" name="estatus_cursosCap" id="estatus_cursosCap" readonly value="<?php echo $estatus4; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+    </div><br>
+    <div class="form-group">
+        <label for="observaciones_certificaciones">Observaciones:</label>
+        <textarea class="form-control fuente" name="observaciones_certificaciones" id="observaciones_certificaciones" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <?php echo $obervaciones4; ?>
+        </textarea>
+    </div>
+    <button class="btn btn-primary" type="submit" name="enviar_cursosCap">Enviar comprobante de cursos de capacitación impartidas</button>
+</div><br>
+<hr><br>
 
 <!-- Formulario para Comprobante de diplomados -->
-<!-- <form class="formuwu" action="procesar_form_us.php" method="post"> -->
-    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
-    <h2 class="t-centrado">Comprobante de diplomados</h2>
-    <!-- Campo para ingresar el enlace -->
-        <div class="divpro">
-    <label class="tiritas" for="diplomados">Enlace del documento:</label>
-    <input class="enlace" type="text" name="diplomados" id="diplomados"><br>
-    <!-- Campo para ver el estatus -->
-    <label class="tiritas" for="estatus_diplomados">Estatus:</label>
-    <input class="estatus" type="text" name="estatus_diplomados" id="estatus_diplomados" readonly value="<?php echo $estatus5; ?>">
-    <!-- Cuadro de texto de observaciones -->
-            <br>
-    <label class="tiritas" for="observaciones_diplomados">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones5; ?></textarea>
-    <br>
-        </div>
-    <input class="botonowo" type="submit" name="enviar_diplomados" value="Enviar comprobante de diplomados">
-<!-- </form> -->
-<hr>
+<div class="container">
+    <h3 class="text-center titulos">Comprobante de diplomados</h3>
+    <div class="form-group">
+        <label for="diplomados">Enlace del documento:</label>
+        <input class="form-control" type="text" name="diplomados" id="diplomados" style="margin-top: 5px;">
+    </div><br>
+    <div class="form-group">
+        <label for="estatus_diplomados">Estatus:</label>
+        <input class="" type="text" name="estatus_diplomados" id="estatus_diplomados" readonly value="<?php echo $estatus5; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+    </div><br>
+    <div class="form-group">
+        <label for="observaciones_diplomados">Observaciones:</label>
+        <textarea class="form-control fuente" name="observaciones_diplomados" id="observaciones_diplomados" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <?php echo $obervaciones5; ?>
+        </textarea>
+    </div>
+    <button class="btn btn-primary" type="submit" name="enviar_diplomados">Enviar comprobante de diplomados</button>
+</div><br>
+<hr><br>
 
 <!-- Formulario para Comprobante de cursos -->
-<!-- <form class="formuwu" action="procesar_form_us.php" method="post"> -->
-    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
-    <h2 class="t-centrado">Comprobante de cursos</h2>
-    <!-- Campo para ingresar el enlace -->
-        <div class="divpro">
-    <label class="tiritas" for="cursos">Enlace del documento:</label>
-    <input class="enlace" type="text" name="cursos" id="cursos"><br>
-    <!-- Campo para ver el estatus -->
-    <label class="tiritas" for="estatus_cursos">Estatus:</label>
-    <input class="estatus" type="text" name="estatus_cursos" id="estatus_cursos" readonly value="<?php echo $estatus6; ?>">
-    <!-- Cuadro de texto de observaciones -->
-            <br>
-    <label class="tiritas" for="observaciones_cursos">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones6; ?></textarea>
-    <br>
-        </div>
-    <input class="botonowo" type="submit" name="enviar_cursos" value="Enviar comprobante de cursos">
-<!-- </form> -->
-<hr>
+<div class="container">
+    <h3 class="text-center titulos">Comprobante de cursos</h3>
+    <div class="form-group">
+        <label for="cursos">Enlace del documento:</label>
+        <input class="form-control " type="text" name="cursos" id="cursos" style="margin-top: 5px;">
+    </div><br>
+    <div class="form-group">
+        <label for="estatus_cursos">Estatus:</label>
+        <input class="form-control" type="text" name="estatus_cursos" id="estatus_cursos" readonly value="<?php echo $estatus6; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+    </div><br>
+    <div class="form-group">
+        <label for="observaciones_cursos">Observaciones:</label>
+        <textarea class="form-control fuente textareaowo2" name="observaciones_cursos" id="observaciones_cursos" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <?php echo $obervaciones6; ?>
+        </textarea>
+    </div>
+    <button class="btn btn-primary botonowo" type="submit" name="enviar_cursos">Enviar comprobante de cursos</button>
+</div><br>
+<hr><br>
 
-<!-- Formulario para Comprobante de cursos -->
-<!-- <form class="formuwu" action="procesar_form_us.php" method="post"> -->
-    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
-    <h2 class="t-centrado">Comprobante de cursos ST</h2>
-    <!-- Campo para ingresar el enlace -->
-        <div class="divpro">
-    <label class="tiritas" for="cursosST">Enlace del documento:</label>
-    <input class="enlace" type="text" name="cursosST" id="cursosST"><br>
-    <!-- Campo para ver el estatus -->
-    <label class="tiritas" for="estatus_cursos">Estatus:</label>
-    <input class="estatus" type="text" name="estatus_cursos" id="estatus_cursos" readonly value="<?php echo $estatus7; ?>">
-    <!-- Cuadro de texto de observaciones -->
-            <br>
-    <label class="tiritas" for="observaciones_cursos">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones7; ?></textarea>
-    <br>
-        </div>
-    <input class="botonowo" type="submit" name="enviar_cursosST" value="Enviar comprobante de cursosST">
-<!-- </form> -->
-<hr>
+<!-- Formulario para Comprobante de cursos ST-->
+<div class="container">
+    <h3 class="text-center titulos">Comprobante de cursos ST</h3>
+    <div class="form-group">
+        <label for="cursosST">Enlace del documento:</label>
+        <input class="form-control " type="text" name="cursosST" id="cursosST" style="margin-top: 5px;">
+    </div><br>
+    <div class="form-group">
+        <label for="estatus_cursos_ST">Estatus:</label>
+        <input class="form-control" type="text" name="estatus_cursos_ST" id="estatus_cursos_ST" readonly value="<?php echo $estatus7; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+    </div><br>
+    <div class="form-group">
+        <label for="observaciones_cursos_ST">Observaciones:</label>
+        <textarea class="form-control fuente textareaowo2" name="observaciones_cursos_ST" id="observaciones_cursos_ST" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <?php echo $obervaciones7; ?>
+        </textarea>
+    </div>
+    <button class="btn btn-primary botonowo" type="submit" name="enviar_cursosST">Enviar comprobante de cursosST</button>
+</div><br>
+<hr><br>
+
 
 <!-- Formulario para Comprobante de instructor de diplomados -->
-<!-- <form class="formuwu" action="procesar_form_us.php" method="post"> -->
-    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
-    <h2 class="t-centrado">Comprobante de instructor de diplomados</h2>
-    <!-- Campo para ingresar el enlace -->
-        <div class="divpro">
-    <label class="tiritas" for="instructorDip">Enlace del documento:</label>
-    <input class="enlace" type="text" name="instructorDip" id="instructorDip"><br>
-    <!-- Campo para ver el estatus -->
-    <label class="tiritas" for="estatus_instructorDip">Estatus:</label>
-    <input class="estatus" type="text" name="estatus_instructorDip" id="estatus_instructorDip" readonly value="<?php echo $estatus8; ?>">
-    <!-- Cuadro de texto de observaciones -->
-            <br>
-    <label class="tiritas" for="observaciones_instructorDip">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones8; ?></textarea>
-    <br>
-        </div>
-    <input class="botonowo" type="submit" name="enviar_instructorDip" value="Enviar comprobante de instructor de diplomados">
-<!-- </form> -->
-<hr>
+<div class="container">
+    <h3 class="text-center">Certificado de grado de estudios</h3>
+    <div class="form-group">
+        <label for="grado_estudios">Enlace del documento:</label>
+        <input class="form-control" type="text" name="grado_estudios" id="grado_estudios" style="margin-top: 5px;">
+    </div><br>
+    <div class="form-group">
+        <label for="estatus_instructorDip">Estatus:</label>
+        <input class="" type="text" name="estatus_instructorDip" id="estatus_instructorDip" readonly value="<?php echo $estatus1; ?>" style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+    </div><br>
+    <div class="form-group">
+        <label for="observaciones_instructorDip">Observaciones:</label>
+        <textarea class="fuente form-control" name="observaciones_instructorDip" id="observaciones_instructorDip" readonly style="border: none; background: none; pointer-events: none; color: #d6fcff;">
+            <?php echo $obervaciones1; ?>
+        </textarea>
+    </div>
+    <button class="btn btn-primary" type="submit" name="enviar_certificado">Enviar certificado</button>
+</div><br>
+<hr><br>
 
 <!-- Formulario para Comprobante de instructor de certificaciones -->
-<!-- <form class="formuwu" action="procesar_form_us.php" method="post"> -->
-    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2 class="t-centrado">Comprobante de instructor de certificaciones</h2>
     <!-- Campo para ingresar el enlace -->
         <div class="divpro">
@@ -298,73 +298,68 @@ $estatus12 = evaluarEstatus(obtenerEstatusGrado("rutaDireccionTesis"));
     <!-- Cuadro de texto de observaciones -->
             <br>
     <label class="tiritas" for="observaciones_instructorCer">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones9; ?></textarea>
+            <textarea class="textareaowo2" type="" name="observaciones_instructorCer" id="observaciones_instructorCer" readonly><?php echo $obervaciones9; ?></textarea>
     <br>
         </div>
     <input class="botonowo" type="submit" name="enviar_instructorCer" value="Enviar comprobante de instructor de certificaciones">
-<!-- </form> -->
 <hr>
 
 <!-- Formulario para Comprobante de asesor de residencias -->
-<!-- <form class="formuwu" action="procesar_form_us.php" method="post"> -->
-    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2 class="t-centrado">Comprobante de asesor de residencias</h2>
     <!-- Campo para ingresar el enlace de asesor de residencias -->
         <div class="divpro">
     <label class="tiritas" for="asesorRes">Enlace del documento:</label>
     <input class="enlace" type="text" name="asesorRes" id="asesorRes"><br>
     <!-- Campo para ver el estatus -->
-    <label class="tiritas" for="estatus">Estatus:</label>
-    <input class="estatus" type="text" name="estatus" id="estatus" readonly value="<?php echo $estatus10; ?>">
+    <label class="tiritas" for="estatus_residencias">Estatus:</label>
+    <input class="estatus" type="text" name="estatus_residencias" id="estatus_residencias" readonly value="<?php echo $estatus10; ?>">
     <!-- Cuadro de texto de observaciones -->
             <br>
-    <label class="tiritas" for="observaciones">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones10; ?></textarea>
+    <label class="tiritas" for="observaciones_residencias">Observaciones:</label>
+            <textarea class="textareaowo2" type="" name="observaciones_residencias" id="observaciones_residencias" readonly><?php echo $obervaciones10; ?></textarea>
     <br>
         </div>
     <input class="botonowo" type="submit" name="enviar_asesorRes" value="Enviar comprobante de asesor de residencias">
-<!-- </form> -->
 <hr>
 
 <!-- Formulario para Comprobante de asesor de titulación -->
-<!-- <form class="formuwu" action="procesar_form_us.php" method="post"> -->
-    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2 class="t-centrado">Comprobante de asesor de titulación</h2>
         <!-- Campo para ingresar el enlace de asesor de titulación -->
         <div class="divpro">
         <label class="tiritas" for="asesorTit">Enlace del documento:</label>
     <input class="enlace" type="text" name="asesorTit" id="asesorTit"><br>
     <!-- Campo para ver el estatus -->
-    <label class="tiritas" for="estatus">Estatus:</label>
-    <input class="estatus" type="text" name="estatus" id="estatus" readonly value="<?php echo $estatus11; ?>">
+    <label class="tiritas" for="estatus_titulacion">Estatus:</label>
+    <input class="estatus" type="text" name="estatus_titulacion" id="estatus_titulacion" readonly value="<?php echo $estatus11; ?>">
     <!-- Cuadro de texto de observaciones -->
             <br>
-    <label class="tiritas" for="observaciones">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones11; ?></textarea>
+    <label class="tiritas" for="observaciones_titulacion">Observaciones:</label>
+            <textarea class="textareaowo2" type="" name="observaciones_titulacion" id="observaciones_titulacion" readonly><?php echo $obervaciones11; ?></textarea>
     <br>
         </div>
     <input class="botonowo" type="submit" name="enviar_asesorTit" value="Enviar comprobante de asesor de titulación">
-<!-- </form> -->
+
 <hr>
+
 <!-- Formulario para Comprobante de dirección de tesis -->
-<!-- <form class="formuwu" action="procesar_form_us.php" method="post"> -->
-    <input hidden="hidden" name="usuario" id="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>">
     <h2 class="t-centrado">Comprobante de dirección de tesis</h2>
     <!-- Campo para ingresar el enlace de dirección de tesis -->
         <div class="divpro">
     <label class="tiritas" for="direccionTesis">Enlace del documento:</label>
     <input class="enlace" type="text" name="direccionTesis" id="direccionTesis"><br>
     <!-- Campo para ver el estatus -->
-    <label class="tiritas" for="estatus">Estatus:</label>
-    <input class="estatus" type="text" name="estatus" id="estatus" readonly value="<?php echo $estatus12; ?>">
+    <label class="tiritas" for="estatus_direccion_tesis">Estatus:</label>
+    <input class="estatus" type="text" name="estatus_direccion_tesis" id="estatus_direccion_tesis" readonly value="<?php echo $estatus12; ?>">
     <!-- Cuadro de texto de observaciones -->
             <br>
-    <label class="tiritas" for="observaciones">Observaciones:</label>
-            <textarea class="textareaowo2" type="" name="id" id="usuario" readonly><?php echo $obervaciones12; ?></textarea>
+    <label class="tiritas" for="observaciones_direccion_tesis">Observaciones:</label>
+            <textarea class="textareaowo2" type="" name="observaciones_direccion_tesis" id="observaciones_direccion_tesis" readonly><?php echo $obervaciones12; ?></textarea>
     <br>
         </div>
     <input class="botonowo" type="submit" name="enviar_direccionTesis" value="Enviar comprobante de dirección de tesis">
 </form>
+
+
 <form action="Login.html">
     <div class="boton-flotante">
         <input type="submit" class="botonregresar" value="Regresar">
