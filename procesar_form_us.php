@@ -51,8 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $diplomados = $_POST['diplomados'];
         // Realizar el UPDATE para el comprobante de diplomados
         $query = "UPDATE Empleados SET rutaDiplomados = '$diplomados' WHERE id = $id";
-    } elseif (isset($_POST['enviar_cursos'])) {
-        $cursos = $_POST['cursos'];
+    } elseif (isset($_POST['enviar_cursosz'])) {
+        $cursos = $_POST['cursosz'];
         // Realizar el UPDATE para el comprobante de cursos impartidos
         $query = "UPDATE Empleados SET rutaCursos = '$cursos' WHERE id = $id";
     } elseif (isset($_POST['enviar_cursosST'])) {
